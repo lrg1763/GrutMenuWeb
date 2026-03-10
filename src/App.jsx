@@ -1,54 +1,51 @@
-import { useState } from 'react'
-import { LangProvider, useLangContext } from './context/LangContext'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { LangProvider } from './context/LangContext'
+import { ThemeProvider } from './context/ThemeContext'
 import { useLang } from './hooks/useLang'
-import { useMenuData } from './hooks/useMenuData'
-import { useActiveSection } from './hooks/useActiveSection'
-import Header from './components/Header'
-import SectionTabs from './components/SectionTabs'
-import DishGrid from './components/DishGrid'
-import DishModal from './components/DishModal'
-import DownloadButton from './components/DownloadButton'
+import { useTheme } from './hooks/useTheme'
+import Layout from './components/Layout'
+import HomePage from './pages/HomePage'
+import MenuPage from './pages/MenuPage'
+import CocktailsPage from './pages/CocktailsPage'
+import { NAV_ROUTES } from './constants'
 import './App.css'
 
+const ROUTE_COMPONENTS = {
+  '/menu': MenuPage,
+  '/cocktails': CocktailsPage,
+}
+
 function AppContent() {
-  const { lang } = useLangContext()
-  const { sections, dishes } = useMenuData()
-  const [activeSectionId, setActiveSectionId] = useActiveSection(sections)
-  const [selectedDish, setSelectedDish] = useState(null)
-
-  const filteredDishes = dishes.filter((d) => d.sectionId === activeSectionId)
-
   return (
-    <div className="app">
-      <Header />
-      <SectionTabs
-        sections={sections}
-        activeId={activeSectionId}
-        onSelect={setActiveSectionId}
-      />
-      <main className="main">
-        <DishGrid
-          dishes={filteredDishes}
-          onSelectDish={setSelectedDish}
-        />
-      </main>
-      <DownloadButton />
-      {selectedDish && (
-        <DishModal
-          dish={selectedDish}
-          onClose={() => setSelectedDish(null)}
-        />
-      )}
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        {NAV_ROUTES.map(({ path }) => {
+          const Component = ROUTE_COMPONENTS[path]
+          return (
+            <Route
+              key={path}
+              path={path.slice(1)}
+              element={Component ? <Component /> : null}
+            />
+          )
+        })}
+      </Route>
+    </Routes>
   )
 }
 
 export default function App() {
   const [lang, setLang] = useLang()
+  const [theme, setTheme] = useTheme()
 
   return (
-    <LangProvider lang={lang} setLang={setLang}>
-      <AppContent />
-    </LangProvider>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <ThemeProvider theme={theme} setTheme={setTheme}>
+        <LangProvider lang={lang} setLang={setLang}>
+          <AppContent />
+        </LangProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   )
 }

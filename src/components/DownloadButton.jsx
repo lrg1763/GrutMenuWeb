@@ -8,9 +8,11 @@ export default function DownloadButton() {
 
   return (
     <footer className="download-footer">
-      <a href={PDF_MENU_PATH} download className="download-btn">
-        {t.downloadMenu}
-      </a>
+      <div className="download-footer__inner content-column">
+        <a href={PDF_MENU_PATH} download className="download-btn">
+          {t.downloadMenu}
+        </a>
+      </div>
     </footer>
   )
 }

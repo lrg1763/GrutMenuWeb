@@ -1,5 +1,5 @@
 import { useLangContext } from '../context/LangContext'
-import { getAssetUrl } from '../constants'
+import { getAssetUrl, PLACEHOLDER_IMAGE } from '../constants'
 import { getDishName } from '../i18n'
 
 export default function DishGrid({ dishes, onSelectDish }) {
@@ -22,6 +22,7 @@ export default function DishGrid({ dishes, onSelectDish }) {
                 alt={name}
                 className="dish-card__image"
                 loading="lazy"
+                onError={(e) => { e.target.onerror = null; e.target.src = PLACEHOLDER_IMAGE }}
               />
             </div>
             <span className="dish-card__name">{name}</span>

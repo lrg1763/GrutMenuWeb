@@ -8,8 +8,9 @@ export default function SectionTabs({ sections, activeId, onSelect }) {
 
   return (
     <nav className="section-tabs" aria-label={t.menuSectionsAria}>
-      <div className="section-tabs__list">
-        {sections.map((section) => (
+      <div className="section-tabs__inner content-column">
+        <div className="section-tabs__list">
+          {sections.map((section) => (
           <button
             key={section.id}
             type="button"
@@ -18,7 +19,8 @@ export default function SectionTabs({ sections, activeId, onSelect }) {
           >
             {getTitle(section)}
           </button>
-        ))}
+          ))}
+        </div>
       </div>
     </nav>
   )

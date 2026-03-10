@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useLangContext } from '../context/LangContext'
-import { getAssetUrl } from '../constants'
+import { getAssetUrl, PLACEHOLDER_IMAGE } from '../constants'
 import { translations, getDishName, getDishDescription } from '../i18n'
 
 export default function DishModal({ dish, onClose }) {
@@ -39,7 +39,7 @@ export default function DishModal({ dish, onClose }) {
           ×
         </button>
         <div className="modal__image-wrap">
-          <img src={getAssetUrl(dish.image)} alt={name} className="modal__image" />
+          <img src={getAssetUrl(dish.image)} alt={name} className="modal__image" onError={(e) => { e.target.onerror = null; e.target.src = PLACEHOLDER_IMAGE }} />
         </div>
         <h2 className="modal__title">{name}</h2>
         {description && (

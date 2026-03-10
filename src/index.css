@@ -1,24 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'GT Pressura Pro Trial';
+  src: url('./assets/fonts/GT-Pressura-Pro-Trial-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
+  font-family: 'Manrope', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #1a1a1a;
-  background-color: #fafafa;
   -webkit-font-smoothing: antialiased;
+  --page-margin-x: 1.25rem;
+  --touch-min: 44px;
+  /* Тёмная тема (единственная) */
+  --color-bg: #0a0a0a;
+  --color-bg-card: #141414;
+  --color-text: #e8e8e8;
+  --color-text-muted: #9a9a9a;
+  --color-text-muted-2: #8a8a8a;
+  --color-text-muted-3: #6a6a6a;
+  --color-border: #2a2a2a;
+  --color-border-soft: #2a2a2a;
+  --color-border-card: #252525;
+  --color-btn-active-bg: #e8e8e8;
+  --color-btn-active-text: #0a0a0a;
+  --color-btn-hover: #fff;
+  --color-btn-bg: #fff;
+  --color-btn-text: #0a0a0a;
+  --color-btn-hover-bg: #e8e8e8;
+  --color-hover-bg: #1f1f1f;
+  --color-hover-bg-2: #252525;
+  --color-card-shadow: rgba(0, 0, 0, 0.5);
+  --color-image-placeholder: #1a1a1a;
+  --color-modal-backdrop: rgba(0, 0, 0, 0.9);
+  --color-modal-close-bg: rgba(20, 20, 20, 0.98);
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  min-height: 100vh;
 }
 
 #root {
