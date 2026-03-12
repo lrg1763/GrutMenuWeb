@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Opinion Pro Condensed';
+  src: url('/fonts/OpinionProCondensed-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 .app {
   min-height: 100vh;
   min-height: 100dvh;
@@ -107,7 +115,7 @@
 }
 
 .events-page__title {
-  font-family: 'GT Pressura Pro Trial', system-ui, sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 700;
   color: var(--color-text);
@@ -116,7 +124,7 @@
 }
 
 .events-page__text {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: clamp(1rem, 2.2vw, 1.15rem);
   line-height: 1.65;
   color: var(--color-text);
@@ -132,7 +140,7 @@
 
 .events-page__tagline {
   margin-top: 3rem;
-  font-family: 'GT Pressura Pro Trial', system-ui, sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: clamp(2rem, 6vw, 3.5rem);
   font-weight: 700;
   color: var(--color-text);
@@ -201,7 +209,7 @@
 
 .events-page__carousel-caption-title {
   margin: 0 0 0.5rem;
-  font-family: 'GT Pressura Pro Trial', system-ui, sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: clamp(0.95rem, 2.2vw, 1.15rem);
   font-weight: 700;
   color: #1a1a1a;
@@ -212,7 +220,7 @@
 
 .events-page__carousel-caption-desc {
   margin: 0;
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: clamp(0.8rem, 1.8vw, 0.95rem);
   line-height: 1.45;
   color: #444;
@@ -339,11 +347,14 @@
 }
 
 /* Коктельная карта — карусель */
-.cocktails-page .content-column {
+.cocktails-page .content-column,
+.main.cocktails-page {
   max-width: 560px;
+}
+.cocktails-page .content-column {
   margin-left: auto;
   margin-right: auto;
-  padding-top: 2.5rem;
+  padding-top: 1rem;
 }
 
 .cocktails-page__title {
@@ -355,12 +366,12 @@
 }
 
 .cocktails-page__banner {
-  font-family: 'GT Pressura Pro Trial', system-ui, sans-serif;
-  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-family: 'Opinion Pro Condensed', sans-serif;
+  font-size: clamp(1.5rem, 4.5vw, 1.85rem);
   font-weight: 400;
   line-height: 1.15;
   color: var(--color-text);
-  margin: 0 0 1rem;
+  margin: 0 0 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   text-align: center;
@@ -540,16 +551,18 @@
 .cocktails-carousel {
   position: relative;
   width: 100%;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
   overflow: hidden;
   touch-action: pan-y pinch-zoom;
 }
 
 .cocktails-carousel__arrow-zone {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0.5rem;
-  width: min(100%, 300px);
+  left: 0;
+  top: 0;
+  width: 100%;
   aspect-ratio: 1500 / 2166;
   pointer-events: none;
   z-index: 2;
@@ -595,9 +608,9 @@
 .cocktails-carousel__image-area {
   position: relative;
   width: 100%;
-  max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .cocktails-carousel__track {
@@ -618,7 +631,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 0;
   min-width: 0;
   border-radius: 0;
   overflow: hidden;
@@ -627,6 +640,7 @@
 
 /* Фото коктейлей: пропорции 1500×2166, прямые углы */
 .cocktails-carousel__image-wrap {
+  position: relative;
   width: 100%;
   aspect-ratio: 1500 / 2166;
   border-radius: 0;
@@ -641,107 +655,117 @@
   display: block;
 }
 
-@media (max-width: 640px) {
-  /* Равные отступы слева и справа — через padding у контента страницы коктейлей */
-  .cocktails-page .main {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-
-  .cocktails-carousel__slide {
-    padding: 0;
-  }
-
-  .cocktails-carousel__image-area {
-    max-width: none;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  /* Зона стрелок по размеру фото — стрелки посередине фото */
-  .cocktails-carousel__arrow-zone {
-    width: 100%;
-    left: 0;
-    transform: none;
-    top: 0;
-    aspect-ratio: 1500 / 2166;
-  }
-}
-
 .cocktails-carousel__footer {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
-  gap: 0.75rem 1.25rem;
+  justify-content: space-between;
+  gap: 0.28rem;
   margin-top: 1.25rem;
+  padding: 0.4rem 0.5rem;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.cocktails-carousel__footer-divider {
+  width: 1px;
+  height: 1rem;
+  background: rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
 }
 
 .cocktails-carousel__actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
+  flex-direction: row;
+  gap: 0.28rem;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .cocktails-carousel__btn {
-  font-family: 'GT Pressura Pro Trial', system-ui, sans-serif;
-  padding: 0.6rem 1.25rem;
-  font-size: 0.95rem;
+  font-family: 'Opinion Pro Condensed', sans-serif;
+  padding: 0.26rem 0.38rem;
+  font-size: 0.65rem;
   font-weight: 600;
-  border-radius: 999px;
+  letter-spacing: 0.01em;
+  border-radius: 6px;
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
-  border: 1px solid #000;
-  background: #000;
-  color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: transparent;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
 }
 
 .cocktails-carousel__btn:hover {
-  background: #222;
-  color: #fff;
+  background: rgba(0, 0, 0, 0.06);
+  color: #111;
 }
 
 .cocktails-carousel__btn--composition {
-  border-color: #000;
-  background: #000;
-  color: #fff;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #333;
 }
 
 .cocktails-carousel__btn--composition:hover {
-  background: #222;
-  color: #fff;
+  background: rgba(0, 0, 0, 0.06);
+  color: #111;
 }
 
 .cocktails-carousel__btn--download {
-  background: #000;
-  color: #fff;
-  border-color: #000;
+  color: #333;
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 .cocktails-carousel__btn--download:hover {
-  background: #222;
-  color: #fff;
+  background: rgba(0, 0, 0, 0.06);
+  color: #111;
 }
 
-.cocktails-carousel__counter-wrap {
-  text-align: center;
+.cocktails-carousel__btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.cocktails-carousel__btn-icon--composition {
+  width: 0.72rem;
+  height: 0.72rem;
+}
+
+.cocktails-carousel__btn-icon--download {
+  width: 0.72rem;
+  height: 0.72rem;
 }
 
 .cocktails-carousel__counter {
-  font-family: 'GT Pressura Pro Trial', system-ui, sans-serif;
-  display: inline-block;
-  padding: 0.4rem 0.85rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: var(--color-text);
-  border-radius: 999px;
-  border: 1px solid var(--color-border-card);
-  background: var(--color-bg-card);
+  font-family: 'Opinion Pro Condensed', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #333;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 0.2rem 0.28rem;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  box-sizing: border-box;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
 }
 
 /* Модальное окно «Состав» коктейля */
@@ -749,73 +773,121 @@
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: var(--color-modal-backdrop);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
   box-sizing: border-box;
-  animation: fadeIn 0.35s ease-out;
+  animation: cocktailsCompositionBackdropIn 0.3s ease-out;
+}
+
+@keyframes cocktailsCompositionBackdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .cocktails-composition-modal {
   position: relative;
   max-width: 360px;
   width: 100%;
-  padding: 1.5rem;
-  background: var(--color-bg-card);
-  border-radius: 12px;
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
-  animation: slideUp 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+  padding: 2rem 1.5rem 1.5rem;
+  background: #0a0a0a;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+  animation: cocktailsCompositionModalIn 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+@keyframes cocktailsCompositionModalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .cocktails-composition-modal__title {
-  font-size: 1.2rem;
+  font-family: 'Opinion Pro Condensed', sans-serif;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: var(--color-text);
-  margin: 0 0 0.75rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin: 0 0 1.25rem;
+  padding: 0 2rem;
+  line-height: 1.3;
+}
+
+.cocktails-composition-modal__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+}
+
+.cocktails-composition-modal__item {
+  font-family: 'Opinion Pro Condensed', sans-serif;
+  font-size: 0.95rem;
+  color: #fff;
+  line-height: 1.6;
+  padding-left: 1.25rem;
+  margin-bottom: 0.35rem;
+  position: relative;
+}
+
+.cocktails-composition-modal__item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.cocktails-composition-modal__volume {
+  font-family: 'Opinion Pro Condensed', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  margin: 0;
 }
 
 .cocktails-composition-modal__text {
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: 0.95rem;
-  color: var(--color-text-muted);
-  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
   margin: 0 0 1rem;
 }
 
 .cocktails-composition-modal__close {
-  display: block;
-  width: 100%;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  font-family: inherit;
-  color: var(--color-btn-text);
-  background: var(--color-btn-bg);
-  border: 1px solid var(--color-btn-bg);
-  border-radius: 8px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  color: #fff;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .cocktails-composition-modal__close:hover {
-  background: var(--color-btn-hover-bg);
-}
-
-@media (max-width: 640px) {
-  .cocktails-carousel__arrow--prev {
-    left: 4px;
-  }
-
-  .cocktails-carousel__arrow--next {
-    right: 4px;
-  }
-
-  .cocktails-carousel__arrow {
-    width: 40px;
-    height: 40px;
-    margin-top: -20px;
-  }
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Reservation page */
@@ -866,7 +938,7 @@
 }
 
 .reserve-page__heading {
-  font-family: 'GT Pressura Pro Trial', system-ui, sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: clamp(2rem, 6vw, 2.75rem);
   font-weight: 400;
   color: var(--color-text);
@@ -1429,7 +1501,7 @@
 }
 
 .reserve-form__submit {
-  font-family: 'GT Pressura Pro Trial', system-ui, sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   display: block;
   margin: 0.5rem auto 0;
   padding: clamp(0.75rem, 2vw, 0.85rem) clamp(1.25rem, 4vw, 1.75rem);
@@ -1683,7 +1755,7 @@
 }
 
 .header__logo-text {
-  font-family: 'GT Pressura Pro Trial', system-ui, sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: 2.25rem;
   font-weight: 700;
   color: #fff;
@@ -1890,6 +1962,8 @@
 .lang-switcher {
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 100;
 }
 
 .lang-switcher__trigger {
@@ -1946,11 +2020,11 @@
   font-size: 1rem;
 }
 
-/* Модальное окно выбора языка */
+/* Модальное окно выбора языка — поверх всего */
 .lang-modal-overlay {
   position: fixed;
   inset: 0;
-  z-index: 1100;
+  z-index: 9998;
   background: rgba(0, 0, 0, 0.35);
   opacity: 0;
   visibility: hidden;
@@ -1964,7 +2038,7 @@
 
 .lang-modal {
   position: fixed;
-  z-index: 1101;
+  z-index: 9999;
   background: #141414;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
@@ -2015,20 +2089,20 @@
 }
 
 .header__title {
-  font-family: 'Circe Rounded Web', system-ui, sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: clamp(1.4rem, 4.5vw, 2rem);
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--color-text);
 }
 
-/* Section tabs */
+/* Section tabs — z-index ниже хедера и модального языка */
 .section-tabs {
   background: var(--color-bg-card);
   border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 5;
 }
 
 .section-tabs__inner {
@@ -2282,7 +2356,7 @@
 }
 
 .footer__logo-text {
-  font-family: 'GT Pressura Pro Trial', system-ui, sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: 2.25rem;
   font-weight: 700;
   color: #fff;
@@ -2418,7 +2492,7 @@
 }
 
 .home-page__title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: clamp(5rem, 26vw, 13rem);
   font-weight: 400;
   letter-spacing: 0.12em;
@@ -2430,7 +2504,7 @@
 }
 
 .home-page__tagline {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: clamp(1.2rem, 3.6vw, 1.65rem);
   color: rgba(255, 255, 255, 0.95);
   margin: 0 0 0.5rem;
@@ -2464,7 +2538,7 @@
   align-items: center;
   justify-content: center;
   padding: 0 1.5rem;
-  font-family: 'GT Pressura Pro Trial', system-ui, sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   font-size: 1.22rem;
   font-weight: 600;
   border-radius: 0;

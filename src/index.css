@@ -2,16 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'GT Pressura Pro Trial';
-  src: url('./assets/fonts/GT-Pressura-Pro-Trial-Regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Opinion Pro Condensed', sans-serif;
   line-height: 1.5;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;

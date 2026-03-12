@@ -1,5 +1,5 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { useLangContext } from '../context/LangContext'
 import { SUPPORTED_LANGS, NAV_ROUTES } from '../constants'
 import { langLabels, translations } from '../i18n'
@@ -92,9 +92,6 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header__inner content-column">
-        <Link to="/" className="header__logo" aria-label={t.navHome}>
-          <span className="header__logo-text">GRUT</span>
-        </Link>
         <div className="header__nav-spacer" aria-hidden="true" />
         <div className="header__nav-wrap">
           <nav className="header__nav" aria-label="Основная навигация">
