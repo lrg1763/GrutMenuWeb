@@ -21,11 +21,7 @@ export default function HomePage() {
       <div className="home-page__overlay" aria-hidden="true" />
       <div className="home-page__inner content-column">
         <div className="home-page__content">
-          <img
-            src={`${base}images/logo-1.svg`}
-            alt="GRUT"
-            className="home-page__logo"
-          />
+          <h1 className="home-page__logo" aria-label={t.homeLogo}>{t.homeLogo}</h1>
           <div className="home-page__tagline-wrap">
             <p className="home-page__tagline">{t.homeTagline}</p>
             {t.homeSubline && <p className="home-page__subline">{t.homeSubline}</p>}

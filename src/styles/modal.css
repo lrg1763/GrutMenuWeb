@@ -1,0 +1,108 @@
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--color-modal-backdrop);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: max(0.5rem, env(safe-area-inset-top, 0px)) max(0.5rem, env(safe-area-inset-right, 0px)) max(0.5rem, env(safe-area-inset-bottom, 0px)) max(0.5rem, env(safe-area-inset-left, 0px));
+  animation: fadeIn 0.35s ease-out;
+  box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  font-family: 'Manrope', sans-serif;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  max-width: min(420px, calc(100vw - 2rem));
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: var(--color-btn-text);
+  background: var(--color-btn-bg);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: background 0.2s, color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.modal__close svg {
+  display: block;
+}
+
+.modal__close:hover {
+  background: var(--color-btn-hover-bg);
+  color: var(--color-btn-text);
+}
+
+.modal__image-wrap {
+  aspect-ratio: 4/3;
+  background: var(--color-image-placeholder);
+  overflow: hidden;
+}
+
+.modal__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal__title {
+  padding: 1rem 1.25rem 0.25rem;
+  font-size: clamp(1.1rem, 3vw, 1.25rem);
+  font-weight: 600;
+  color: var(--color-text);
+  word-wrap: break-word;
+}
+
+.modal__label {
+  padding: 0 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted-3);
+}
+
+.modal__description {
+  padding: 0 1.25rem;
+  font-size: clamp(0.875rem, 2.2vw, 0.95rem);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.modal__price {
+  padding: 0.75rem 1.25rem 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}

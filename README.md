@@ -1,12 +1,13 @@
 # GRUT Menu Web
 
-Одностраничный сайт меню ресторана GRUT: разделы меню, карточки блюд с фото и ценой, модалка с составом, кнопка «Скачать меню» (PDF). Языки: RU / EN / 中文.
+Сайт-меню ресторана ГРЮТ: главная, разделы меню с карточками блюд (фото, цена), модальное окно с составом, кнопка «Скачать меню» (PDF), страница коктейлей, переключатель языков (RU / EN).
 
 ## Стек
 
-- **Vite** + **React 18**
-- Данные: `public/menu.json`
-- Стили: CSS, шрифт **Manrope** (Google Fonts)
+- **Vite**, **React 18**, **React Router**
+- Данные: `public/menu.json` (разделы и блюда)
+- Стили: CSS в `src/styles/` (global, header, footer, menu, modal, cocktails, responsive)
+- Шрифты: Manrope, Martian Mono, Opinion Pro Condensed
 
 ## Запуск
 
@@ -15,7 +16,7 @@ npm install
 npm run dev
 ```
 
-Сайт откроется по адресу: **http://localhost:5173/GrutMenuWeb/**
+Откроется по адресу: **http://localhost:5173/GrutMenuWeb/** (или без пути, если `base` не задан).
 
 ## Сборка
 
@@ -23,7 +24,7 @@ npm run dev
 npm run build
 ```
 
-Результат в папке `dist`.
+Результат сборки попадает в папку **`dist/`**. Эту папку в репозиторий не коммитят (она в `.gitignore`); её создаёт команда `build` при деплое.
 
 Превью продакшен-сборки:
 
@@ -33,22 +34,36 @@ npm run preview
 
 ## Деплой на GitHub Pages
 
-1. В репозитории: **Settings → Pages → Build and deployment → Source** выберите **GitHub Actions**.
-2. При пуше в ветку `main` workflow `.github/workflows/deploy-pages.yml` собирает проект и выкладывает `dist` на GitHub Pages.
-3. Сайт будет доступен по адресу: `https://<username>.github.io/GrutMenuWeb/`
+1. В репозитории: **Settings → Pages → Source** — **GitHub Actions**.
+2. При пуше в `main` workflow собирает проект и выкладывает содержимое `dist/` на Pages.
+3. Сайт: `https://<username>.github.io/GrutMenuWeb/`
 
-## Структура
+## Структура проекта
 
-- `public/` — `menu.json`, папка `images/` с фото блюд. Для кнопки «Скачать меню» положите в `public/` файл `1 rus.pdf` (или измените `PDF_MENU_PATH` в `src/constants.js`).
-- `src/components/` — Header, SectionTabs, DishGrid, DishModal, DownloadButton
-- `src/context/` — LangContext
-- `src/hooks/` — useLang, useMenuData, useActiveSection
-- `src/i18n/` — переводы интерфейса и блюд (RU, EN, ZH)
-- `src/constants.js` — пути, ключи, `getAssetUrl()`, плейсхолдер при ошибке загрузки фото
+| Путь | Назначение |
+|------|------------|
+| `public/` | Статика: `menu.json`, папка `menu/` с фото блюд, `cocktails/`, `images/`, `fonts/`, `favicons/`, PDF для скачивания меню |
+| `public/menu/` | Одна папка для фото блюд; внутри — подпапки по разделам: `grill/`, `garniry/`, `zacuski/`, `sousy/`, `supy/`, `pasta/`, `myaso_ptica/`, `ryba_moreprodukty/`, `deserty/`, `k_pivu/`, `hleb/`, `detskoe/`, `zacuski_kompaniya/`, `salaty/` |
+| `src/components/` | Header, Footer, Layout, SectionTabs, DishGrid, DishModal, DownloadButton, IconArrow, CocktailsCompositionModal |
+| `src/context/` | LangContext (язык) |
+| `src/hooks/` | useLang, useMenuData, useActiveSection |
+| `src/i18n/` | Переводы интерфейса и названий/описаний блюд (RU, EN) |
+| `src/pages/` | HomePage, MenuPage, CocktailsPage |
+| `src/styles/` | Разбитые CSS-файлы |
+| `src/constants.js` | Пути к PDF и menu.json, ключи localStorage, `getAssetUrl()` |
+| `src/routes.jsx` | Маршруты приложения |
+| `scripts/` | Скрипты миграции/организации фото (при необходимости) |
+
+Папка **`dist/`** не хранится в репозитории: она создаётся при `npm run build` и используется при деплое.  
+Папка **`menu_old`** в проекте не используется (удалена); все актуальные фото блюд — в `public/menu/<раздел>/`.
 
 ## Фото блюд
 
-Фото лежат в `public/images/` в подпапках по разделам меню (названия на английском): `appetizers`, `appetizers-party`, `salads`, `soups`, `grill`, `burgers`, `pasta`, `meat-poultry`, `fish-seafood`, `sides`, `sauces`, `desserts`, `beer-snacks`, `bread`. В `menu.json` путь к фото: `"/images/имя-папки/имя-файла.jpg"` (например `/images/appetizers/bruschetta-avocado.jpg`). Рекомендуемое соотношение 4:3 (1200×900 px). Плейсхолдер для блюд без фото: `/images/placeholder.svg`.
+- Все фото блюд лежат в **`public/menu/`**.
+- Внутри — подпапки по разделам меню (id из `menu.json`: `grill`, `garniry`, `zacuski` и т.д.).
+- В `menu.json` у каждого блюда поле `image`, например: `"/menu/grill/porterhouse.webp"`.
+- Рекомендуемое соотношение сторон фото: 4:3.
+- Для блюд без фото в JSON указывают `"/images/placeholder.svg"`.
 
 ## Лицензия
 

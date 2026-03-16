@@ -3,6 +3,8 @@ import { useLangContext } from '../context/LangContext'
 import { translations } from '../i18n'
 import { COCKTAILS } from '../data/cocktails'
 import { PLACEHOLDER_IMAGE, PDF_MENU_PATH } from '../constants'
+import IconArrow from '../components/IconArrow'
+import CocktailsCompositionModal from '../components/CocktailsCompositionModal'
 
 const COCKTAILS_COUNT = COCKTAILS.length
 /* Клоны для бесконечной прокрутки: [последний, ...все, первый] */
@@ -57,8 +59,10 @@ export default function CocktailsPage() {
   const handleTouchMove = (e) => {
     touchEndX.current = e.touches[0].clientX
   }
-  const handleTouchEnd = () => {
-    const diff = touchStartX.current - touchEndX.current
+  const handleTouchEnd = (e) => {
+    if (e.target.closest('button') || e.target.closest('a')) return
+    const endX = e.changedTouches?.[0]?.clientX ?? touchEndX.current
+    const diff = touchStartX.current - endX
     if (Math.abs(diff) > 50) {
       if (diff > 0) goNext()
       else goPrev()
@@ -67,29 +71,18 @@ export default function CocktailsPage() {
 
   const getName = (cocktail) => {
     if (lang === 'ru') return cocktail.nameRu
-    if (lang === 'zh') return cocktail.nameZh
     return cocktail.nameEn
-  }
-
-  const parseComposition = (composition) => {
-    if (!composition) return { ingredients: [], garnish: '', totalMl: 0 }
-    const garnishMatch = composition.match(/Украшение:\s*([^.]+)/i)
-    const beforeGarnish = garnishMatch ? composition.split(/Украшение:/i)[0] : composition
-    const garnish = garnishMatch ? garnishMatch[1].trim().replace(/\.$/, '') : ''
-    const ingredientParts = beforeGarnish.split(/,\s*/).map((s) => s.trim().replace(/\.$/, '')).filter(Boolean)
-    const ingredients = ingredientParts.map((s) => {
-      const cleaned = s.replace(/^\s*[•\-]\s*/, '').trim()
-      return cleaned ? cleaned.charAt(0).toUpperCase() + cleaned.slice(1) : ''
-    }).filter(Boolean)
-    const mlMatches = composition.matchAll(/(\d+)\s*мл/gi)
-    const totalMl = [...mlMatches].reduce((sum, m) => sum + parseInt(m[1], 10), 0)
-    return { ingredients, garnish, totalMl }
   }
 
   return (
     <main className="main cocktails-page">
       <div className="content-column">
-        <p className="cocktails-page__banner">{t.cocktailsOnePrice}</p>
+        <div className="cocktails-page__banner">
+          <span className="cocktails-page__banner-title cocktails-page__banner-title--desktop">{t.cocktailsOnePrice}</span>
+          <span className="cocktails-page__banner-title cocktails-page__banner-title--mobile">{t.cocktailsTitleLine1}</span>
+          <span className="cocktails-page__banner-price cocktails-page__banner-price--desktop">{t.cocktailsPriceLabel}{t.cocktailsPrice}</span>
+          <span className="cocktails-page__banner-price cocktails-page__banner-price--mobile">{t.cocktailsMobileLine2}</span>
+        </div>
         <div
           className="cocktails-carousel"
           onTouchStart={handleTouchStart}
@@ -101,17 +94,17 @@ export default function CocktailsPage() {
               type="button"
               className="cocktails-carousel__arrow cocktails-carousel__arrow--prev"
               onClick={goPrev}
-              aria-label={lang === 'ru' ? 'Предыдущий' : lang === 'zh' ? '上一个' : 'Previous'}
+              aria-label={lang === 'ru' ? 'Предыдущий' : 'Previous'}
             >
-              <ArrowIcon dir="left" />
+              <IconArrow dir="left" />
             </button>
             <button
               type="button"
               className="cocktails-carousel__arrow cocktails-carousel__arrow--next"
               onClick={goNext}
-              aria-label={lang === 'ru' ? 'Следующий' : lang === 'zh' ? '下一个' : 'Next'}
+              aria-label={lang === 'ru' ? 'Следующий' : 'Next'}
             >
-              <ArrowIcon dir="right" />
+              <IconArrow dir="right" />
             </button>
           </div>
           <div
@@ -124,7 +117,7 @@ export default function CocktailsPage() {
                 <div className="cocktails-carousel__image-area">
                   <div className="cocktails-carousel__image-wrap">
                     <img
-                      src={`${baseUrl}images/cocktails/${cocktail.id}.jpg`}
+                      src={`${baseUrl}cocktails/${cocktail.id}.jpg`}
                       alt={getName(cocktail)}
                       className="cocktails-carousel__image"
                       onError={(e) => { e.target.src = PLACEHOLDER_IMAGE }}
@@ -135,12 +128,10 @@ export default function CocktailsPage() {
             ))}
           </div>
           <div className="cocktails-carousel__footer">
-            <div className="cocktails-carousel__counter" aria-live="polite">
+            <button type="button" className="cocktails-carousel__btn cocktails-carousel__btn--counter" aria-live="polite" disabled>
               {realIndex + 1} / {COCKTAILS_COUNT}
-            </div>
-            <div className="cocktails-carousel__footer-divider" aria-hidden="true" />
-            <div className="cocktails-carousel__actions">
-              <button
+            </button>
+            <button
                 type="button"
                 className="cocktails-carousel__btn cocktails-carousel__btn--composition"
                 onClick={() => setCompositionModal(COCKTAILS[realIndex])}
@@ -161,69 +152,18 @@ export default function CocktailsPage() {
                 </span>
                 {t.cocktailDownload}
               </a>
-            </div>
           </div>
         </div>
       </div>
 
-      {compositionModal && (() => {
-        const { ingredients, garnish, totalMl } = parseComposition(compositionModal.composition)
-        return (
-          <div
-            className="cocktails-composition-backdrop"
-            onClick={() => setCompositionModal(null)}
-            role="presentation"
-          >
-            <div
-              className="cocktails-composition-modal"
-              onClick={(e) => e.stopPropagation()}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="cocktails-composition-title"
-            >
-              <button
-                type="button"
-                className="cocktails-composition-modal__close"
-                onClick={() => setCompositionModal(null)}
-                aria-label={t.close}
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
-              </button>
-              <h2 id="cocktails-composition-title" className="cocktails-composition-modal__title">
-                {getName(compositionModal)}
-              </h2>
-              {(ingredients.length > 0 || garnish) ? (
-                <ul className="cocktails-composition-modal__list">
-                  {ingredients.map((item, i) => (
-                    <li key={i} className="cocktails-composition-modal__item">{item}</li>
-                  ))}
-                  {garnish && (
-                    <li className="cocktails-composition-modal__item">
-                      {t.garnishLabel}: {garnish}
-                    </li>
-                  )}
-                </ul>
-              ) : (
-                <p className="cocktails-composition-modal__text">{compositionModal.composition}</p>
-              )}
-              {totalMl > 0 && (
-                <p className="cocktails-composition-modal__volume">
-                  {t.volumeLabel}: {totalMl} мл
-                </p>
-              )}
-            </div>
-          </div>
-        )
-      })()}
+      {compositionModal && (
+        <CocktailsCompositionModal
+          cocktailName={getName(compositionModal)}
+          composition={compositionModal.composition}
+          onClose={() => setCompositionModal(null)}
+          t={t}
+        />
+      )}
     </main>
-  )
-}
-
-function ArrowIcon({ dir }) {
-  const isLeft = dir === 'left'
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="butt" strokeLinejoin="miter">
-      {isLeft ? <polyline points="15 18 9 12 15 6" /> : <polyline points="9 18 15 12 9 6" />}
-    </svg>
   )
 }

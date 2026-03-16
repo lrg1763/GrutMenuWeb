@@ -1,0 +1,297 @@
+
+/* Планшеты и узкие экраны: бургер-меню */
+@media (max-width: 768px) {
+  .header__nav-wrap {
+    display: none;
+  }
+
+  .header__burger {
+    display: flex;
+  }
+
+  .header__menu-overlay {
+    display: block;
+  }
+
+  .header,
+  .header__inner {
+    min-height: 4.5rem;
+  }
+
+  .header__logo-img {
+    height: 3.25rem;
+    max-width: 160px;
+  }
+
+  .footer__inner {
+    padding: 1.5rem 0;
+    gap: 1.25rem;
+  }
+
+  .footer__logo-img {
+    height: 3.25rem;
+    max-width: 160px;
+  }
+
+  .home-page {
+    min-height: calc(100vh - 72px);
+    min-height: calc(100dvh - 72px);
+  }
+
+  .home-page__content {
+    padding: 1.5rem 0;
+  }
+
+  .home-page__logo {
+    font-size: clamp(8rem, 36vw, 14rem);
+  }
+
+  .home-page__tagline-wrap {
+    margin-bottom: 3rem;
+  }
+
+  .home-page__actions {
+    gap: 22px;
+  }
+
+  .home-page__btn {
+    width: 250px;
+    min-width: 250px;
+    min-height: 76px;
+    padding: 0 1.25rem;
+    font-size: 1.15rem;
+  }
+}
+
+/* Мобильные */
+@media (max-width: 640px) {
+  :root {
+    --page-margin-x: 1.5rem;
+  }
+
+  .header,
+  .header__inner {
+    min-height: 3.75rem;
+  }
+
+  .header__inner {
+    padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+    padding-bottom: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .header__logo-img {
+    height: 4rem;
+    max-width: 180px;
+  }
+
+  .header__nav-link {
+    padding: 0.4rem 0.35rem;
+    font-size: 1rem;
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .header__title {
+    font-size: 1.5rem;
+  }
+
+  .section-tabs__inner {
+    padding: 0.5rem var(--page-margin-x);
+  }
+
+  .section-tabs__list {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding: 0;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .section-tabs__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .section-tabs__btn {
+    flex-shrink: 0;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    min-height: 48px;
+  }
+
+  .main {
+    padding: 1rem var(--page-margin-x) 1.5rem;
+  }
+
+  .dish-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .dish-card__name {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .modal {
+    max-width: 100%;
+    margin: 0.5rem;
+    max-height: 85vh;
+    max-height: 85dvh;
+  }
+
+  .modal__close {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .download-footer__inner {
+    padding: 1rem 0;
+  }
+
+  .download-btn {
+    padding: 0.75rem 1.5rem;
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Футер: колонка по центру */
+  .footer__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.25rem 0;
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+    gap: 1rem;
+  }
+
+  .footer__contact-block {
+    align-items: center;
+  }
+
+  .footer__links {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .footer__link {
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0;
+  }
+
+  .footer__logo-img {
+    height: 4rem;
+    max-width: 180px;
+  }
+
+  /* Главная: компактнее */
+  .home-page {
+    min-height: calc(100vh - 60px);
+    min-height: calc(100dvh - 60px);
+  }
+
+  .home-page__content {
+    padding: 1rem 0;
+    max-width: 100%;
+  }
+
+  .home-page__logo {
+    font-size: clamp(6rem, 36vw, 12rem);
+  }
+
+  .home-page__tagline {
+    font-size: clamp(1.15rem, 3.7vw, 1.45rem);
+    white-space: normal;
+  }
+
+  .home-page__tagline-wrap {
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+  }
+
+  .home-page__actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    gap: 0.85rem;
+  }
+
+  .home-page__btn {
+    width: 100%;
+    min-width: 0;
+    padding: 0 1.5rem;
+    min-height: 84px;
+    font-size: 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 380px) {
+  :root {
+    --page-margin-x: 1rem;
+  }
+
+  .header__nav-link {
+    font-size: 0.9rem;
+    padding: 0.35rem 0.25rem;
+  }
+
+  .header__logo-img {
+    max-width: 140px;
+    height: 3.25rem;
+  }
+
+  .main.cocktails-page .cocktails-page__banner {
+    font-size: clamp(1.25rem, 5.5vw, 1.6rem);
+  }
+
+  .cocktails-page__banner-title--mobile {
+    white-space: normal;
+  }
+
+  .dish-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .dish-card__name {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.6rem 0.2rem;
+  }
+
+  .dish-card__price {
+    font-size: 0.9rem;
+    padding: 0 0.6rem 0.5rem;
+  }
+
+  .modal__title,
+  .modal__label,
+  .modal__description,
+  .modal__price {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .footer__inner {
+    gap: 1rem;
+    padding: 1.5rem 0;
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+  }
+}

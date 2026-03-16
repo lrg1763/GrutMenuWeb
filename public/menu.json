@@ -75,798 +75,798 @@
     {
       "sectionId": "grill",
       "name": "Porterhouse, 100 g",
-      "image": "/новые фото/стейт портер хаус.png",
+      "image": "/menu/grill/porterhouse.webp",
       "description": "",
       "price": "1600 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Ribeye, 100 g",
-      "image": "/новые фото/рибай.png",
+      "image": "/menu/grill/ribeye.webp",
       "description": "",
       "price": "1500 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Matchet, 100 g",
-      "image": "/новые фото/мачетте.png",
+      "image": "/menu/grill/machete.webp",
       "description": "",
       "price": "920 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Lamb rack, 100 g",
-      "image": "/новые фото/каре ягненка.png",
+      "image": "/menu/grill/lamb-chop.webp",
       "description": "",
       "price": "888 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Beef tenderloin medallions",
-      "image": "/новые фото/Медальоны из говяжей вырезки.png",
+      "image": "/menu/grill/beef-medallions.webp",
       "description": "",
       "price": "1999 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Chicken breast shashlik",
-      "image": "/новые фото/куриный шашлык.png",
+      "image": "/menu/grill/chicken-shashlik.webp",
       "description": "",
       "price": "650 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Beef lyulya-kebab",
-      "image": "/новые фото/люля из говядины.png",
+      "image": "/menu/grill/lulya-beef.webp",
       "description": "",
       "price": "1200 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Lamb lyulya-kebab",
-      "image": "/новые фото/люля из ягненка.png",
+      "image": "/menu/grill/lulya-lamb.webp",
       "description": "",
       "price": "1500 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Farmer chicken Tapaka",
-      "image": "/новые фото/тапака.png",
+      "image": "/menu/grill/tapaka.webp",
       "description": "",
       "price": "1350 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Grilled meat platter",
-      "image": "/images/grill/meat-platter.jpg",
+      "image": "/menu/grill/meat-platter.webp",
       "description": "Chicken breast shashlik, lamb shashlik, beef and lamb lyulya-kebab, matchet steak, lamb rack",
       "price": "12000 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Argentine langoustines, 5 pcs",
-      "image": "/новые фото/лангустины.png",
+      "image": "/menu/grill/langoustines.webp",
       "description": "",
       "price": "1300 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Salmon steak, 100 g",
-      "image": "/новые фото/стейк из семги.png",
+      "image": "/menu/grill/salmon-steak.webp",
       "description": "",
       "price": "1200 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Tuna steak with eggplant mousse",
-      "image": "/новые фото/стейк из тунца.png",
+      "image": "/menu/grill/tuna-steak.webp",
       "description": "",
       "price": "1250 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Dorado",
-      "image": "/новые фото/дорадо.png",
+      "image": "/menu/grill/dorado.webp",
       "description": "",
       "price": "1999 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Seafood assortment",
-      "image": "/новые фото/ассорти морепрожуктов.png",
+      "image": "/menu/grill/seafood-assortment.webp",
       "description": "Trout, tuna, langoustines, mussels, squid",
       "price": "3500 ₽"
     },
     {
       "sectionId": "garniry",
       "name": "Seasonal vegetables",
-      "image": "/новые фото/сезоные овощи на гриле.png",
+      "image": "/menu/garniry/seasonal-vegetables-grill.webp",
       "description": "",
       "price": "590 ₽"
     },
     {
       "sectionId": "garniry",
       "name": "Baby potatoes",
-      "image": "/images/sides/baby-potatoes.jpg",
+      "image": "/menu/garniry/baby-potatoes.webp",
       "description": "",
       "price": "350 ₽"
     },
     {
       "sectionId": "garniry",
       "name": "Potato wedges",
-      "image": "/images/sides/potato-wedges.jpg",
+      "image": "/menu/garniry/potato-wedges.webp",
       "description": "",
       "price": "350 ₽"
     },
     {
       "sectionId": "garniry",
       "name": "Cauliflower",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/garniry/cauliflower.webp",
       "description": "",
       "price": "290 ₽"
     },
     {
       "sectionId": "garniry",
       "name": "Fried potatoes with mushrooms and onions",
-      "image": "/images/sides/potato-mushrooms.jpg",
+      "image": "/menu/garniry/potato-mushrooms.webp",
       "description": "",
       "price": "450 ₽"
     },
     {
       "sectionId": "garniry",
       "name": "Mashed potatoes",
-      "image": "/images/sides/mashed-potato.jpg",
+      "image": "/menu/garniry/mashed-potato.webp",
       "description": "",
       "price": "250 ₽"
     },
     {
       "sectionId": "garniry",
       "name": "Mashed potatoes with spinach",
-      "image": "/images/sides/mashed-potato-spinach.jpg",
+      "image": "/menu/garniry/mashed-potato-spinach.webp",
       "description": "",
       "price": "300 ₽"
     },
     {
       "sectionId": "garniry",
       "name": "French fries",
-      "image": "/images/sides/fries.jpg",
+      "image": "/menu/garniry/fries.webp",
       "description": "",
       "price": "299 ₽"
     },
     {
       "sectionId": "garniry",
       "name": "Quinoa",
-      "image": "/images/sides/quinoa.jpg",
+      "image": "/menu/garniry/quinoa.webp",
       "description": "",
       "price": "250 ₽"
     },
     {
       "sectionId": "garniry",
       "name": "Boiled rice",
-      "image": "/images/sides/rice.jpg",
+      "image": "/menu/garniry/rice.webp",
       "description": "",
       "price": "250 ₽"
     },
     {
       "sectionId": "grill",
       "name": "GRUT burger with beef and cheddar",
-      "image": "/новые фото/бургер с говядиной.png",
+      "image": "/menu/grill/burger-beef.webp",
       "description": "",
       "price": "999 ₽"
     },
     {
       "sectionId": "grill",
       "name": "Farmer's lamb burger",
-      "image": "/новые фото/бургер фермерскии.png",
+      "image": "/menu/grill/farmer-burger.webp",
       "description": "",
       "price": "1111 ₽"
     },
     {
       "sectionId": "pasta",
       "name": "Fettuccine with seafood in cream sauce",
-      "image": "/images/pasta/fettuccine-seafood.jpg",
+      "image": "/menu/pasta/fettuccine-seafood.webp",
       "description": "",
       "price": "999 ₽"
     },
     {
       "sectionId": "pasta",
       "name": "Tagliatelle carbonara",
-      "image": "/images/pasta/carbonara.jpg",
+      "image": "/menu/pasta/carbonara.webp",
       "description": "",
       "price": "870 ₽"
     },
     {
       "sectionId": "myaso_ptica",
       "name": "Pozharsky cutlet with mashed potatoes and spinach",
-      "image": "/новые фото/пожарская котлета.png",
+      "image": "/menu/myaso_ptica/pozhersky-cutlet.webp",
       "description": "",
       "price": "880 ₽"
     },
     {
       "sectionId": "myaso_ptica",
       "name": "Chicken Kiev with potato pie",
-      "image": "/новые фото/котлета по киевски.png",
+      "image": "/menu/myaso_ptica/chicken-kiev.webp",
       "description": "",
       "price": "990 ₽"
     },
     {
       "sectionId": "myaso_ptica",
       "name": "Beef stroganoff with mashed potatoes",
-      "image": "/images/meat-poultry/beef-stroganoff.jpg",
+      "image": "/menu/myaso_ptica/beef-stroganoff.webp",
       "description": "",
       "price": "1300 ₽"
     },
     {
       "sectionId": "myaso_ptica",
       "name": "Veal cheeks in red wine sauce with choice of side",
-      "image": "/новые фото/щечки с пюре.png",
+      "image": "/menu/myaso_ptica/veal-cheeks.webp",
       "description": "Mashed potatoes / baby potatoes / potato wedges",
       "price": "1650 ₽"
     },
     {
       "sectionId": "myaso_ptica",
       "name": "Lamb schnitzel with tomatoes and eggplant in sweet and sour sauce",
-      "image": "/новые фото/шницель из ягненка.png",
+      "image": "/menu/myaso_ptica/lamb-schnitzel.webp",
       "description": "",
       "price": "1200 ₽"
     },
     {
       "sectionId": "ryba_moreprodukty",
       "name": "Pike and zander cutlets with mashed potatoes and dill sauce",
-      "image": "/новые фото/котлеты из щуки и судака.png",
+      "image": "/menu/ryba_moreprodukty/pike-perch-cutlets.webp",
       "description": "",
       "price": "1200 ₽"
     },
     {
       "sectionId": "ryba_moreprodukty",
       "name": "Mussels in Bavarian sauce",
-      "image": "/images/fish-seafood/mussels-bavarian.jpg",
+      "image": "/menu/ryba_moreprodukty/mussels-bavarian.webp",
       "description": "",
       "price": "1555 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Sweet chili",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/sousy/sweet-chili.webp",
       "description": "",
       "price": "150 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Ketchup",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/sousy/ketchup.webp",
       "description": "",
       "price": "150 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Ranch",
-      "image": "/новые фото/ранч соус.png",
+      "image": "/menu/sousy/ranch-sauce.webp",
       "description": "",
       "price": "250 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "BBQ sauce",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/sousy/bbq-sauce.webp",
       "description": "",
       "price": "250 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Tkemali",
-      "image": "/images/sauces/tkemali.png",
+      "image": "/menu/sousy/tkemali.webp",
       "description": "",
       "price": "250 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Honey lime",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/sousy/honey-lime.webp",
       "description": "",
       "price": "250 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Tomato",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/sousy/tomato-sauce.webp",
       "description": "",
       "price": "250 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Jack Daniel's",
-      "image": "/новые фото/соус джек дэниели.png",
+      "image": "/menu/sousy/jack-daniels-sauce.webp",
       "description": "",
       "price": "300 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Cheese",
-      "image": "/новые фото/соус сырный.png",
+      "image": "/menu/sousy/cheese-sauce.webp",
       "description": "",
       "price": "300 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Oyster",
-      "image": "/новые фото/соус устричный.png",
+      "image": "/menu/sousy/oyster-sauce.webp",
       "description": "",
       "price": "300 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Narsharab",
-      "image": "/images/sauces/narsharab.png",
+      "image": "/menu/sousy/narsharab.webp",
       "description": "",
       "price": "300 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Satsebeli",
-      "image": "/новые фото/соус сацебели.png",
+      "image": "/menu/sousy/satsebeli-sauce.webp",
       "description": "",
       "price": "300 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Cream mushroom",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/sousy/cream-mushroom-sauce.webp",
       "description": "",
       "price": "300 ₽"
     },
     {
       "sectionId": "sousy",
       "name": "Pepper",
-      "image": "/новые фото/соус перечный.png",
+      "image": "/menu/sousy/pepper-sauce.webp",
       "description": "",
       "price": "300 ₽"
     },
     {
       "sectionId": "deserty",
       "name": "Berry millefeuille with mango-passion fruit sauce",
-      "image": "/новые фото/ягодный мильфей.png",
+      "image": "/menu/deserty/berry-millefeuille.webp",
       "description": "",
       "price": "720 ₽"
     },
     {
       "sectionId": "deserty",
       "name": "Chocolate fondant with vanilla ice cream",
-      "image": "/images/desserts/fondant.jpg",
+      "image": "/menu/deserty/fondant.webp",
       "description": "",
       "price": "690 ₽"
     },
     {
       "sectionId": "deserty",
       "name": "Honey cake with berries GRUT style",
-      "image": "/новые фото/медовик.png",
+      "image": "/menu/deserty/medovik.webp",
       "description": "",
       "price": "550 ₽"
     },
     {
       "sectionId": "deserty",
       "name": "New York cheesecake with berry sauce",
-      "image": "/новые фото/чизкейк.png",
+      "image": "/menu/deserty/cheesecake.webp",
       "description": "",
       "price": "550 ₽"
     },
     {
       "sectionId": "deserty",
       "name": "Spiced carrot cake with cheese cream and pecan",
-      "image": "/новые фото/морковный торт.png",
+      "image": "/menu/deserty/carrot-cake.webp",
       "description": "",
       "price": "400 ₽"
     },
     {
       "sectionId": "deserty",
       "name": "Ice cream (Vanilla dream / Belgian chocolate / Strawberry / Pistachio)",
-      "image": "/images/desserts/ice-cream.jpg",
+      "image": "/menu/deserty/ice-cream.webp",
       "description": "",
       "price": "270 ₽"
     },
     {
       "sectionId": "deserty",
       "name": "Sorbet (Passion fruit-mango / Raspberry-strawberry)",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/deserty/sorbet.webp",
       "description": "",
       "price": "270 ₽"
     },
     {
       "sectionId": "deserty",
       "name": "Fruit platter",
-      "image": "/images/desserts/fruit-platter.jpg",
+      "image": "/menu/deserty/fruit-platter.webp",
       "description": "",
       "price": "1890 ₽"
     },
     {
       "sectionId": "k_pivu",
       "name": "Beer set «Two comrades»",
-      "image": "/новые фото/два товарища.png",
+      "image": "/menu/k_pivu/two-comrades.webp",
       "description": "Chicken wings in Jack Daniel's sauce, chicken sausages, garlic croutons, mini lamb chebureki, spring rolls, onion rings, duo of sauces",
       "price": "2222 ₽"
     },
     {
       "sectionId": "k_pivu",
       "name": "Chicken wings in Jack Daniel's sauce",
-      "image": "/новые фото/куриные крылья.png",
+      "image": "/menu/k_pivu/chicken-wings.webp",
       "description": "",
       "price": "760 ₽"
     },
     {
       "sectionId": "k_pivu",
       "name": "Beef jerky",
-      "image": "/новые фото/вяленное мясо.png",
+      "image": "/menu/k_pivu/dried-meat.webp",
       "description": "",
       "price": "660 ₽"
     },
     {
       "sectionId": "k_pivu",
       "name": "Fried/boiled shrimp",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/k_pivu/shrimp-boiled-fried.webp",
       "description": "",
       "price": "999 ₽"
     },
     {
       "sectionId": "k_pivu",
       "name": "Onion rings",
-      "image": "/новые фото/луковые кольца.png",
+      "image": "/menu/k_pivu/onion-rings.webp",
       "description": "",
       "price": "350 ₽"
     },
     {
       "sectionId": "k_pivu",
       "name": "Karasau chips",
-      "image": "/новые фото/чипсы карасау.png",
+      "image": "/menu/k_pivu/chips-karasau.webp",
       "description": "",
       "price": "150 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Bruschetta with avocado and sun-dried tomatoes",
-      "image": "/новые фото/брускетта с авокадо.png",
+      "image": "/menu/zacuski/bruschetta-avocado.webp",
       "description": "",
       "price": "260 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Bruschetta with chicken pâté and chokeberry sauce",
-      "image": "/новые фото/брускетта с куриным паштетом.png",
+      "image": "/menu/zacuski/bruschetta-chicken-pate.webp",
       "description": "",
       "price": "300 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Bruschetta with lightly salted salmon and feta",
-      "image": "/новые фото/брускетта с семгой.png",
+      "image": "/menu/zacuski/bruschetta-salmon.webp",
       "description": "",
       "price": "380 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Bruschetta with bresaola, burrata and cherry tomatoes",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/zacuski/bruschetta-bresaola.webp",
       "description": "",
       "price": "330 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Bruschetta with roast beef and Munich sauce",
-      "image": "/новые фото/брускетта с ростбифом.png",
+      "image": "/menu/zacuski/bruschetta-rostbeef.webp",
       "description": "",
       "price": "430 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Giant marinated olives",
-      "image": "/новые фото/гиганские мариновые маслины и оливки.png",
+      "image": "/menu/zacuski/olives.webp",
       "description": "",
       "price": "690 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Chicken pâté with cranberry confit",
-      "image": "/новые фото/куриный паштет.png",
+      "image": "/menu/zacuski/chicken-pate.webp",
       "description": "",
       "price": "550 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Burrata with tomato and eggplant",
-      "image": "/новые фото/страчателла с помидорами.png",
+      "image": "/menu/zacuski/stracciatella-tomatoes.webp",
       "description": "",
       "price": "520 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Eggplant in oyster sauce with sesame and herbs",
-      "image": "/новые фото/баклажаны в устричном соусе.png",
+      "image": "/menu/zacuski/eggplant-oyster.webp",
       "description": "",
       "price": "700 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Fried suluguni cheese with tkemali sauce",
-      "image": "/новые фото/сулугуни.png",
+      "image": "/menu/zacuski/suluguni.webp",
       "description": "",
       "price": "660 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Spring rolls with shrimp, 5 pcs",
-      "image": "/новые фото/спринг роллы.png",
+      "image": "/menu/zacuski/spring-rolls.webp",
       "description": "",
       "price": "850 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Herring with baby potatoes and Borodinsky bread",
-      "image": "/новые фото/сельдь с беби картофелем.png",
+      "image": "/menu/zacuski/herring-baby-potatoes.webp",
       "description": "",
       "price": "590 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Tuna tartare",
-      "image": "/images/appetizers/tartar-tuna.jpg",
+      "image": "/menu/zacuski/tartar-tuna.webp",
       "description": "",
       "price": "880 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Wagyu beef tartare",
-      "image": "/images/appetizers/tartar-beef.jpg",
+      "image": "/menu/zacuski/tartar-beef.webp",
       "description": "",
       "price": "999 ₽"
     },
     {
       "sectionId": "zacuski",
       "name": "Shrimp tempura with wasabi sauce",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/zacuski/shrimp-wasabi.webp",
       "description": "",
       "price": "770 ₽"
     },
     {
       "sectionId": "zacuski_kompaniya",
       "name": "Bruschetta assortment, 5 pcs",
-      "image": "/новые фото/ассорти брускет.png",
+      "image": "/menu/zacuski_kompaniya/bruschetta-assortment.webp",
       "description": "",
       "price": "1500 ₽"
     },
     {
       "sectionId": "zacuski_kompaniya",
       "name": "Pickles assortment",
-      "image": "/новые фото/ассорти солении.png",
+      "image": "/menu/zacuski_kompaniya/pickles-assortment.webp",
       "description": "",
       "price": "800 ₽"
     },
     {
       "sectionId": "zacuski_kompaniya",
       "name": "Cheese assortment",
-      "image": "/новые фото/ассорти сырное.png",
+      "image": "/menu/zacuski_kompaniya/cheese-assortment.webp",
       "description": "Chechil, Maasdam, Parmesan, Caciotta, Mont d'Or, Camembert, Tête de Moine",
       "price": "1650 ₽"
     },
     {
       "sectionId": "zacuski_kompaniya",
       "name": "Fish assortment",
-      "image": "/новые фото/ассорти рыбное.png",
+      "image": "/menu/zacuski_kompaniya/fish-assortment.webp",
       "description": "Salmon, butterfish",
       "price": "1750 ₽"
     },
     {
       "sectionId": "zacuski_kompaniya",
       "name": "Meat assortment",
-      "image": "/новые фото/ассорти мясное.png",
+      "image": "/menu/zacuski_kompaniya/meat-assortment.webp",
       "description": "Bresaola, roast beef, beef brisket, tongue, chicken roll",
       "price": "1900 ₽"
     },
     {
       "sectionId": "salaty",
       "name": "Achichuk salad",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/salaty/achichuk.webp",
       "description": "Recommended with steaks",
       "price": "550 ₽"
     },
     {
       "sectionId": "salaty",
       "name": "Fresh vegetable salad",
-      "image": "/images/placeholder.svg",
+      "image": "/menu/salaty/fresh-vegetable-salad.webp",
       "description": "Dressing of your choice",
       "price": "650 ₽"
     },
     {
       "sectionId": "salaty",
       "name": "Greek salad",
-      "image": "/новые фото/греческии салат.png",
+      "image": "/menu/salaty/greek-salad.webp",
       "description": "",
       "price": "750 ₽"
     },
     {
       "sectionId": "salaty",
       "name": "Quinoa salad with roasted vegetables and herb sauce",
-      "image": "/новые фото/салат с киноа.png",
+      "image": "/menu/salaty/quinoa-salad.webp",
       "description": "",
       "price": "600 ₽"
     },
     {
       "sectionId": "salaty",
       "name": "Green salad with burrata",
-      "image": "/новые фото/зеленый салат со страчателлой.png",
+      "image": "/menu/salaty/green-salad-stracciatella.webp",
       "description": "",
       "price": "550 ₽"
     },
     {
       "sectionId": "salaty",
       "name": "Salad with salmon and mini mozzarella",
-      "image": "/новые фото/салат с семгой и мини моцпрелой.png",
+      "image": "/menu/salaty/salmon-mozzarella-salad.webp",
       "description": "",
       "price": "990 ₽"
     },
     {
       "sectionId": "salaty",
       "name": "Olivier with lightly salted salmon and shrimp",
-      "image": "/images/salads/olivier.png",
+      "image": "/menu/salaty/olivier.webp",
       "description": "",
       "price": "1100 ₽"
     },
     {
       "sectionId": "salaty",
       "name": "Niçoise with tuna",
-      "image": "/новые фото/нисуаз.png",
+      "image": "/menu/salaty/nicoise.webp",
       "description": "",
       "price": "870 ₽"
     },
     {
       "sectionId": "salaty",
       "name": "Caesar with shrimp",
-      "image": "/новые фото/цезарь с креветками.png",
+      "image": "/menu/salaty/caesar-shrimp.webp",
       "description": "",
       "price": "870 ₽"
     },
     {
       "sectionId": "salaty",
       "name": "Caesar with chicken",
-      "image": "/новые фото/цезарь с курицей.png",
+      "image": "/menu/salaty/caesar-chicken.webp",
       "description": "",
       "price": "770 ₽"
     },
     {
       "sectionId": "salaty",
       "name": "Salad with chicken liver and mushrooms",
-      "image": "/новые фото/салат с куриной печенью.png",
+      "image": "/menu/salaty/chicken-liver-salad.webp",
       "description": "",
       "price": "670 ₽"
     },
     {
       "sectionId": "salaty",
       "name": "Salad with tongue and eggplant",
-      "image": "/новые фото/салат с языком.png",
+      "image": "/menu/salaty/tongue-salad.webp",
       "description": "",
       "price": "950 ₽"
     },
     {
       "sectionId": "supy",
       "name": "Pumpkin cream soup with burrata",
-      "image": "/images/soups/cream-soup.jpg",
+      "image": "/menu/supy/cream-soup.webp",
       "description": "",
       "price": "470 ₽"
     },
     {
       "sectionId": "supy",
       "name": "Tom yum with seafood",
-      "image": "/images/soups/tom-yam.jpg",
+      "image": "/menu/supy/tom-yam.webp",
       "description": "",
       "price": "880 ₽"
     },
     {
       "sectionId": "supy",
       "name": "Chicken soup with homemade noodles",
-      "image": "/новые фото/Куриный суп.png",
+      "image": "/menu/supy/chicken-soup.webp",
       "description": "",
       "price": "450 ₽"
     },
     {
       "sectionId": "supy",
       "name": "Borscht with veal",
-      "image": "/новые фото/борщ.png",
+      "image": "/menu/supy/borscht.webp",
       "description": "",
       "price": "650 ₽"
     },
     {
       "sectionId": "hleb",
       "name": "Ciabatta",
-      "image": "/новые фото/чиабатта.png",
+      "image": "/menu/hleb/ciabatta.webp",
       "description": "",
       "price": "70 ₽"
     },
     {
       "sectionId": "hleb",
       "name": "French roll",
-      "image": "/images/bread/bun.png",
+      "image": "/menu/hleb/bread-bun.webp",
       "description": "",
       "price": "70 ₽"
     },
     {
       "sectionId": "hleb",
       "name": "Scandinavian roll",
-      "image": "/новые фото/скандинавская булочка.png",
+      "image": "/menu/hleb/scandinavian-roll.webp",
       "description": "",
       "price": "70 ₽"
     },
     {
       "sectionId": "hleb",
       "name": "Bread basket",
-      "image": "/новые фото/хлебная корзина.png",
+      "image": "/menu/hleb/bread-basket.webp",
       "description": "",
       "price": "250 ₽"
     },
     {
       "sectionId": "detskoe",
       "name": "Vegetable salad",
-      "image": "/images/detskoe/vegetable-salad.png",
+      "image": "/menu/detskoe/vegetable-salad.webp",
       "description": "",
       "price": "350 ₽"
     },
     {
       "sectionId": "detskoe",
       "name": "Macaroni and cheese",
-      "image": "/images/detskoe/macaroni-cheese.png",
+      "image": "/menu/detskoe/macaroni-cheese.webp",
       "description": "",
       "price": "350 ₽"
     },
     {
       "sectionId": "detskoe",
       "name": "Steamed cutlets",
-      "image": "/images/detskoe/steamed-cutlets.png",
+      "image": "/menu/detskoe/steamed-cutlets.webp",
       "description": "",
       "price": "450 ₽"
     },
     {
       "sectionId": "detskoe",
       "name": "Chicken soup",
-      "image": "/images/detskoe/chicken-soup.png",
+      "image": "/menu/detskoe/detskoe-chicken-soup.webp",
       "description": "",
       "price": "350 ₽"
     },
     {
       "sectionId": "detskoe",
       "name": "Mini burger with beef",
-      "image": "/images/detskoe/mini-burger-beef.png",
+      "image": "/menu/detskoe/mini-burger-beef.webp",
       "description": "",
       "price": "450 ₽"
     },
     {
       "sectionId": "detskoe",
       "name": "Caesar with chicken (kids)",
-      "image": "/images/detskoe/caesar-chicken-kids.png",
+      "image": "/menu/detskoe/caesar-chicken-kids.webp",
       "description": "",
       "price": "450 ₽"
     },
     {
       "sectionId": "detskoe",
       "name": "Mini burger with chicken",
-      "image": "/images/detskoe/mini-burger-chicken.png",
+      "image": "/menu/detskoe/mini-burger-chicken.webp",
       "description": "",
       "price": "420 ₽"
     },
     {
       "sectionId": "detskoe",
       "name": "Nuggets",
-      "image": "/images/detskoe/nuggets.png",
+      "image": "/menu/detskoe/nuggets.webp",
       "description": "",
       "price": "400 ₽"
     },
     {
       "sectionId": "detskoe",
       "name": "Fruit mix",
-      "image": "/images/detskoe/fruit-mix.png",
+      "image": "/menu/detskoe/fruit-mix.webp",
       "description": "",
       "price": "350 ₽"
     },
     {
       "sectionId": "detskoe",
       "name": "Cheese sticks",
-      "image": "/images/detskoe/cheese-sticks.png",
+      "image": "/menu/detskoe/cheese-sticks.webp",
       "description": "",
       "price": "350 ₽"
     }

@@ -1,0 +1,277 @@
+/* Download footer */
+.download-footer {
+  border-top: 1px solid var(--color-border);
+  background: #0a0a0a;
+}
+
+.download-footer__inner {
+  padding: 1.25rem 0;
+  text-align: center;
+}
+
+/* Site footer */
+.footer {
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #000;
+  margin-top: auto;
+}
+
+@media (max-width: 640px) {
+  .app__page {
+    min-height: calc(100vh - 6rem);
+  }
+
+  .main {
+    padding-top: 2.5rem;
+  }
+
+  .footer {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+/* Footer — текст шрифтом Martian Mono */
+.footer {
+  font-family: 'Martian Mono', monospace;
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  padding: 2.5rem 0;
+  padding-bottom: max(2.5rem, env(safe-area-inset-bottom, 0px));
+}
+
+.footer__logo {
+  display: block;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footer__logo:hover {
+  opacity: 0.9;
+}
+
+.footer__logo-text {
+  font-family: 'Martian Mono', monospace;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer__logo-img {
+  display: block;
+  height: 3.75rem;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+}
+
+.footer__center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+.footer__contact-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+  text-align: center;
+}
+
+.footer__contact {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.footer__phone {
+  font-size: 0.9rem;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer__phone:hover {
+  color: #fff;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+}
+
+.footer__link {
+  font-size: 0.9rem;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer__link:hover {
+  color: #fff;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Opinion Pro Condensed', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-btn-text);
+  background: var(--color-btn-bg);
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.download-btn:hover {
+  background: var(--color-btn-hover-bg);
+  transform: translateY(-1px);
+}
+
+/* Home / Landing page */
+.home-page {
+  position: relative;
+  flex: 1;
+  min-height: calc(100vh - 80px);
+  min-height: calc(100dvh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.home-page__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(1.12) contrast(1.18);
+}
+
+.home-page__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.home-page__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.home-page__content {
+  text-align: center;
+  padding: 2rem 0;
+  max-width: 640px;
+}
+
+.home-page__logo {
+  display: block;
+  margin: 0 auto 0;
+  font-family: 'Opinion Pro Condensed', sans-serif;
+  font-weight: 500;
+  font-size: clamp(7rem, 36vw, 18rem);
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1;
+  filter: drop-shadow(0 2px 20px rgba(0, 0, 0, 0.4));
+}
+
+.home-page__title {
+  font-family: 'Opinion Pro Condensed', sans-serif;
+  font-size: clamp(5rem, 26vw, 13rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+  -webkit-font-smoothing: antialiased;
+}
+
+.home-page__tagline {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1.2rem, 3.6vw, 1.65rem);
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 0.5rem;
+  line-height: 1.45;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
+
+.home-page__tagline-wrap {
+  margin-top: -3rem;
+  margin-bottom: 4.5rem;
+}
+
+.home-page__subline {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.4;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.home-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.home-page__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  font-family: 'Opinion Pro Condensed', sans-serif;
+  font-size: 1.22rem;
+  font-weight: 600;
+  border-radius: 0;
+  border: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  text-decoration: none;
+  width: 301px;
+  min-width: 301px;
+  min-height: 79px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #0a0a0a;
+  background: #fff;
+}
+
+.home-page__btn--primary:hover,
+.home-page__btn--secondary:hover {
+  background: #e8e8e8;
+  color: #0a0a0a;
+  transform: translateY(-2px);
+}

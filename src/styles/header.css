@@ -1,0 +1,390 @@
+/* Header — текст шрифтом Martian Mono */
+.header {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #000;
+  min-height: 6.5625rem; /* 105px */
+  font-family: 'Martian Mono', monospace;
+}
+
+.header__inner {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-top: max(1rem, env(safe-area-inset-top, 0px));
+  padding-bottom: 1.5rem;
+  min-height: 6.5625rem; /* 105px */
+  /* горизонтальные отступы от .content-column */
+}
+
+.header__logo-wrap {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+}
+
+.header__logo {
+  display: block;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.header__logo:hover {
+  opacity: 0.9;
+}
+
+.header__logo-img {
+  display: block;
+  height: 3.75rem;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+}
+
+.header__logo-text {
+  font-family: 'Martian Mono', monospace;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.header__nav-spacer {
+  flex: 1;
+  min-width: 0;
+}
+
+.header__nav-wrap {
+  flex: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  min-width: 0;
+}
+
+.header__nav {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.25rem 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__nav-link {
+  flex-shrink: 0;
+  color: #fff;
+  text-decoration: none;
+  font-size: clamp(0.82rem, 2vw, 1rem);
+  font-weight: 500;
+  padding: 0.3rem 0.4rem;
+  border-radius: 6px;
+  transition: color 0.2s;
+  white-space: nowrap;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header__nav-link:hover {
+  color: #fff;
+}
+
+.header__nav-link--active {
+  color: #fff;
+}
+
+.header__nav-link:active {
+  background: transparent;
+}
+
+.header__controls {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.header__burger {
+  display: none;
+  padding: 0.5rem;
+  margin: -0.5rem 0 -0.5rem 0.5rem;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header__burger:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header__burger-icon {
+  display: flex;
+}
+
+.header__menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.header__menu-overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.header__menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(300px, 88vw);
+  max-width: 100%;
+  background: #0a0a0a;
+  padding: 2.5rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+  overflow-y: auto;
+  z-index: 1001;
+  pointer-events: auto;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header__menu-overlay--open .header__menu {
+  transform: translateX(0);
+}
+
+.header__menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.header__menu-links .header__nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 0.75rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  border-radius: 10px;
+  min-height: 48px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header__menu-links .header__nav-link:hover {
+  color: #fff;
+}
+
+.header__menu-controls {
+  margin-top: auto;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.header__menu-lang-title {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: 'Martian Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.header__menu-lang-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.header__menu-lang-option {
+  padding: 0.5rem 0.85rem;
+  font-size: 1.05rem;
+  font-family: 'Martian Mono', monospace;
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.header__menu-lang-option:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.header__menu-lang-option--active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Смена языка — триггер с стрелкой, по клику открывается модальное окно */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 100;
+  font-family: 'Martian Mono', monospace;
+}
+
+.lang-switcher__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.4rem;
+  font-size: clamp(0.82rem, 2vw, 1rem);
+  font-family: 'Martian Mono', monospace;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.15s ease;
+}
+
+.lang-switcher__trigger:hover {
+  color: #fff;
+}
+
+.lang-switcher__trigger:focus {
+  outline: none;
+  color: #fff;
+}
+
+.lang-switcher__trigger-label {
+  line-height: 1;
+}
+
+.lang-switcher__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.lang-switcher__trigger:hover .lang-switcher__arrow,
+.lang-switcher__arrow--open {
+  color: #fff;
+}
+
+.lang-switcher__arrow--open {
+  transform: rotate(180deg);
+}
+
+.header__menu-lang-trigger {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0.6rem 0.75rem;
+  font-size: clamp(0.82rem, 2vw, 1rem);
+}
+
+/* Модальное окно выбора языка — поверх всего */
+.lang-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.lang-modal-overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lang-modal {
+  position: fixed;
+  z-index: 9999;
+  font-family: 'Martian Mono', monospace;
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.35rem 0.2rem;
+  padding-left: max(0.2rem, env(safe-area-inset-left, 0px));
+  padding-right: max(0.2rem, env(safe-area-inset-right, 0px));
+  padding-bottom: max(0.35rem, env(safe-area-inset-bottom, 0px));
+  min-width: 100px;
+  max-width: min(90vw, calc(100vw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) - 1rem));
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.lang-modal-overlay--open .lang-modal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lang-modal__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.0625rem;
+}
+
+.lang-modal__option {
+  display: block;
+  width: 100%;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.82rem;
+  font-family: inherit;
+  font-weight: 500;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.8);
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.lang-modal__option:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lang-modal__option--active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}

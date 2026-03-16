@@ -47,8 +47,8 @@ export default function Header() {
     if (!trigger) return
     const rect = trigger.getBoundingClientRect()
     const gap = 6
-    const panelWidth = 140
-    const panelHeightEstimate = 140
+    const panelWidth = 110
+    const panelHeightEstimate = 90
     const margin = 8
     const panelMinLeft = margin
     const panelMaxLeft = window.innerWidth - panelWidth - margin
@@ -75,6 +75,14 @@ export default function Header() {
 
   const navContent = (
     <>
+      <NavLink
+        to="/"
+        end
+        className={({ isActive }) => `header__nav-link ${isActive ? 'header__nav-link--active' : ''}`}
+        onClick={() => setMenuOpen(false)}
+      >
+        {t.navHome}
+      </NavLink>
       {NAV_ROUTES.map(({ path, navKey }) => (
         <NavLink
           key={path}
@@ -97,9 +105,7 @@ export default function Header() {
           <nav className="header__nav" aria-label="Основная навигация">
             {navContent}
           </nav>
-        </div>
-        <div className="header__controls">
-          <nav className="lang-switcher" aria-label="Выбор языка">
+          <nav className="lang-switcher header__nav-lang" aria-label="Выбор языка">
             <button
               ref={desktopLangTriggerRef}
               type="button"
@@ -114,6 +120,8 @@ export default function Header() {
               </span>
             </button>
           </nav>
+        </div>
+        <div className="header__controls">
           <button
             type="button"
             className="header__burger"

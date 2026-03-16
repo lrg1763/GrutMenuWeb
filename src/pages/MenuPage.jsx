@@ -15,17 +15,19 @@ export default function MenuPage() {
 
   return (
     <>
-      <SectionTabs
-        sections={sections}
-        activeId={activeSectionId}
-        onSelect={setActiveSectionId}
-      />
-      <main className="main">
-        <DishGrid
-          dishes={filteredDishes}
-          onSelectDish={setSelectedDish}
+      <div className="menu-page">
+        <SectionTabs
+          sections={sections}
+          activeId={activeSectionId}
+          onSelect={setActiveSectionId}
         />
-      </main>
+        <main className="main">
+          <DishGrid
+            dishes={filteredDishes}
+            onSelectDish={setSelectedDish}
+          />
+        </main>
+      </div>
       <DownloadButton />
       {selectedDish && (
         <DishModal
