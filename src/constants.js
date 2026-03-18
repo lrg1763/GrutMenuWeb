@@ -2,7 +2,6 @@ export const LANG_STORAGE_KEY = 'grut-menu-lang'
 export const THEME_STORAGE_KEY = 'grut-menu-theme'
 
 export const SUPPORTED_LANGS = ['ru', 'en']
-export const THEMES = { LIGHT: 'light', DARK: 'dark' }
 
 export const DEFAULT_MENU = { sections: [], dishes: [] }
 
@@ -33,12 +32,8 @@ export const SECTION_SLUG_TO_ID = Object.fromEntries(
 export const NAV_ROUTES = [
   { path: '/menu', navKey: 'navMenu' },
   { path: '/cocktails', navKey: 'navCocktails' },
+  { path: '/contacts', navKey: 'navContacts' },
 ]
-
-/** Paths that have a dedicated page component. */
-export const ROUTES_WITH_PAGES = new Set([
-  '/menu', '/cocktails',
-])
 
 const BASE_URL = import.meta.env.BASE_URL
 

@@ -21,7 +21,7 @@
   font-family: 'Manrope', sans-serif;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
+  border-radius: 0;
   max-width: min(420px, calc(100vw - 2rem));
   width: 100%;
   max-height: 90vh;

@@ -1,13 +1,12 @@
 import { useEffect } from 'react'
 import { useLangContext } from '../context/LangContext'
 import { getAssetUrl, PLACEHOLDER_IMAGE } from '../constants'
-import { translations, getDishName, getDishDescription } from '../i18n'
+import { translations, getDishName } from '../i18n'
 
 export default function DishModal({ dish, onClose }) {
   const { lang } = useLangContext()
   const t = translations[lang]
   const name = getDishName(dish, lang)
-  const description = getDishDescription(dish, lang)
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -27,7 +26,7 @@ export default function DishModal({ dish, onClose }) {
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label={t.composition}
+      aria-label={name}
     >
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <button
@@ -45,12 +44,6 @@ export default function DishModal({ dish, onClose }) {
           <img src={getAssetUrl(dish.image)} alt={name} className="modal__image" onError={(e) => { e.target.onerror = null; e.target.src = PLACEHOLDER_IMAGE }} />
         </div>
         <h2 className="modal__title">{name}</h2>
-        {description && (
-          <>
-            <p className="modal__label">{t.composition}</p>
-            <p className="modal__description">{description}</p>
-          </>
-        )}
         {dish.price && (
           <p className="modal__price">{dish.price}</p>
         )}

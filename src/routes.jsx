@@ -3,11 +3,13 @@ import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import MenuPage from './pages/MenuPage'
 import CocktailsPage from './pages/CocktailsPage'
+import ContactsPage from './pages/ContactsPage'
 import { NAV_ROUTES } from './constants'
 
 const ROUTE_COMPONENTS = {
   '/menu': MenuPage,
   '/cocktails': CocktailsPage,
+  '/contacts': ContactsPage,
 }
 
 export default function AppRoutes() {

@@ -133,6 +133,7 @@ export const dishTranslations = {
     'Ciabatta': { name: { ru: 'Чиабатта' }, description: { ru: '' } },
     'French roll': { name: { ru: 'Булочка Французская' }, description: { ru: '' } },
     'Scandinavian roll': { name: { ru: 'Булочка Скандинавская' }, description: { ru: '' } },
+    'Borodinsky bread': { name: { ru: 'Бородинский хлеб' }, description: { ru: '' } },
     'Bread basket': { name: { ru: 'Хлебная корзина' }, description: { ru: '' } },
   },
   detskoe: {
@@ -156,14 +157,4 @@ export function getDishName(dish, lang) {
   const tr = section[dish.name]
   if (!tr?.name) return dish.name
   return tr.name[lang] || dish.name
-}
-
-export function getDishDescription(dish, lang) {
-  const desc = dish.description || ''
-  if (lang === 'en') return desc
-  const section = dishTranslations[dish.sectionId]
-  if (!section) return desc
-  const tr = section[dish.name]
-  if (!tr?.description) return desc
-  return tr.description[lang] || desc
 }
