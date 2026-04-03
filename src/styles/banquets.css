@@ -1,0 +1,134 @@
+.banquets-page__hero-wordmark-section.page-section {
+  background: #000;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.banquets-page__hero-wordmark-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.banquets-page__hero-wordmark-img--desktop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .banquets-page__hero-wordmark-img--mobile {
+    display: none;
+  }
+
+  .banquets-page__hero-wordmark-img--desktop {
+    display: block;
+  }
+}
+
+.banquets-page .page-section__title {
+  text-transform: uppercase;
+}
+
+.banquets-page .page-section__intro {
+  font-family: var(--font-open-sans);
+  font-weight: 400;
+}
+
+.banquets-page__content > .page-section:first-child .page-section__intro {
+  color: #fff;
+}
+
+.banquets-page__content > .page-section:last-child .page-section__intro {
+  color: #fff;
+}
+
+.banquets-page__convenience .page-section__header + .banquets-page__convenience-grid {
+  margin-top: clamp(0.85rem, 2.2vw, 1.35rem);
+}
+
+.banquets-page__convenience-grid {
+  display: grid;
+  gap: clamp(0.85rem, 2vw, 1.15rem);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .banquets-page__convenience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .banquets-page__convenience-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.banquets-page__convenience-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.banquets-page__convenience-media {
+  background: var(--color-image-placeholder);
+}
+
+.banquets-page__convenience-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.banquets-page__convenience-card--media-only {
+  display: block;
+}
+
+/* Как .home-page__btn: Opinion Pro Condensed */
+.banquets-page__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.85rem;
+  padding: 0 1.5rem;
+  min-width: min(100%, 301px);
+  min-height: 79px;
+  font-family: 'Opinion Pro Condensed', sans-serif;
+  font-size: 1.22rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 0;
+  border: none;
+  background: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.banquets-page__cta-btn:hover {
+  background: var(--color-btn-hover-bg);
+  color: var(--color-btn-text);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1100px) {
+  .banquets-page__cta-btn {
+    min-width: min(100%, 250px);
+    min-height: 76px;
+    padding: 0 1.25rem;
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .banquets-page__cta-btn {
+    width: 100%;
+    min-width: 0;
+    min-height: 84px;
+    font-size: 1.15rem;
+  }
+}

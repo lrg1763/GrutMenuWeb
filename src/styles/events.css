@@ -1,0 +1,76 @@
+.events-page .page-section__title {
+  text-transform: uppercase;
+}
+
+.events-page .page-section__intro {
+  font-family: var(--font-open-sans);
+  font-weight: 400;
+}
+
+.events-page__content > .page-section:first-child .page-section__intro {
+  color: #fff;
+}
+
+/* Секция: отступ как у .page-section (about.css) — для full-bleed блока фото */
+.events-page__photos.page-section {
+  padding-block: 0;
+  padding-inline: clamp(1rem, 2vw, 1.5rem);
+}
+
+.events-page__photos .events-page__photo-grid {
+  --events-section-pad: clamp(1rem, 2vw, 1.5rem);
+  margin-left: calc(-1 * var(--events-section-pad));
+  margin-right: calc(-1 * var(--events-section-pad));
+  width: calc(100% + 2 * var(--events-section-pad));
+}
+
+.events-page__photo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(0.65rem, 1.5vw, 1rem);
+  width: 100%;
+}
+
+.events-page__photo-cell {
+  position: relative;
+  width: min(100%, calc(min(82vh, 1024px) * 16 / 9));
+  max-width: 100%;
+  margin-inline: auto;
+  aspect-ratio: 16 / 9;
+  max-height: min(82vh, 1024px);
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: #0a0a0a;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.08),
+    0 16px 48px rgba(0, 0, 0, 0.06);
+}
+
+.events-page__photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Мобильные карточки (макеты телефона) — без обрезки 16:9 */
+@media (max-width: 768px) {
+  .events-page__photo-cell {
+    width: 100%;
+    margin-inline: 0;
+    aspect-ratio: auto;
+    max-height: none;
+  }
+
+  .events-page__photo {
+    position: static;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center top;
+  }
+}

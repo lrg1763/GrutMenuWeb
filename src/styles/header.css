@@ -1,17 +1,18 @@
-/* Header — текст шрифтом Martian Mono */
+/* Header — Open Sans Regular; локальный semibold — var(--font-header) при необходимости */
 .header {
   position: relative;
-  z-index: 10;
+  /* Выше .max-social-fab (70), иначе модалки внутри шапки рисуются под кнопкой MAX */
+  z-index: 100;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background-color: #000;
   min-height: 6.5625rem; /* 105px */
-  font-family: 'Martian Mono', monospace;
+  font-family: var(--font-open-sans);
 }
 
 .header__inner {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 1rem;
   padding-top: max(1rem, env(safe-area-inset-top, 0px));
@@ -21,7 +22,7 @@
 }
 
 .header__logo-wrap {
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -39,6 +40,12 @@
   opacity: 0.9;
 }
 
+.header__logo:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 .header__logo-img {
   display: block;
   height: 3.75rem;
@@ -48,9 +55,9 @@
 }
 
 .header__logo-text {
-  font-family: 'Martian Mono', monospace;
+  font-family: var(--font-header);
   font-size: 1.45rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #fff;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -62,21 +69,22 @@
 }
 
 .header__nav-wrap {
-  flex: 0;
+  flex: 0 1 auto;
+  margin-left: auto;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem 1rem;
+  justify-content: flex-end;
+  gap: var(--header-nav-gap);
   min-width: 0;
 }
 
 .header__nav {
   display: flex;
   flex-wrap: nowrap;
-  gap: 0.25rem 0.5rem;
+  gap: var(--header-nav-gap);
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .header__nav-link {
@@ -84,8 +92,8 @@
   color: #fff;
   text-decoration: none;
   font-size: clamp(0.82rem, 2vw, 1rem);
-  font-weight: 500;
-  padding: 0.3rem 0.4rem;
+  font-weight: 400;
+  padding: 0.35rem 0;
   border-radius: 6px;
   transition: color 0.2s;
   white-space: nowrap;
@@ -108,7 +116,7 @@
 }
 
 .header__controls {
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -168,6 +176,8 @@
   max-width: 100%;
   background: #0a0a0a;
   padding: 2.5rem 1.5rem 2rem;
+  font-family: var(--font-open-sans);
+  font-weight: 400;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -184,10 +194,27 @@
   transform: translateX(0);
 }
 
+.header__menu-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  padding-bottom: 1.25rem;
+  margin-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header__menu-brand .header__logo-img {
+  height: 3.25rem;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+}
+
 .header__menu-links {
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
+  gap: var(--header-nav-gap);
 }
 
 .header__menu-links .header__nav-link {
@@ -208,6 +235,26 @@
   color: #fff;
 }
 
+.header__menu-links .header__menu-mobile-picker-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.28rem;
+  box-sizing: border-box;
+  padding: 0.95rem 0.75rem 0.95rem 0.9rem;
+  font-size: 1.18rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  min-height: 50px;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .header__menu-controls {
   margin-top: auto;
   padding-top: 1.75rem;
@@ -220,8 +267,8 @@
 .header__menu-lang-title {
   margin: 0;
   font-size: 0.85rem;
-  font-weight: 500;
-  font-family: 'Martian Mono', monospace;
+  font-weight: 400;
+  font-family: inherit;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.5);
@@ -236,7 +283,8 @@
 .header__menu-lang-option {
   padding: 0.5rem 0.85rem;
   font-size: 1.05rem;
-  font-family: 'Martian Mono', monospace;
+  font-family: inherit;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
   background: transparent;
   border: none;
@@ -261,17 +309,17 @@
   align-items: center;
   position: relative;
   z-index: 100;
-  font-family: 'Martian Mono', monospace;
+  font-family: inherit;
 }
 
 .lang-switcher__trigger {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.3rem 0.4rem;
+  padding: 0.35rem 0;
   font-size: clamp(0.82rem, 2vw, 1rem);
-  font-family: 'Martian Mono', monospace;
-  font-weight: 500;
+  font-family: inherit;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.9);
   background: transparent;
   border: none;
@@ -317,12 +365,82 @@
   font-size: clamp(0.82rem, 2vw, 1rem);
 }
 
+@media (max-width: 768px) {
+  /* Как до Open Sans Regular в десктопной полосе: локальный semibold в шапке и меню */
+  .header {
+    font-family: var(--font-header);
+  }
+
+  .header__menu {
+    font-family: inherit;
+    font-weight: unset;
+  }
+
+  .header__menu-links {
+    gap: 0.125rem;
+    align-items: center;
+  }
+
+  .header__menu-links .header__nav-link {
+    justify-content: center;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .header__menu-links .header__menu-mobile-picker-trigger {
+    justify-content: center;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .header__menu-controls {
+    align-items: center;
+  }
+
+  .header__menu-lang-title {
+    font-weight: 500;
+    font-family: var(--font-header);
+  }
+
+  .header__menu-lang-option {
+    font-family: var(--font-header);
+    font-weight: unset;
+  }
+
+  .header__menu-lang-trigger {
+    justify-content: center;
+  }
+
+  .lang-modal {
+    font-family: var(--font-header);
+  }
+
+  .lang-modal__option {
+    font-weight: 500;
+  }
+
+  .header-menu-modal {
+    font-family: var(--font-header);
+  }
+
+  .header-menu-modal__option {
+    font-weight: 500;
+  }
+
+  .header-menu-modal__option--nav-main-menu {
+    font-family: var(--font-heading-display);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}
+
 /* Модальное окно выбора языка — поверх всего */
 .lang-modal-overlay {
   position: fixed;
   inset: 0;
   z-index: 9998;
-  background: rgba(0, 0, 0, 0.35);
+  background: transparent;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease, visibility 0.2s ease;
@@ -336,10 +454,10 @@
 .lang-modal {
   position: fixed;
   z-index: 9999;
-  font-family: 'Martian Mono', monospace;
-  background: #141414;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
+  font-family: var(--font-open-sans);
+  background: #0b0b0b;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0;
   padding: 0.35rem 0.2rem;
   padding-left: max(0.2rem, env(safe-area-inset-left, 0px));
   padding-right: max(0.2rem, env(safe-area-inset-right, 0px));
@@ -369,22 +487,119 @@
   padding: 0.35rem 0.5rem;
   font-size: 0.82rem;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 400;
   text-align: left;
   color: rgba(255, 255, 255, 0.8);
   background: transparent;
   border: none;
-  border-radius: 5px;
+  border-radius: 0;
   cursor: pointer;
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .lang-modal__option:hover {
   color: #fff;
-  background: rgba(255, 255, 255, 0.08);
 }
 
 .lang-modal__option--active {
   color: #fff;
-  background: rgba(255, 255, 255, 0.12);
+}
+
+.header__menu-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: none;
+  background: transparent;
+}
+
+.header-menu-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9996;
+  background: transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.header-menu-modal-overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.header-menu-modal {
+  position: fixed;
+  z-index: 9997;
+  font-family: var(--font-open-sans);
+  background: #0b0b0b;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0;
+  padding: 0.35rem 0.2rem;
+  min-width: 170px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .header-menu-modal--mobile {
+    min-width: 132px;
+    max-width: min(88vw, 260px);
+    padding: 0.28rem 0.15rem;
+    border-radius: 0;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+    /* Поверх inline top/left от триггера: по центру экрана */
+    top: 50% !important;
+    left: 50% !important;
+    right: auto;
+    transform: translate(-50%, calc(-50% - 6px)) !important;
+  }
+
+  .header-menu-modal-overlay--open .header-menu-modal--mobile {
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .header-menu-modal--mobile .header-menu-modal__option {
+    padding: 0.42rem 0.55rem;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}
+
+.header-menu-modal-overlay--open .header-menu-modal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header-menu-modal__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.0625rem;
+}
+
+.header-menu-modal__option {
+  display: block;
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.82rem;
+  font-family: inherit;
+  font-weight: 400;
+  text-align: left;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.header-menu-modal__option:hover {
+  color: #fff;
+}
+
+.header-menu-modal__option--active {
+  color: #fff;
 }

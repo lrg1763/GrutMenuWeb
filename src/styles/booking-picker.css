@@ -1,0 +1,160 @@
+@import 'react-day-picker/style.css';
+
+/* Попапы даты/времени — поверх шапки (overlay до 9999) */
+.booking-picker {
+  position: relative;
+  width: 100%;
+}
+
+.booking-picker__trigger {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-open-sans);
+  font-size: 0.9375rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.booking-picker__trigger-text {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.booking-picker__trigger-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  opacity: 0.95;
+}
+
+.booking-picker__trigger-icon-svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  display: block;
+}
+
+.booking-picker__trigger:disabled .booking-picker__trigger-icon {
+  opacity: 0.45;
+}
+
+.booking-picker__trigger--empty {
+  color: var(--color-text-muted);
+}
+
+.booking-picker__popover {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 4px);
+  z-index: 10050;
+  min-width: min(100%, 210px);
+  max-width: min(calc(100vw - 2rem), 228px);
+  padding: 0.35rem 0.4rem 0.45rem;
+  background: #0b0b0b;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  box-shadow: 0 6px 22px var(--color-card-shadow);
+}
+
+.booking-picker__popover--time {
+  max-height: min(168px, 38vh);
+  overflow-y: auto;
+  padding: 0.2rem;
+}
+
+
+.booking-picker__time-option {
+  display: block;
+  width: 100%;
+  padding: 0.32rem 0.45rem;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-open-sans);
+  font-size: 0.76rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.booking-picker__time-option:hover,
+.booking-picker__time-option:focus-visible {
+  background: var(--color-hover-bg);
+  outline: none;
+}
+
+.booking-picker__time-option--selected {
+  background: var(--color-hover-bg-2);
+  font-weight: 600;
+}
+
+
+/* DayPicker под тему сайта */
+.booking-picker .rdp-root {
+  --rdp-accent-color: var(--color-btn-bg);
+  --rdp-accent-background-color: var(--color-hover-bg-2);
+  --rdp-day-height: 26px;
+  --rdp-day-width: 26px;
+  --rdp-day_button-height: 24px;
+  --rdp-day_button-width: 24px;
+  --rdp-nav_button-height: 1.5rem;
+  --rdp-nav_button-width: 1.5rem;
+  --rdp-range_start-color: var(--color-btn-text);
+  --rdp-range_end-color: var(--color-btn-text);
+  color: var(--color-text);
+  font-family: var(--font-open-sans);
+  font-size: 0.67rem;
+}
+
+.booking-picker .rdp-weekday {
+  color: var(--color-text-muted);
+  font-family: var(--font-open-sans);
+  font-size: 0.57rem;
+  padding: 0.12rem 0;
+}
+
+.booking-picker .rdp-day_button {
+  color: var(--color-text);
+  font-family: var(--font-open-sans);
+}
+
+.booking-picker .rdp-nav_button {
+  color: var(--color-text);
+  font-family: var(--font-open-sans);
+}
+
+.booking-picker .rdp-caption_label {
+  color: var(--color-text);
+  font-family: var(--font-open-sans);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .booking-picker__popover {
+    min-width: min(100%, 240px);
+    max-width: min(calc(100vw - 1rem), 280px);
+    padding: 0.45rem 0.5rem 0.55rem;
+  }
+
+  .booking-picker__popover--time {
+    max-height: min(220px, 48vh);
+  }
+
+  .booking-picker .rdp-root {
+    --rdp-day-height: 30px;
+    --rdp-day-width: 30px;
+    --rdp-day_button-height: 28px;
+    --rdp-day_button-width: 28px;
+    font-size: 0.72rem;
+  }
+}
+

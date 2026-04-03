@@ -6,41 +6,59 @@ import {
   PDF_MENU_MAIN_EN,
   PDF_MENU_COCKTAIL,
   PDF_MENU_KIDS,
+  PDF_MENU_DOWNLOAD_NAME_MAIN_RU,
+  PDF_MENU_DOWNLOAD_NAME_MAIN_EN,
+  PDF_MENU_DOWNLOAD_NAME_COCKTAIL,
+  PDF_MENU_DOWNLOAD_NAME_KIDS,
 } from '../constants'
 
-const DOWNLOAD_OPTIONS = [
-  { key: 'downloadMenuMainRu', path: PDF_MENU_MAIN_RU },
-  { key: 'downloadMenuMainEn', path: PDF_MENU_MAIN_EN },
-  { key: 'downloadMenuCocktail', path: PDF_MENU_COCKTAIL },
-  { key: 'downloadMenuKids', path: PDF_MENU_KIDS },
+const MENU_OPTIONS = [
+  { key: 'downloadMenuMainRu', path: PDF_MENU_MAIN_RU, fileName: PDF_MENU_DOWNLOAD_NAME_MAIN_RU },
+  { key: 'downloadMenuMainEn', path: PDF_MENU_MAIN_EN, fileName: PDF_MENU_DOWNLOAD_NAME_MAIN_EN },
+  { key: 'downloadMenuCocktail', path: PDF_MENU_COCKTAIL, fileName: PDF_MENU_DOWNLOAD_NAME_COCKTAIL },
+  { key: 'downloadMenuKids', path: PDF_MENU_KIDS, fileName: PDF_MENU_DOWNLOAD_NAME_KIDS },
 ]
 
-export default function DownloadButton() {
+export default function DownloadButton({ inline = false }) {
   const { lang } = useLangContext()
   const t = translations[lang]
-  const [modalOpen, setModalOpen] = useState(false)
+  const [modalMode, setModalMode] = useState(null)
+  const modalOpen = modalMode !== null
+  const isDownloadMode = modalMode === 'download'
 
   return (
     <>
-      <footer className="download-footer">
-        <div className="download-footer__inner content-column">
-          <button
-            type="button"
-            className="download-btn"
-            onClick={() => setModalOpen(true)}
-            aria-haspopup="dialog"
-            aria-expanded={modalOpen}
-            aria-label={t.downloadMenu}
-          >
-            {t.downloadMenu}
-          </button>
+      <footer className={`download-footer ${inline ? 'download-footer--inline' : ''}`}>
+        <div className={`download-footer__inner ${inline ? '' : 'content-column'}`.trim()}>
+          <div className="download-footer__actions">
+            <button
+              type="button"
+              className="download-btn"
+              onClick={() => setModalMode('download')}
+              aria-haspopup="dialog"
+              aria-expanded={modalOpen}
+              aria-label={t.downloadMenu}
+            >
+              {t.downloadMenu}
+            </button>
+            <button
+              type="button"
+              className="download-btn"
+              onClick={() => setModalMode('view')}
+              aria-haspopup="dialog"
+              aria-expanded={modalOpen}
+              aria-label={t.viewMenu}
+            >
+              {t.viewMenu}
+            </button>
+          </div>
         </div>
       </footer>
 
       <div
         className={`download-modal-overlay ${modalOpen ? 'download-modal-overlay--open' : ''}`}
         aria-hidden={!modalOpen}
-        onClick={() => setModalOpen(false)}
+        onClick={() => setModalMode(null)}
       >
         <div
           className="download-modal"
@@ -52,7 +70,7 @@ export default function DownloadButton() {
           <button
             type="button"
             className="download-modal__close"
-            onClick={() => setModalOpen(false)}
+            onClick={() => setModalMode(null)}
             aria-label={t.close}
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -61,16 +79,18 @@ export default function DownloadButton() {
             </svg>
           </button>
           <h2 id="download-modal-title" className="download-modal__title">
-            {t.downloadMenuTitle}
+            {isDownloadMode ? t.downloadMenuTitle : t.viewMenuTitle}
           </h2>
           <div className="download-modal__options">
-            {DOWNLOAD_OPTIONS.map(({ key, path }) => (
+            {MENU_OPTIONS.map(({ key, path, fileName }) => (
               <a
                 key={key}
                 href={path}
-                download
                 className="download-modal__option"
-                onClick={() => setModalOpen(false)}
+                download={isDownloadMode ? fileName : undefined}
+                target={isDownloadMode ? undefined : '_blank'}
+                rel={isDownloadMode ? undefined : 'noopener noreferrer'}
+                onClick={() => setModalMode(null)}
               >
                 {t[key]}
               </a>

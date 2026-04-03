@@ -2,27 +2,24 @@ import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useLangContext } from '../context/LangContext'
 import { translations } from '../i18n'
+import { useDocumentMeta } from '../hooks/useDocumentMeta'
+import { normalizePathname } from '../utils/path'
 import Header from './Header'
 import Footer from './Footer'
+import MaxSocialFab from './MaxSocialFab'
 
 export default function Layout() {
   const location = useLocation()
   const { lang } = useLangContext()
   const t = translations[lang]
-  const isHome = location.pathname === '/' || location.pathname === ''
+  const isHome = normalizePathname(location.pathname) === '/'
   const pageWrapClass = isHome ? 'app__page' : 'app__page app__page--with-bg'
 
   useEffect(() => {
     document.documentElement.lang = lang
   }, [lang])
 
-  useEffect(() => {
-    const path = location.pathname.replace(/\/$/, '') || '/'
-    if (path === '/' || path === '') document.title = t.pageTitleHome
-    else if (path.endsWith('menu')) document.title = t.pageTitleMenu
-    else if (path.endsWith('cocktails')) document.title = t.pageTitleCocktails
-    else document.title = t.pageTitleHome
-  }, [location.pathname, t.pageTitleHome, t.pageTitleMenu, t.pageTitleCocktails])
+  useDocumentMeta(location.pathname, lang)
 
   return (
     <div className="app">
@@ -34,6 +31,7 @@ export default function Layout() {
         <Outlet />
       </div>
       <Footer />
+      <MaxSocialFab />
     </div>
   )
 }

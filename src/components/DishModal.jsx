@@ -1,12 +1,14 @@
 import { useEffect } from 'react'
 import { useLangContext } from '../context/LangContext'
 import { getAssetUrl, PLACEHOLDER_IMAGE } from '../constants'
-import { translations, getDishName } from '../i18n'
+import { translations, getDishName, formatDishWeight } from '../i18n'
+import PriceWithRuble from './PriceWithRuble'
 
 export default function DishModal({ dish, onClose }) {
   const { lang } = useLangContext()
   const t = translations[lang]
   const name = getDishName(dish, lang)
+  const weightLine = formatDishWeight(dish, lang)
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -28,7 +30,7 @@ export default function DishModal({ dish, onClose }) {
       aria-modal="true"
       aria-label={name}
     >
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
+      <div className="modal modal--menu-page" onClick={(e) => e.stopPropagation()}>
         <button
           type="button"
           className="modal__close"
@@ -44,8 +46,22 @@ export default function DishModal({ dish, onClose }) {
           <img src={getAssetUrl(dish.image)} alt={name} className="modal__image" onError={(e) => { e.target.onerror = null; e.target.src = PLACEHOLDER_IMAGE }} />
         </div>
         <h2 className="modal__title">{name}</h2>
-        {dish.price && (
-          <p className="modal__price">{dish.price}</p>
+        {weightLine && dish.price && (
+          <p className="modal__price-row">
+            <span className="modal__sr-only">{`${t.menuDishWeight}: `}</span>
+            <span className="modal__row-weight">{weightLine}</span>
+            <span className="modal__row-sep" aria-hidden="true">·</span>
+            <PriceWithRuble className="modal__row-price" value={dish.price} />
+          </p>
+        )}
+        {weightLine && !dish.price && (
+          <p className="modal__meta modal__meta--solo">
+            <span className="modal__meta-label">{t.menuDishWeight}</span>
+            <span className="modal__meta-value">{weightLine}</span>
+          </p>
+        )}
+        {!weightLine && dish.price && (
+          <PriceWithRuble as="p" className="modal__price" value={dish.price} />
         )}
       </div>
     </div>

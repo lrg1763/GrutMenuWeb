@@ -39,16 +39,24 @@ export default function MenuPage() {
   return (
     <>
       <div className="menu-page">
+        <div className="main menu-page__top-title-wrap">
+          <section className="menu-page__top-title-section">
+            <h1 className="menu-page__top-title">{t.navMenu}</h1>
+            <p className="menu-page__top-intro">{t.pageDescriptionMenu}</p>
+          </section>
+        </div>
         <SectionTabs
           sections={sections}
           activeId={activeSectionId}
           onSelect={setActiveSectionId}
         />
         <main className="main">
-          <DishGrid
-            dishes={filteredDishes}
-            onSelectDish={setSelectedDish}
-          />
+          <section className="menu-page__grid-section">
+            <DishGrid
+              dishes={filteredDishes}
+              onSelectDish={setSelectedDish}
+            />
+          </section>
         </main>
       </div>
       <DownloadButton />

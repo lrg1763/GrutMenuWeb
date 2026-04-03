@@ -1,6 +1,7 @@
 import { useLangContext } from '../context/LangContext'
 import { getAssetUrl, PLACEHOLDER_IMAGE } from '../constants'
-import { getDishName } from '../i18n'
+import { getDishName, formatDishWeight } from '../i18n'
+import PriceWithRuble from './PriceWithRuble'
 
 export default function DishGrid({ dishes, onSelectDish }) {
   const { lang } = useLangContext()
@@ -9,6 +10,7 @@ export default function DishGrid({ dishes, onSelectDish }) {
     <div className="dish-grid">
       {dishes.map((dish) => {
         const name = getDishName(dish, lang)
+        const weightLine = formatDishWeight(dish, lang)
         return (
           <button
             key={`${dish.sectionId}-${dish.name}`}
@@ -26,7 +28,17 @@ export default function DishGrid({ dishes, onSelectDish }) {
               />
             </div>
             <span className="dish-card__name">{name}</span>
-            {dish.price && <span className="dish-card__price">{dish.price}</span>}
+            {(weightLine || dish.price) && (
+              <span className="dish-card__meta-row">
+                {weightLine && <span className="dish-card__weight-part">{weightLine}</span>}
+                {weightLine && dish.price && (
+                  <span className="dish-card__meta-sep" aria-hidden="true">·</span>
+                )}
+                {dish.price && (
+                  <PriceWithRuble className="dish-card__price" value={dish.price} />
+                )}
+              </span>
+            )}
           </button>
         )
       })}

@@ -1,12 +1,24 @@
 /* Download footer */
 .download-footer {
-  border-top: 1px solid var(--color-border);
-  background: #0a0a0a;
+  border-top: none;
+  background: transparent;
 }
 
 .download-footer__inner {
-  padding: 1.25rem 0;
+  padding: 1.25rem 1.5rem;
   text-align: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+.download-footer__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 /* Site footer */
@@ -91,6 +103,18 @@
   text-align: center;
 }
 
+.footer__legal-nav {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  max-width: 28rem;
+}
+
+.footer__legal-nav .footer__links {
+  justify-content: center;
+}
+
 .footer__contact {
   margin: 0;
   font-size: 0.9rem;
@@ -127,7 +151,9 @@
 }
 
 .download-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.65rem 1.5rem;
   font-size: 0.9rem;
   font-weight: 600;
@@ -157,6 +183,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-color: var(--color-bg);
 }
 
 .home-page__bg {
@@ -166,6 +193,17 @@
   background-position: center;
   background-repeat: no-repeat;
   filter: brightness(1.12) contrast(1.18);
+  pointer-events: none;
+}
+
+.home-page__bg--slide {
+  transition: opacity 1s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page__bg--slide {
+    transition: none;
+  }
 }
 
 .home-page__overlay {
@@ -189,6 +227,13 @@
   max-width: 640px;
 }
 
+.home-page__hero-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .home-page__logo {
   display: block;
   margin: 0 auto 0;
@@ -204,7 +249,7 @@
 }
 
 .home-page__title {
-  font-family: 'Opinion Pro Condensed', sans-serif;
+  font-family: var(--font-heading-display);
   font-size: clamp(5rem, 26vw, 13rem);
   font-weight: 400;
   letter-spacing: 0.12em;
@@ -216,16 +261,22 @@
 }
 
 .home-page__tagline {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-open-sans);
+  font-weight: 400;
   font-size: clamp(1.2rem, 3.6vw, 1.65rem);
   color: rgba(255, 255, 255, 0.95);
   margin: 0 0 0.5rem;
   line-height: 1.45;
+  text-align: center;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
-  white-space: nowrap;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .home-page__tagline-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: -3rem;
   margin-bottom: 4.5rem;
 }
@@ -236,7 +287,10 @@
   color: rgba(255, 255, 255, 0.9);
   margin: 0;
   line-height: 1.4;
+  text-align: center;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  width: fit-content;
+  max-width: 100%;
 }
 
 .home-page__actions {

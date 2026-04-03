@@ -1,0 +1,248 @@
+.about-page,
+.banquets-page,
+.booking-page,
+.gallery-page,
+.events-page {
+  padding: 1.25rem 0 2.25rem;
+  font-family: 'Circle Rounded', sans-serif;
+}
+
+.page-section {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.page-section + .page-section {
+  margin-top: 1rem;
+}
+
+.page-section__header {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.page-section__title {
+  font-family: var(--font-heading-display);
+  font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.page-section__intro {
+  color: var(--color-text-muted);
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  max-width: 72ch;
+}
+
+.about-page__content,
+.banquets-page__content,
+.booking-page__content,
+.gallery-page__content,
+.events-page__content {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.booking-page__content > .page-section {
+  min-width: 0;
+}
+
+.about-page__grid {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.about-page .page-section__title {
+  text-transform: uppercase;
+}
+
+.about-page__intro-head .page-section__intro {
+  font-family: var(--font-open-sans);
+  color: #fff;
+}
+
+.about-page__intro-head .page-section__title {
+  margin: 0;
+}
+
+.about-page__top-grid {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.75rem);
+  min-width: 0;
+}
+
+.about-page__top-lead-first:empty {
+  display: none;
+}
+
+.about-page__top-figure {
+  margin: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-image-placeholder);
+  overflow: hidden;
+  min-width: 0;
+  justify-self: center;
+  width: min(100%, 20rem);
+}
+
+.about-page__top-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 900px) {
+  .about-page__top-grid {
+    grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .about-page__top-figure {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: start;
+    justify-self: stretch;
+    width: auto;
+  }
+
+  .about-page__top-lead-first {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .about-page__top-lead-rest {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .about-page__top-photo {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.about-page__text--hero {
+  min-width: 0;
+  font-family: var(--font-open-sans);
+  font-weight: 400;
+}
+
+.about-page__text--hero p {
+  margin: 0;
+}
+
+.about-page__text {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.about-page__text p {
+  color: var(--color-text-muted);
+  font-size: clamp(1.05rem, 2.25vw, 1.18rem);
+  line-height: 1.55;
+}
+
+.about-page__top .about-page__text--hero p {
+  color: #fff;
+}
+
+.about-page__card {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding: 0.9rem;
+}
+
+.about-page__card-title {
+  font-family: var(--font-heading-display);
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+}
+
+.about-page__card-text {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.about-page__why .page-section__header + .about-page__why-grid {
+  margin-top: clamp(0.85rem, 2.2vw, 1.35rem);
+}
+
+.about-page__why-grid {
+  display: grid;
+  gap: clamp(0.85rem, 2vw, 1.15rem);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .about-page__why-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-page__why-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.about-page__why-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.about-page__why-media {
+  background: var(--color-image-placeholder);
+}
+
+.about-page__why-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.about-page__why-card--media-only {
+  display: block;
+}
+
+.about-page__halls .page-section__header + .about-page__halls-grid {
+  margin-top: clamp(0.85rem, 2.2vw, 1.35rem);
+}
+
+.about-page__halls-grid {
+  display: grid;
+  gap: clamp(1rem, 2.2vw, 1.35rem);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .about-page__halls-grid {
+    gap: 1.5rem;
+  }
+}
+
+.about-page__halls-frame {
+  border: 1px solid var(--color-border);
+  background: var(--color-image-placeholder);
+}
+
+.about-page__halls-frame picture {
+  display: block;
+}
+
+.about-page__halls-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+}

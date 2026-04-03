@@ -1,14 +1,14 @@
 function parseComposition(composition) {
   if (!composition) return { ingredients: [], garnish: '', totalMl: 0 }
-  const garnishMatch = composition.match(/Украшение:\s*([^.]+)/i)
-  const beforeGarnish = garnishMatch ? composition.split(/Украшение:/i)[0] : composition
+  const garnishMatch = composition.match(/(?:Украшение|Garnish):\s*([^.]+)/i)
+  const beforeGarnish = garnishMatch ? composition.split(/(?:Украшение|Garnish):/i)[0] : composition
   const garnish = garnishMatch ? garnishMatch[1].trim().replace(/\.$/, '') : ''
   const ingredientParts = beforeGarnish.split(/,\s*/).map((s) => s.trim().replace(/\.$/, '')).filter(Boolean)
   const ingredients = ingredientParts.map((s) => {
     const cleaned = s.replace(/^\s*[•\-]\s*/, '').trim()
     return cleaned ? cleaned.charAt(0).toUpperCase() + cleaned.slice(1) : ''
   }).filter(Boolean)
-  const mlMatches = composition.matchAll(/(\d+)\s*мл/gi)
+  const mlMatches = composition.matchAll(/(\d+)\s*(?:мл|ml)/gi)
   const totalMl = [...mlMatches].reduce((sum, m) => sum + parseInt(m[1], 10), 0)
   return { ingredients, garnish, totalMl }
 }

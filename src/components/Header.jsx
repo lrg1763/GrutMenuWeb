@@ -1,40 +1,55 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { useLangContext } from '../context/LangContext'
-import { SUPPORTED_LANGS, NAV_ROUTES } from '../constants'
+import { SUPPORTED_LANGS } from '../constants'
+import { NAV_ROUTES } from '../routeDefinitions'
 import { langLabels, translations } from '../i18n'
-
-const IconBurger = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <line x1="3" y1="8" x2="21" y2="8" />
-    <line x1="3" y1="16" x2="21" y2="16" />
-  </svg>
-)
-
-const IconClose = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
-  </svg>
-)
-
-const IconChevronDown = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M6 9l6 6 6-6" />
-  </svg>
-)
+import { normalizePathname } from '../utils/path'
+import { IconBurger, IconClose, IconChevronDown } from './HeaderIcons'
 
 export default function Header() {
   const { lang, setLang } = useLangContext()
   const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [menuDropdownOpen, setMenuDropdownOpen] = useState(false)
+  const [menuDropdownPosition, setMenuDropdownPosition] = useState({ top: 0, left: 0 })
   const [langModalOpen, setLangModalOpen] = useState(false)
   const [langModalPosition, setLangModalPosition] = useState({ top: 0, left: 0 })
+  const [mobileMenuPickerOpen, setMobileMenuPickerOpen] = useState(false)
+  const desktopMenuTriggerRef = useRef(null)
+  const mobileMenuPickerTriggerRef = useRef(null)
   const desktopLangTriggerRef = useRef(null)
   const mobileLangTriggerRef = useRef(null)
   const t = translations[lang]
+  const base = import.meta.env.BASE_URL
+  const headerLogoSrc = `${base}images/logo.svg`
+  const normalizedPath = normalizePathname(location.pathname)
+  const isMenuGroupActive = normalizedPath === '/menu' || normalizedPath === '/cocktails'
+  const desktopNavRoutes = NAV_ROUTES.filter(({ path }) => path !== '/menu' && path !== '/cocktails')
 
-  const openLangModal = () => setLangModalOpen(true)
+  const menuPickerOpen = menuDropdownOpen || mobileMenuPickerOpen
+
+  const closeMenuPicker = () => {
+    setMenuDropdownOpen(false)
+    setMobileMenuPickerOpen(false)
+  }
+
+  const openMenuDropdown = () => {
+    setLangModalOpen(false)
+    setMobileMenuPickerOpen(false)
+    setMenuDropdownOpen(true)
+  }
+  const openLangModal = () => {
+    setMenuDropdownOpen(false)
+    setMobileMenuPickerOpen(false)
+    setLangModalOpen(true)
+  }
+
+  const toggleMobileMenuPicker = () => {
+    setLangModalOpen(false)
+    setMenuDropdownOpen(false)
+    setMobileMenuPickerOpen((open) => !open)
+  }
   const closeLangModal = () => setLangModalOpen(false)
   const chooseLang = (l) => {
     setLang(l)
@@ -63,27 +78,48 @@ export default function Header() {
 
   useEffect(() => {
     setMenuOpen(false)
+    setMenuDropdownOpen(false)
+    setLangModalOpen(false)
+    setMobileMenuPickerOpen(false)
   }, [location.pathname])
 
   useEffect(() => {
-    const open = menuOpen || langModalOpen
+    if (!menuOpen) setMobileMenuPickerOpen(false)
+  }, [menuOpen])
+
+  useEffect(() => {
+    const open = menuOpen || langModalOpen || menuPickerOpen
     document.body.style.overflow = open ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
-  }, [menuOpen, langModalOpen])
+  }, [menuOpen, langModalOpen, menuPickerOpen])
 
-  const navContent = (
+  useLayoutEffect(() => {
+    if (!menuPickerOpen) return
+    const trigger = mobileMenuPickerOpen
+      ? mobileMenuPickerTriggerRef.current
+      : desktopMenuTriggerRef.current
+    if (!trigger) return
+    const rect = trigger.getBoundingClientRect()
+    const gap = 6
+    const panelWidth = mobileMenuPickerOpen ? 148 : 170
+    const panelHeightEstimate = mobileMenuPickerOpen ? 92 : 108
+    const margin = 8
+    const panelMinLeft = margin
+    const panelMaxLeft = window.innerWidth - panelWidth - margin
+    let left = rect.left
+    if (left < panelMinLeft) left = panelMinLeft
+    if (left > panelMaxLeft) left = panelMaxLeft
+    const spaceBelow = window.innerHeight - rect.bottom - gap
+    const openAbove = spaceBelow < panelHeightEstimate && rect.top > panelHeightEstimate + gap
+    const top = openAbove ? rect.top - panelHeightEstimate - gap : rect.bottom + gap
+    setMenuDropdownPosition({ top, left })
+  }, [menuPickerOpen, mobileMenuPickerOpen, menuOpen])
+
+  const desktopNavContent = (
     <>
-      <NavLink
-        to="/"
-        end
-        className={({ isActive }) => `header__nav-link ${isActive ? 'header__nav-link--active' : ''}`}
-        onClick={() => setMenuOpen(false)}
-      >
-        {t.navHome}
-      </NavLink>
-      {NAV_ROUTES.map(({ path, navKey }) => (
+      {desktopNavRoutes.map(({ path, navKey }) => (
         <NavLink
           key={path}
           to={path}
@@ -94,16 +130,69 @@ export default function Header() {
           {t[navKey]}
         </NavLink>
       ))}
+      <button
+        ref={desktopMenuTriggerRef}
+        type="button"
+        className={`header__nav-link header__menu-dropdown-trigger ${isMenuGroupActive ? 'header__nav-link--active' : ''}`}
+        onClick={() => (menuDropdownOpen ? closeMenuPicker() : openMenuDropdown())}
+        aria-label={t.navMenuGroup}
+        aria-expanded={menuDropdownOpen}
+      >
+        <span>{t.navMenuGroup}</span>
+        <span className={`lang-switcher__arrow ${menuDropdownOpen ? 'lang-switcher__arrow--open' : ''}`}>
+          <IconChevronDown />
+        </span>
+      </button>
+    </>
+  )
+
+  const mobileNavContent = (
+    <>
+      {desktopNavRoutes.map(({ path, navKey }) => (
+        <NavLink
+          key={path}
+          to={path}
+          end={path === '/'}
+          className={({ isActive }) => `header__nav-link ${isActive ? 'header__nav-link--active' : ''}`}
+          onClick={() => setMenuOpen(false)}
+        >
+          {t[navKey]}
+        </NavLink>
+      ))}
+      <button
+        ref={mobileMenuPickerTriggerRef}
+        type="button"
+        className={`header__nav-link header__menu-dropdown-trigger header__menu-mobile-picker-trigger ${isMenuGroupActive ? 'header__nav-link--active' : ''}`}
+        onClick={() => (mobileMenuPickerOpen ? closeMenuPicker() : toggleMobileMenuPicker())}
+        aria-label={t.navMenuGroup}
+        aria-haspopup="dialog"
+        aria-expanded={mobileMenuPickerOpen}
+      >
+        <span>{t.navMenuGroup}</span>
+        <span className={`lang-switcher__arrow ${mobileMenuPickerOpen ? 'lang-switcher__arrow--open' : ''}`}>
+          <IconChevronDown />
+        </span>
+      </button>
     </>
   )
 
   return (
     <header className="header">
       <div className="header__inner content-column">
-        <div className="header__nav-spacer" aria-hidden="true" />
+        <div className="header__logo-wrap">
+          <NavLink
+            to="/"
+            end
+            className="header__logo"
+            onClick={() => setMenuOpen(false)}
+            aria-label={t.navHome}
+          >
+            <img src={headerLogoSrc} alt="" className="header__logo-img" width={178} height={81} decoding="async" />
+          </NavLink>
+        </div>
         <div className="header__nav-wrap">
           <nav className="header__nav" aria-label="Основная навигация">
-            {navContent}
+            {desktopNavContent}
           </nav>
           <nav className="lang-switcher header__nav-lang" aria-label="Выбор языка">
             <button
@@ -145,8 +234,19 @@ export default function Header() {
           aria-label="Основная навигация"
           onClick={(e) => e.stopPropagation()}
         >
+          <div className="header__menu-brand">
+            <NavLink
+              to="/"
+              end
+              className="header__logo"
+              onClick={() => setMenuOpen(false)}
+              aria-label={t.navHome}
+            >
+              <img src={headerLogoSrc} alt="" className="header__logo-img" width={178} height={81} decoding="async" />
+            </NavLink>
+          </div>
           <div className="header__menu-links">
-            {navContent}
+            {mobileNavContent}
           </div>
           <div className="header__menu-controls">
             <button
@@ -164,6 +264,49 @@ export default function Header() {
             </button>
           </div>
         </nav>
+      </div>
+
+      <div
+        className={`header-menu-modal-overlay ${menuPickerOpen ? 'header-menu-modal-overlay--open' : ''}`}
+        aria-hidden={!menuPickerOpen}
+        onClick={closeMenuPicker}
+      >
+        <div
+          className={`header-menu-modal ${mobileMenuPickerOpen ? 'header-menu-modal--mobile' : ''}`}
+          role="dialog"
+          aria-label={t.navMenuGroup}
+          aria-modal="true"
+          style={{
+            top: menuDropdownPosition.top,
+            left: menuDropdownPosition.left,
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="header-menu-modal__options">
+            <NavLink
+              to="/menu"
+              className={({ isActive }) =>
+                `header-menu-modal__option header-menu-modal__option--nav-main-menu ${isActive ? 'header-menu-modal__option--active' : ''}`
+              }
+              onClick={() => {
+                closeMenuPicker()
+                setMenuOpen(false)
+              }}
+            >
+              {t.navMenu}
+            </NavLink>
+            <NavLink
+              to="/cocktails"
+              className={({ isActive }) => `header-menu-modal__option ${isActive ? 'header-menu-modal__option--active' : ''}`}
+              onClick={() => {
+                closeMenuPicker()
+                setMenuOpen(false)
+              }}
+            >
+              {t.navCocktails}
+            </NavLink>
+          </div>
+        </div>
       </div>
 
       {/* Модальное окно выбора языка */}

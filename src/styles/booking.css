@@ -1,0 +1,207 @@
+/* Страница брони: Open Sans; заголовки героя/формы — GT Pressura Pro Trial; «Забронировать» — Opinion Pro Condensed */
+.booking-page {
+  font-family: var(--font-open-sans);
+  font-weight: 400;
+}
+
+.booking-page .page-section__title {
+  font-family: var(--font-open-sans);
+}
+
+.booking-page .booking-page__section--hero .page-section__title,
+.booking-page .booking-page__section--form .page-section__title {
+  font-family: var(--font-heading-display);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.booking-page .page-section__intro {
+  font-family: var(--font-open-sans);
+  font-size: clamp(0.88rem, 1.85vw, 0.97rem);
+  max-width: none;
+  color: #fff;
+}
+
+.booking-page__form {
+  margin-top: 0.5rem;
+}
+
+.booking-page__fields {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.booking-page__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.booking-page__field--full {
+  grid-column: 1 / -1;
+}
+
+.booking-page__label {
+  font-family: var(--font-open-sans);
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.booking-page__input,
+.booking-page__textarea {
+  font-family: var(--font-open-sans);
+  font-size: 0.9375rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: var(--touch-min);
+  box-sizing: border-box;
+  color-scheme: dark;
+}
+
+.booking-page__select {
+  appearance: none;
+}
+
+.booking-page__select:invalid {
+  color: var(--color-text-muted);
+}
+
+.booking-page__select:valid {
+  color: var(--color-text);
+}
+
+.booking-page__select option {
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.booking-page__datetime {
+  color-scheme: dark;
+}
+
+/* Как у плейсхолдеров: пустое поле даты/времени — серое; после выбора — основной цвет */
+.booking-page__input.booking-page__datetime:invalid {
+  color: var(--color-text-muted);
+}
+
+.booking-page__input.booking-page__datetime:valid {
+  color: var(--color-text);
+}
+
+.booking-page__input.booking-page__datetime::-webkit-calendar-picker-indicator {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* У поля «число гостей» без стрелок */
+.booking-page__input[type='number']::-webkit-inner-spin-button,
+.booking-page__input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.booking-page__input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.booking-page__textarea {
+  min-height: 6rem;
+  max-height: 6rem;
+  resize: none;
+}
+
+.booking-page__input::placeholder,
+.booking-page__textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.85;
+}
+
+.booking-page__input:focus,
+.booking-page__textarea:focus {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.booking-page__message {
+  margin-top: 0.75rem;
+  font-size: 0.88rem;
+  font-family: var(--font-open-sans);
+}
+
+.booking-page__message--success {
+  color: var(--color-text);
+}
+
+.booking-page__message--error {
+  color: #fff;
+}
+
+.booking-page__message--info {
+  color: #fff;
+  font-size: 0.88rem;
+}
+
+.booking-page__message--info p {
+  margin: 0 0 0.65rem;
+}
+
+.booking-page__fallback-actions--inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+.booking-page__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.85rem;
+  font-family: var(--font-open-sans);
+  font-size: 0.9rem;
+  min-height: var(--touch-min);
+  padding: 0.55rem 1.25rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.booking-page__cta-btn:hover:not(:disabled) {
+  background: var(--color-btn-hover-bg);
+}
+
+.booking-page__cta-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.booking-page__cta-btn--submit {
+  font-family: 'Opinion Pro Condensed', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 640px) {
+  .booking-page__cta-btn--submit {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Поля даты/времени (кастомные пикеры) на странице брони */
+.booking-page .booking-picker__trigger--empty {
+  color: var(--color-text-muted);
+}
+
+.booking-page .booking-picker .rdp-weekday {
+  color: #fff;
+}

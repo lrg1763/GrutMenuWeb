@@ -1,8 +1,17 @@
 @import './styles/global.css';
+@import './styles/about.css';
+@import './styles/banquets.css';
 @import './styles/cocktails.css';
+@import './styles/gallery.css';
+@import './styles/events.css';
+@import './styles/contacts.css';
+@import './styles/booking.css';
+@import './styles/booking-picker.css';
 @import './styles/header.css';
 @import './styles/download-modal.css';
 @import './styles/menu.css';
 @import './styles/modal.css';
 @import './styles/footer.css';
+@import './styles/legal-page.css';
+@import './styles/max-social-fab.css';
 @import './styles/responsive.css';

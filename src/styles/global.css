@@ -1,4 +1,12 @@
 @font-face {
+  font-family: 'Circle Rounded';
+  src: url('/fonts/CirceRounded-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Opinion Pro Condensed';
   src: url('/fonts/OpinionProCondensed-Regular.otf') format('opentype');
   font-weight: 400;
@@ -18,6 +26,24 @@
   font-family: 'Opinion Pro Condensed';
   src: url('/fonts/OpinionProCondensed-SemiBold.otf') format('opentype');
   font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Хедер: локальный Open Sans Semibold (как на старом сайте) */
+@font-face {
+  font-family: 'Open Sans Header';
+  src: url('/fonts/opensans-semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Страница меню: кнопка скачать PDF */
+@font-face {
+  font-family: 'GT Pressura Pro Trial';
+  src: url('/fonts/GT-Pressura-Pro-Trial-Regular.otf') format('opentype');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -100,10 +126,7 @@
   outline-offset: 2px;
 }
 
-/* Страница «Основное меню» — шрифт Manrope */
-.menu-page {
-  font-family: 'Manrope', sans-serif;
-}
+/* Страница меню: базовый шрифт — в menu.css (.menu-page) */
 
 .menu-page--loading,
 .menu-page--error {
@@ -163,8 +186,9 @@
 }
 
 .placeholder-page__title {
+  font-family: var(--font-heading-display);
   font-size: clamp(1.25rem, 4vw, 1.5rem);
-  font-weight: 600;
+  font-weight: 400;
   color: var(--color-text);
   margin: 0 0 1rem;
 }

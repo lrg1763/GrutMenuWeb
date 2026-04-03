@@ -1,2 +1,2 @@
 export { translations, langLabels } from './translations'
-export { dishTranslations, getDishName } from './dishTranslations'
+export { getDishName, formatDishWeight } from './dishTranslations'

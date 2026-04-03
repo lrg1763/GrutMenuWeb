@@ -4,12 +4,12 @@
  */
 export const dishTranslations = {
   grill: {
-    'Short loin, 100 g': { name: { ru: 'Шортлойн, 100 гр' }, description: { ru: '' } },
-    'T-Bone, 100 g': { name: { ru: 'Ти-Бон, 100 гр' }, description: { ru: '' } },
-    'Porterhouse, 100 g': { name: { ru: 'Портерхаус, 100 гр' }, description: { ru: '' } },
-    'Ribeye, 100 g': { name: { ru: 'Рибай, 100 гр' }, description: { ru: '' } },
-    'Matchet, 100 g': { name: { ru: 'Мачете, 100 гр' }, description: { ru: '' } },
-    'Lamb rack, 100 g': { name: { ru: 'Каре ягненка, 100 гр' }, description: { ru: '' } },
+    'Short loin': { name: { ru: 'Шортлойн' }, description: { ru: '' } },
+    'T-Bone': { name: { ru: 'Ти-Бон' }, description: { ru: '' } },
+    Porterhouse: { name: { ru: 'Портерхаус' }, description: { ru: '' } },
+    Ribeye: { name: { ru: 'Рибай' }, description: { ru: '' } },
+    Matchet: { name: { ru: 'Мачете' }, description: { ru: '' } },
+    'Lamb rack': { name: { ru: 'Каре ягненка' }, description: { ru: '' } },
     'Beef tenderloin medallions': { name: { ru: 'Медальоны из говяжьей вырезки' }, description: { ru: '' } },
     'Chicken breast shashlik': { name: { ru: 'Шашлык из куриной грудки' }, description: { ru: '' } },
     'Beef lyulya-kebab': { name: { ru: 'Люля-кебаб из говядины' }, description: { ru: '' } },
@@ -17,7 +17,7 @@ export const dishTranslations = {
     'Farmer chicken Tapaka': { name: { ru: 'Фермерский цыпленок «Тапака»' }, description: { ru: '' } },
     'Grilled meat platter': { name: { ru: 'Мясное плато гриль' }, description: { ru: 'Шашлык: из куриной грудки, баранины, люля-кебаб из говядины и ягненка, стейк мачете, каре ягненка' } },
     'Argentine langoustines, 5 pcs': { name: { ru: 'Аргентинские лангустины, 5 шт.' }, description: { ru: '' } },
-    'Salmon steak, 100 g': { name: { ru: 'Стейк семги, 100 гр' }, description: { ru: '' } },
+    'Salmon steak': { name: { ru: 'Стейк семги' }, description: { ru: '' } },
     'Tuna steak with eggplant mousse': { name: { ru: 'Стейк из тунца с муссом из баклажанов' }, description: { ru: '' } },
     'Dorado': { name: { ru: 'Дорадо' }, description: { ru: '' } },
     'Seafood assortment': { name: { ru: 'Ассорти морепродуктов' }, description: { ru: 'Форель, тунец, лангустины, мидии, кальмар' } },
@@ -157,4 +157,14 @@ export function getDishName(dish, lang) {
   const tr = section[dish.name]
   if (!tr?.name) return dish.name
   return tr.name[lang] || dish.name
+}
+
+/** @param {{ weight?: string }} dish @param {'ru'|'en'} lang */
+export function formatDishWeight(dish, lang) {
+  if (dish?.weight == null || String(dish.weight).trim() === '') return null
+  const normalized = String(dish.weight)
+    .trim()
+    .replace(/\s*\/\s*/g, ' / ')
+  if (lang === 'en') return `${normalized} g`
+  return `${normalized} г`
 }
