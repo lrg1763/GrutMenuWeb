@@ -21,10 +21,33 @@ function parseAllowedOrigins() {
     .filter(Boolean)
 }
 
+/**
+ * Браузер для кириллического домена шлёт Origin в punycode (xn--…), а в Render
+ * часто вписывают человекочитаемый URL. Добавляем оба варианта в allowlist.
+ */
+function expandOriginVariants(entry) {
+  const trimmed = entry.trim()
+  const set = new Set()
+  if (!trimmed) return set
+  set.add(trimmed)
+  try {
+    set.add(new URL(trimmed).origin)
+  } catch {
+    /* не URL — оставляем только как есть */
+  }
+  return set
+}
+
 function getAllowedOrigins() {
   const parsed = parseAllowedOrigins()
-  if (parsed.length > 0) return parsed
-  return DEFAULT_LOCAL_ORIGINS
+  if (parsed.length === 0) return DEFAULT_LOCAL_ORIGINS
+  const merged = new Set()
+  for (const entry of parsed) {
+    for (const o of expandOriginVariants(entry)) {
+      merged.add(o)
+    }
+  }
+  return [...merged]
 }
 
 function corsMiddleware(allowedOrigins) {
@@ -170,7 +193,7 @@ const app = express()
 app.use(express.json({ limit: '32kb' }))
 app.use(corsMiddleware(allowedOrigins))
 
-app.post('/reservation', async (req, res) => {
+async function handleReservation(req, res) {
   const parsed = validateBody(req.body)
   if (parsed.error) {
     return res.status(400).json({ ok: false, error: parsed.error })
@@ -200,7 +223,9 @@ app.post('/reservation', async (req, res) => {
     console.error('[reservation] SMTP error:', e.message)
     return res.status(502).json({ ok: false, error: 'Не удалось отправить письмо' })
   }
-})
+}
+
+app.post(['/reservation', '/reservation/'], handleReservation)
 
 app.use((req, res) => {
   res.status(404).json({ ok: false, error: 'Not found' })
