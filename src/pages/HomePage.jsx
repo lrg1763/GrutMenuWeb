@@ -52,6 +52,9 @@ export default function HomePage() {
             <Link to="/booking" className="home-page__btn home-page__btn--primary">
               {t.btnBookTable}
             </Link>
+            <Link to="/menu" className="home-page__btn home-page__btn--secondary">
+              {t.btnViewMenu}
+            </Link>
             <Link to="/booking?type=banquet" className="home-page__btn home-page__btn--secondary">
               {t.btnOrderBanquet}
             </Link>

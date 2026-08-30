@@ -1,5 +1,5 @@
 .banquets-page__hero-wordmark-section.page-section {
-  background: #000;
+  background: #0a0a0a;
   border-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -39,6 +39,7 @@
 
 .banquets-page__content > .page-section:last-child .page-section__intro {
   color: #fff;
+  max-width: none;
 }
 
 .banquets-page__convenience .page-section__header + .banquets-page__convenience-grid {
@@ -68,25 +69,238 @@
   flex-direction: column;
   min-width: 0;
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
   background: var(--color-bg);
   overflow: hidden;
 }
 
 .banquets-page__convenience-media {
   background: var(--color-image-placeholder);
+  overflow: hidden;
 }
 
 .banquets-page__convenience-photo {
   display: block;
   width: 100%;
   height: auto;
+  transition: transform 0.4s ease;
 }
 
 .banquets-page__convenience-card--media-only {
   display: block;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* Как .home-page__btn: Opinion Pro Condensed */
+.banquets-page__convenience-card--media-only:hover,
+.banquets-page__convenience-card--media-only:focus-within {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.banquets-page__convenience-card--media-only:hover .banquets-page__convenience-photo,
+.banquets-page__convenience-card--media-only:focus-within .banquets-page__convenience-photo {
+  transform: scale(1.015);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banquets-page__convenience-card--media-only,
+  .banquets-page__convenience-photo {
+    transition: none;
+  }
+
+  .banquets-page__convenience-card--media-only:hover .banquets-page__convenience-photo,
+  .banquets-page__convenience-card--media-only:focus-within .banquets-page__convenience-photo {
+    transform: none;
+  }
+}
+
+.banquets-page__zones .page-section__header + .banquets-page__zones-grid {
+  margin-top: clamp(0.85rem, 2.2vw, 1.35rem);
+}
+
+.banquets-page__zones-grid {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 720px) {
+  .banquets-page__zones-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.banquets-page__zone-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 7.5rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
+  background: var(--color-bg);
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.banquets-page__zone-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+.banquets-page__zone-card:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.banquets-page__zone-card:disabled:hover {
+  border-color: var(--color-border);
+  transform: none;
+  box-shadow: none;
+}
+
+.banquets-page__zone-number {
+  font-family: var(--font-heading-display);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.banquet-zone-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(0.75rem, env(safe-area-inset-top, 0px)) max(0.75rem, env(safe-area-inset-right, 0px))
+    max(0.75rem, env(safe-area-inset-bottom, 0px)) max(0.75rem, env(safe-area-inset-left, 0px));
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: banquetZoneModalFadeIn 0.22s ease-out;
+}
+
+@keyframes banquetZoneModalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.banquet-zone-modal__panel {
+  position: relative;
+  width: min(100%, 78rem);
+  max-height: min(90dvh, 860px);
+  --banquet-zone-modal-gutter: 0.65rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-ui);
+  background: rgba(10, 10, 10, 0.28);
+  backdrop-filter: blur(28px) saturate(120%);
+  -webkit-backdrop-filter: blur(28px) saturate(120%);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.banquet-zone-modal__close {
+  position: absolute;
+  top: var(--banquet-zone-modal-gutter);
+  right: var(--banquet-zone-modal-gutter);
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-btn-text);
+  background: var(--color-btn-bg);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.banquet-zone-modal__close:hover {
+  background: var(--color-btn-hover-bg);
+}
+
+.banquet-zone-modal__close svg {
+  display: block;
+}
+
+.banquet-zone-modal__mosaic {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  padding: var(--banquet-zone-modal-gutter);
+}
+
+.banquet-zone-modal__tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.banquet-zone-modal__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.banquet-zone-modal__soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 0;
+  background: #252525;
+}
+
+.banquet-zone-modal__soon-label {
+  font-family: var(--font-heading-display);
+  font-size: clamp(0.95rem, 2.4vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+@media (min-width: 768px) {
+  .banquet-zone-modal__panel {
+    --banquet-zone-modal-gutter: 0.75rem;
+  }
+
+  .banquet-zone-modal__mosaic {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .banquet-zone-modal__tile {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* Размеры как у .home-page__btn на главной; шрифт — Opinion Pro Condensed */
 .banquets-page__cta-btn {
   display: inline-flex;
   align-items: center;
@@ -102,7 +316,7 @@
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
-  border-radius: 0;
+  border-radius: var(--radius-ui);
   border: none;
   background: var(--color-btn-bg);
   color: var(--color-btn-text);

@@ -1,60 +1,30 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useLangContext } from '../context/LangContext'
 import { translations } from '../i18n'
 import PageSection from '../components/PageSection'
 import { getAssetUrl } from '../constants'
 
-const GALLERY_FILES = [
-  '1.jpg',
-  '2.jpg',
-  '3.jpg',
-  '4.jpg',
-  '5.jpg',
-  '6.jpg',
-  '7.jpg',
-  '8.jpg',
-  '9.jpeg',
-  '10.jpg',
-  '11.webp',
-  '12.webp',
-  '13.webp',
-  '15.webp',
-  '16.jpg',
-  '17.jpg',
-  '18.webp',
-  '19.jpg',
-  '20.jpg',
-  '21.webp',
-  '22.webp',
-  '23.jpg',
-  '24.jpg',
-  '24.webp',
-  '25.jpg',
-  '26.jpg',
-  '27.jpg',
-  '28.webp',
-  '29.webp',
-  '30.webp',
-  '31.webp',
-  '32.webp',
-  '33.webp',
-  '34.webp',
-  '35.webp',
-  '36.webp',
-  '37.webp',
-  '38.webp',
-  '39.webp',
-  '40.webp',
-]
+const GALLERY_COUNT = 62
 
-const GALLERY_ITEMS = GALLERY_FILES.map((file) => ({
-  src: `/gallery/${file}`,
+const GALLERY_ITEMS = Array.from({ length: GALLERY_COUNT }, (_, index) => ({
+  src: `/gallery/${index + 1}.webp`,
+  index,
 }))
 
 export default function GalleryPage() {
   const { lang } = useLangContext()
   const t = translations[lang]
   const [lightboxSrc, setLightboxSrc] = useState(null)
+  const [isGalleryLoading, setIsGalleryLoading] = useState(true)
+  const loadedIndicesRef = useRef(new Set())
+
+  const markImageLoaded = useCallback((index) => {
+    if (loadedIndicesRef.current.has(index)) return
+    loadedIndicesRef.current.add(index)
+    if (loadedIndicesRef.current.size >= GALLERY_COUNT) {
+      setIsGalleryLoading(false)
+    }
+  }, [])
 
   useEffect(() => {
     if (!lightboxSrc) return undefined
@@ -69,33 +39,62 @@ export default function GalleryPage() {
     }
   }, [lightboxSrc])
 
+  const bindGalleryImage = useCallback((index) => (node) => {
+    if (!node) return
+    if (node.complete) {
+      markImageLoaded(index)
+    }
+  }, [markImageLoaded])
+
   return (
     <main className="main gallery-page">
       <div className="content-column gallery-page__content">
         <PageSection title={t.galleryHeroTitle} intro={t.galleryHeroText} />
 
-        <section className="gallery-page__grid" aria-label={t.galleryHeroTitle}>
-          {GALLERY_ITEMS.map((item) => (
-            <div key={item.src} className="gallery-page__item">
-              <button
-                type="button"
-                className="gallery-page__item-btn"
-                onClick={() => setLightboxSrc(item.src)}
-                aria-haspopup="dialog"
-              >
-                <span className="gallery-page__thumb">
-                  <img
-                    src={getAssetUrl(item.src)}
-                    alt={t.galleryImageAlt}
-                    loading="lazy"
-                    decoding="async"
-                    className="gallery-page__image"
-                  />
-                </span>
-              </button>
+        <div className="gallery-page__grid-wrap">
+          {isGalleryLoading && (
+            <div
+              className="gallery-page__loading"
+              role="status"
+              aria-live="polite"
+              aria-busy="true"
+              aria-label={t.galleryLoading}
+            >
+              <span className="gallery-page__spinner" aria-hidden="true" />
             </div>
-          ))}
-        </section>
+          )}
+
+          <section
+            className={`gallery-page__grid${isGalleryLoading ? ' gallery-page__grid--loading' : ''}`}
+            aria-label={t.galleryHeroTitle}
+            aria-busy={isGalleryLoading}
+          >
+            {GALLERY_ITEMS.map((item) => (
+              <div key={item.src} className="gallery-page__item">
+                <button
+                  type="button"
+                  className="gallery-page__item-btn"
+                  onClick={() => setLightboxSrc(item.src)}
+                  aria-haspopup="dialog"
+                  tabIndex={isGalleryLoading ? -1 : 0}
+                >
+                  <span className="gallery-page__thumb">
+                    <img
+                      ref={bindGalleryImage(item.index)}
+                      src={getAssetUrl(item.src)}
+                      alt={t.galleryImageAlt}
+                      loading="eager"
+                      decoding="async"
+                      className="gallery-page__image"
+                      onLoad={() => markImageLoaded(item.index)}
+                      onError={() => markImageLoaded(item.index)}
+                    />
+                  </span>
+                </button>
+              </div>
+            ))}
+          </section>
+        </div>
       </div>
 
       {lightboxSrc && (

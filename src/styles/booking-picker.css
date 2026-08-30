@@ -60,7 +60,7 @@
   padding: 0.35rem 0.4rem 0.45rem;
   background: #0b0b0b;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 4px;
+  border-radius: var(--radius-ui);
   box-shadow: 0 6px 22px var(--color-card-shadow);
 }
 
@@ -83,7 +83,7 @@
   font-size: 0.76rem;
   text-align: left;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: var(--radius-ui);
 }
 
 .booking-picker__time-option:hover,

@@ -2,13 +2,15 @@
 .banquets-page,
 .booking-page,
 .gallery-page,
-.events-page {
+.events-page,
+.loyalty-page {
   padding: 1.25rem 0 2.25rem;
   font-family: 'Circle Rounded', sans-serif;
 }
 
 .page-section {
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
   background: var(--color-bg);
   padding: clamp(1rem, 2vw, 1.5rem);
 }
@@ -40,7 +42,8 @@
 .banquets-page__content,
 .booking-page__content,
 .gallery-page__content,
-.events-page__content {
+.events-page__content,
+.loyalty-page__content {
   display: grid;
   gap: 1rem;
   min-width: 0;
@@ -59,6 +62,14 @@
 
 .about-page .page-section__title {
   text-transform: uppercase;
+}
+
+.loyalty-page .page-section__title {
+  text-transform: uppercase;
+}
+
+.loyalty-page .page-section__intro {
+  color: #fff;
 }
 
 .about-page__intro-head .page-section__intro {
@@ -81,8 +92,9 @@
 }
 
 .about-page__top-figure {
-  margin: 0;
+  margin: clamp(calc(0.35rem - 2px), calc(1vw - 2px), calc(0.65rem - 2px)) 0 0;
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
   background: var(--color-image-placeholder);
   overflow: hidden;
   min-width: 0;
@@ -154,6 +166,7 @@
 
 .about-page__card {
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
   background: var(--color-bg);
   padding: 0.9rem;
 }
@@ -198,12 +211,14 @@
   flex-direction: column;
   min-width: 0;
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
   background: var(--color-bg);
   overflow: hidden;
 }
 
 .about-page__why-media {
   background: var(--color-image-placeholder);
+  overflow: hidden;
 }
 
 .about-page__why-photo {
@@ -234,7 +249,9 @@
 
 .about-page__halls-frame {
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
   background: var(--color-image-placeholder);
+  overflow: hidden;
 }
 
 .about-page__halls-frame picture {
@@ -245,4 +262,230 @@
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* Hover: едва заметное увеличение фото + лёгкая обводка */
+.about-page__top-figure,
+.about-page__why-card--media-only,
+.about-page__halls-frame {
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.about-page__top-photo,
+.about-page__why-photo,
+.about-page__halls-photo {
+  transition: transform 0.4s ease;
+}
+
+.about-page__top-figure:hover,
+.about-page__top-figure:focus-within,
+.about-page__why-card--media-only:hover,
+.about-page__why-card--media-only:focus-within,
+.about-page__halls-frame:hover,
+.about-page__halls-frame:focus-within {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.about-page__top-figure:hover .about-page__top-photo,
+.about-page__top-figure:focus-within .about-page__top-photo,
+.about-page__why-card--media-only:hover .about-page__why-photo,
+.about-page__why-card--media-only:focus-within .about-page__why-photo,
+.about-page__halls-frame:hover .about-page__halls-photo,
+.about-page__halls-frame:focus-within .about-page__halls-photo {
+  transform: scale(1.015);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page__top-figure,
+  .about-page__why-card--media-only,
+  .about-page__halls-frame,
+  .about-page__top-photo,
+  .about-page__why-photo,
+  .about-page__halls-photo {
+    transition: none;
+  }
+
+  .about-page__top-figure:hover .about-page__top-photo,
+  .about-page__top-figure:focus-within .about-page__top-photo,
+  .about-page__why-card--media-only:hover .about-page__why-photo,
+  .about-page__why-card--media-only:focus-within .about-page__why-photo,
+  .about-page__halls-frame:hover .about-page__halls-photo,
+  .about-page__halls-frame:focus-within .about-page__halls-photo {
+    transform: none;
+  }
+}
+
+.loyalty-page__body {
+  font-family: var(--font-open-sans);
+  color: #fff;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  max-width: 72ch;
+  line-height: 1.55;
+}
+
+.loyalty-page__body p + .loyalty-page__btn {
+  margin-top: 1.15rem;
+}
+
+.loyalty-page__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-min);
+  padding: 0.7rem 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
+  background: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  font-family: var(--font-open-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.loyalty-page__btn:hover {
+  background: var(--color-btn-hover-bg);
+}
+
+.loyalty-page__levels .page-section__header + .loyalty-page__levels-list {
+  margin-top: clamp(0.85rem, 2.2vw, 1.35rem);
+}
+
+.loyalty-page__levels-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+  font-family: var(--font-heading-display);
+}
+
+.loyalty-page__level-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
+  background: var(--color-bg);
+  padding: 0.85rem 0.95rem;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: loyaltyLevelCardIn 0.48s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.loyalty-page__level-card:nth-child(1) {
+  animation-delay: 0.04s;
+}
+
+.loyalty-page__level-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.loyalty-page__level-card:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.loyalty-page__level-card:nth-child(4) {
+  animation-delay: 0.22s;
+}
+
+.loyalty-page__level-card:nth-child(5) {
+  animation-delay: 0.28s;
+}
+
+.loyalty-page__level-card:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+@keyframes loyaltyLevelCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loyalty-page__level-card {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .loyalty-page__level-card:hover {
+    transform: none;
+  }
+}
+
+.loyalty-page__level-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.55rem 0.75rem;
+  align-items: center;
+}
+
+.loyalty-page__level-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  background: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.loyalty-page__level-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.loyalty-page__level-cashback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.loyalty-page__level-benefit,
+.loyalty-page__level-requirement {
+  margin: 0.45rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.loyalty-page__level-benefit {
+  color: #fff;
+}
+
+.loyalty-page__level-requirement {
+  color: var(--color-text-muted);
+}
+
+.loyalty-page__birthday-text {
+  margin: 0;
+  font-family: var(--font-open-sans);
+  color: #fff;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.55;
+  max-width: 72ch;
 }

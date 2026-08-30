@@ -1,4 +1,4 @@
-import { LEGAL_ROUTE_ENTRIES, ROUTE_ENTRIES } from '../routeDefinitions'
+import { LEGAL_ROUTE_ENTRIES, ROUTE_ENTRIES, UTILITY_ROUTE_ENTRIES } from '../routeDefinitions'
 
 function metaByPathFromEntries(entries) {
   return Object.fromEntries(entries.map((e) => [e.path, e.meta]))
@@ -8,5 +8,6 @@ function metaByPathFromEntries(entries) {
 export const DOCUMENT_META_BY_PATH = {
   '/': { titleKey: 'pageTitleHome', descriptionKey: 'pageDescriptionHome' },
   ...metaByPathFromEntries(ROUTE_ENTRIES),
+  ...metaByPathFromEntries(UTILITY_ROUTE_ENTRIES),
   ...metaByPathFromEntries(LEGAL_ROUTE_ENTRIES),
 }

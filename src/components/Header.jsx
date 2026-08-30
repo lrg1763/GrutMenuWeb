@@ -24,7 +24,10 @@ export default function Header() {
   const base = import.meta.env.BASE_URL
   const headerLogoSrc = `${base}images/logo.svg`
   const normalizedPath = normalizePathname(location.pathname)
-  const isMenuGroupActive = normalizedPath === '/menu' || normalizedPath === '/cocktails'
+  const isMenuGroupActive =
+    normalizedPath === '/menu' ||
+    normalizedPath === '/menu/download' ||
+    normalizedPath === '/cocktails'
   const desktopNavRoutes = NAV_ROUTES.filter(({ path }) => path !== '/menu' && path !== '/cocktails')
 
   const menuPickerOpen = menuDropdownOpen || mobileMenuPickerOpen
@@ -62,14 +65,20 @@ export default function Header() {
     if (!trigger) return
     const rect = trigger.getBoundingClientRect()
     const gap = 6
-    const panelWidth = 110
+    const panelWidth = 120
     const panelHeightEstimate = 90
     const margin = 8
-    const panelMinLeft = margin
-    const panelMaxLeft = window.innerWidth - panelWidth - margin
-    let left = rect.left
-    if (left < panelMinLeft) left = panelMinLeft
-    if (left > panelMaxLeft) left = panelMaxLeft
+    let left
+    if (menuOpen) {
+      left = rect.left + rect.width / 2 - panelWidth / 2
+      left = Math.max(margin, Math.min(left, window.innerWidth - panelWidth - margin))
+    } else {
+      const panelMinLeft = margin
+      const panelMaxLeft = window.innerWidth - panelWidth - margin
+      left = rect.left
+      if (left < panelMinLeft) left = panelMinLeft
+      if (left > panelMaxLeft) left = panelMaxLeft
+    }
     const spaceBelow = window.innerHeight - rect.bottom - gap
     const openAbove = spaceBelow < panelHeightEstimate && rect.top > panelHeightEstimate + gap
     const top = openAbove ? rect.top - panelHeightEstimate - gap : rect.bottom + gap
@@ -103,14 +112,24 @@ export default function Header() {
     if (!trigger) return
     const rect = trigger.getBoundingClientRect()
     const gap = 6
-    const panelWidth = mobileMenuPickerOpen ? 148 : 170
-    const panelHeightEstimate = mobileMenuPickerOpen ? 92 : 108
     const margin = 8
-    const panelMinLeft = margin
-    const panelMaxLeft = window.innerWidth - panelWidth - margin
-    let left = rect.left
-    if (left < panelMinLeft) left = panelMinLeft
-    if (left > panelMaxLeft) left = panelMaxLeft
+    let left
+    let panelWidth
+    let panelHeightEstimate
+    if (mobileMenuPickerOpen) {
+      panelWidth = Math.min(260, Math.round(window.innerWidth * 0.88))
+      panelHeightEstimate = 132
+      left = rect.left + rect.width / 2 - panelWidth / 2
+      left = Math.max(margin, Math.min(left, window.innerWidth - panelWidth - margin))
+    } else {
+      panelWidth = 170
+      panelHeightEstimate = 140
+      const panelMinLeft = margin
+      const panelMaxLeft = window.innerWidth - panelWidth - margin
+      left = rect.left
+      if (left < panelMinLeft) left = panelMinLeft
+      if (left > panelMaxLeft) left = panelMaxLeft
+    }
     const spaceBelow = window.innerHeight - rect.bottom - gap
     const openAbove = spaceBelow < panelHeightEstimate && rect.top > panelHeightEstimate + gap
     const top = openAbove ? rect.top - panelHeightEstimate - gap : rect.bottom + gap
@@ -187,7 +206,7 @@ export default function Header() {
             onClick={() => setMenuOpen(false)}
             aria-label={t.navHome}
           >
-            <img src={headerLogoSrc} alt="" className="header__logo-img" width={178} height={81} decoding="async" />
+            <img src={headerLogoSrc} alt="" className="header__logo-img" width={171} height={87} decoding="async" />
           </NavLink>
         </div>
         <div className="header__nav-wrap">
@@ -242,7 +261,7 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
               aria-label={t.navHome}
             >
-              <img src={headerLogoSrc} alt="" className="header__logo-img" width={178} height={81} decoding="async" />
+              <img src={headerLogoSrc} alt="" className="header__logo-img" width={171} height={87} decoding="async" />
             </NavLink>
           </div>
           <div className="header__menu-links">
@@ -304,6 +323,16 @@ export default function Header() {
               }}
             >
               {t.navCocktails}
+            </NavLink>
+            <NavLink
+              to="/menu/download"
+              className={({ isActive }) => `header-menu-modal__option ${isActive ? 'header-menu-modal__option--active' : ''}`}
+              onClick={() => {
+                closeMenuPicker()
+                setMenuOpen(false)
+              }}
+            >
+              {t.downloadMenu}
             </NavLink>
           </div>
         </div>

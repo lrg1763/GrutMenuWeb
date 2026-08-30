@@ -6,6 +6,7 @@ import { PLACEHOLDER_IMAGE } from '../constants'
 import CocktailsCompositionModal from '../components/CocktailsCompositionModal'
 import PageSection from '../components/PageSection'
 import PriceWithRuble from '../components/PriceWithRuble'
+import { formatCocktailVolume, parseComposition } from '../utils/cocktailComposition'
 
 const baseUrl = typeof import.meta.env?.BASE_URL === 'string' ? import.meta.env.BASE_URL : '/'
 
@@ -27,24 +28,38 @@ export default function CocktailsPage() {
           </div>
           <div className="cocktails-page__photos-box">
             <ul className="cocktails-grid" aria-label={t.cocktailsOnePrice}>
-              {COCKTAILS.map((cocktail) => (
-                <li key={cocktail.id} className="cocktails-grid__card">
-                  <button
-                    type="button"
-                    className="cocktails-grid__image-wrap"
-                    onClick={() => setCompositionModal(cocktail)}
-                    aria-label={`${getName(cocktail)} — ${t.composition}`}
-                  >
-                    <img
-                      src={`${baseUrl}cocktail-images/${cocktail.id}.jpg`}
-                      alt={getName(cocktail)}
-                      className="cocktails-grid__image"
-                      loading="lazy"
-                      onError={(e) => { e.target.onerror = null; e.target.src = PLACEHOLDER_IMAGE }}
-                    />
-                  </button>
-                </li>
-              ))}
+              {COCKTAILS.map((cocktail) => {
+                const composition = getComposition(cocktail)
+                const { totalMl } = parseComposition(composition)
+                const volumeMl = cocktail.volumeMl ?? totalMl
+                const volumeLabel = formatCocktailVolume(volumeMl, lang)
+                const name = getName(cocktail)
+
+                return (
+                  <li key={cocktail.id} className="cocktails-grid__card">
+                    <button
+                      type="button"
+                      className="cocktails-grid__image-wrap"
+                      onClick={() => setCompositionModal(cocktail)}
+                      aria-label={`${name} — ${t.composition}`}
+                    >
+                      <img
+                        src={`${baseUrl}cocktail-images/${cocktail.id}.webp`}
+                        alt=""
+                        className="cocktails-grid__image"
+                        loading="lazy"
+                        onError={(e) => { e.target.onerror = null; e.target.src = PLACEHOLDER_IMAGE }}
+                      />
+                    </button>
+                    <div className="cocktails-grid__caption">
+                      <span className="cocktails-grid__caption-name">{name}</span>
+                      {volumeLabel && (
+                        <span className="cocktails-grid__caption-volume">{volumeLabel}</span>
+                      )}
+                    </div>
+                  </li>
+                )
+              })}
             </ul>
           </div>
         </PageSection>
@@ -54,8 +69,10 @@ export default function CocktailsPage() {
         <CocktailsCompositionModal
           cocktailName={getName(compositionModal)}
           composition={getComposition(compositionModal)}
+          volumeMl={compositionModal.volumeMl}
           onClose={() => setCompositionModal(null)}
           t={t}
+          lang={lang}
         />
       )}
     </main>

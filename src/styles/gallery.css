@@ -11,6 +11,48 @@
   color: #fff;
 }
 
+.gallery-page__grid-wrap {
+  position: relative;
+  min-height: clamp(220px, 42vh, 360px);
+}
+
+.gallery-page__loading {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+}
+
+.gallery-page__spinner {
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-text);
+  border-radius: 50%;
+  animation: gallerySpinnerRotate 0.75s linear infinite;
+}
+
+@keyframes gallerySpinnerRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-page__spinner {
+    animation: none;
+    border-top-color: var(--color-border);
+    opacity: 0.85;
+  }
+}
+
+.gallery-page__grid--loading {
+  visibility: hidden;
+}
+
 .gallery-page__grid {
   columns: 1;
   column-gap: 0.75rem;
@@ -27,16 +69,19 @@
   margin: 0;
   padding: 0;
   border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-ui);
   background: var(--color-bg-card);
   cursor: pointer;
   text-align: left;
+  overflow: hidden;
   -webkit-tap-highlight-color: transparent;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
-.gallery-page__item-btn:hover {
-  border-color: var(--color-border);
-  box-shadow: 0 0 0 1px var(--color-border);
+.gallery-page__item-btn:hover,
+.gallery-page__item-btn:focus-visible {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 
 .gallery-page__item-btn:focus-visible {
@@ -57,6 +102,24 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: transform 0.4s ease;
+}
+
+.gallery-page__item-btn:hover .gallery-page__image,
+.gallery-page__item-btn:focus-visible .gallery-page__image {
+  transform: scale(1.015);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-page__item-btn,
+  .gallery-page__image {
+    transition: none;
+  }
+
+  .gallery-page__item-btn:hover .gallery-page__image,
+  .gallery-page__item-btn:focus-visible .gallery-page__image {
+    transform: none;
+  }
 }
 
 /* Лайтбокс: исходные пропорции, вписать в экран */

@@ -1,4 +1,4 @@
-/* Коктельная карта — в ритме внутренних страниц */
+/* Коктейльная карта — в ритме внутренних страниц */
 .cocktails-page {
   padding: 1.25rem 0 2.25rem;
   font-family: 'Circle Rounded', sans-serif;
@@ -17,6 +17,7 @@
 
 .cocktails-page__hero-box {
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
   background: var(--color-bg);
   padding: clamp(0.75rem, 1.8vw, 1.1rem) clamp(0.85rem, 2.2vw, 1.25rem);
   display: grid;
@@ -26,11 +27,13 @@
 
 .cocktails-page__photos-box {
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
   background: var(--color-bg);
   padding: clamp(0.75rem, 1.6vw, 1rem);
+  overflow: hidden;
 }
 
-/* Сетка коктейлей: соотношение сторон фото 1500×2166 */
+/* Сетка коктейлей: соотношение сторон фото 1696×2464 */
 .cocktails-grid {
   list-style: none;
   margin: 0;
@@ -44,7 +47,7 @@
   display: flex;
   flex-direction: column;
   background: var(--color-bg);
-  border-radius: 0;
+  border-radius: var(--radius-ui);
   overflow: hidden;
   border: 1px solid var(--color-border);
 }
@@ -52,7 +55,7 @@
 .cocktails-grid__image-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 1500 / 2166;
+  aspect-ratio: 1696 / 2464;
   overflow: hidden;
   background: var(--color-image-placeholder);
   display: block;
@@ -72,6 +75,36 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.cocktails-grid__caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: clamp(0.65rem, 1.6vw, 0.85rem) clamp(0.5rem, 1.2vw, 0.75rem);
+  background: linear-gradient(180deg, #111 0%, #090909 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  min-height: 3.75rem;
+}
+
+.cocktails-grid__caption-name {
+  font-family: var(--font-heading-display);
+  font-size: clamp(0.82rem, 2.1vw, 0.95rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+}
+
+.cocktails-grid__caption-volume {
+  font-family: var(--font-heading-display);
+  font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .cocktails-grid__body {
@@ -105,7 +138,7 @@
   color: var(--color-btn-text);
   background: var(--color-btn-bg);
   border: none;
-  border-radius: 0;
+  border-radius: var(--radius-ui);
   cursor: pointer;
   transition: background 0.2s;
   width: fit-content;
@@ -197,7 +230,7 @@
   overflow-y: auto;
   background: #090909;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 0;
+  border-radius: var(--radius-ui);
   padding: 1.5rem 1.25rem 1.25rem;
   font-family: 'Martian Mono', monospace;
   animation: cocktailsCompositionSlideIn 0.35s cubic-bezier(0.33, 1, 0.68, 1);

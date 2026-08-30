@@ -3,11 +3,13 @@ import MenuPage from './pages/MenuPage'
 import BanquetsPage from './pages/BanquetsPage'
 import GalleryPage from './pages/GalleryPage'
 import EventsPage from './pages/EventsPage'
+import LoyaltyPage from './pages/LoyaltyPage'
 import CocktailsPage from './pages/CocktailsPage'
 import BookingPage from './pages/BookingPage'
 import ContactsPage from './pages/ContactsPage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import PersonalDataPolicyPage from './pages/PersonalDataPolicyPage'
+import DownloadMenuPage from './pages/DownloadMenuPage'
 
 /** Path, i18n nav key, page component, document meta — single source for router + header nav + meta. */
 export const ROUTE_ENTRIES = [
@@ -42,6 +44,12 @@ export const ROUTE_ENTRIES = [
     meta: { titleKey: 'pageTitleEvents', descriptionKey: 'pageDescriptionEvents' },
   },
   {
+    path: '/loyalty',
+    navKey: 'navLoyalty',
+    Component: LoyaltyPage,
+    meta: { titleKey: 'pageTitleLoyalty', descriptionKey: 'pageDescriptionLoyalty' },
+  },
+  {
     path: '/cocktails',
     navKey: 'navCocktails',
     Component: CocktailsPage,
@@ -61,6 +69,15 @@ export const ROUTE_ENTRIES = [
   },
 ]
 
+/** Utility pages: not in main nav. */
+export const UTILITY_ROUTE_ENTRIES = [
+  {
+    path: '/menu/download',
+    Component: DownloadMenuPage,
+    meta: { titleKey: 'pageTitleDownloadMenu', descriptionKey: 'pageDescriptionDownloadMenu' },
+  },
+]
+
 /** Legal pages: not in main nav; footer links + router + meta from here. */
 export const LEGAL_ROUTE_ENTRIES = [
   {
@@ -77,6 +94,6 @@ export const LEGAL_ROUTE_ENTRIES = [
   },
 ]
 
-export const APP_LAYOUT_ROUTES = [...ROUTE_ENTRIES, ...LEGAL_ROUTE_ENTRIES]
+export const APP_LAYOUT_ROUTES = [...ROUTE_ENTRIES, ...UTILITY_ROUTE_ENTRIES, ...LEGAL_ROUTE_ENTRIES]
 
 export const NAV_ROUTES = ROUTE_ENTRIES.map(({ path, navKey }) => ({ path, navKey }))

@@ -27,8 +27,8 @@
   }
 
   .header__logo-img {
-    height: 3.25rem;
-    max-width: 160px;
+    height: 4rem;
+    max-width: 190px;
   }
 
   .footer__inner {
@@ -59,15 +59,15 @@
   }
 
   .home-page__actions {
-    gap: 22px;
+    gap: 10px;
   }
 
   .home-page__btn {
-    width: 250px;
-    min-width: 250px;
-    min-height: 76px;
+    width: 205px;
+    min-width: 205px;
+    min-height: 70px;
     padding: 0 1.25rem;
-    font-size: 1.15rem;
+    font-size: 1rem;
   }
 }
 
@@ -86,10 +86,6 @@
     padding: 1rem 1.25rem;
   }
 
-  .menu-page + .download-footer {
-    margin-bottom: 0;
-  }
-
   :root {
     --page-margin-x: 1.5rem;
   }
@@ -106,13 +102,13 @@
   }
 
   .header__logo-img {
-    height: 4.25rem;
-    max-width: 200px;
+    height: 5.1rem;
+    max-width: 235px;
   }
 
   .header__nav-link {
     padding: 0.4rem 0.35rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
     min-height: var(--touch-min);
     display: inline-flex;
     align-items: center;
@@ -200,6 +196,12 @@
     right: 0.5rem;
   }
 
+  /* Меню: отдельная позиция крестика, чтобы не перекрывал фото */
+  .modal.modal--menu-page .modal__close {
+    top: 0.95rem;
+    right: 0.65rem;
+  }
+
   .download-footer__inner {
     padding: 1rem 1.25rem;
   }
@@ -284,6 +286,8 @@
   .home-page__btn {
     width: 100%;
     min-width: 0;
+    max-width: none;
+    aspect-ratio: auto;
     padding: 0 1.5rem;
     min-height: 84px;
     font-size: 1.15rem;
@@ -300,13 +304,13 @@
   }
 
   .header__nav-link {
-    font-size: 0.9rem;
+    font-size: 0.82rem;
     padding: 0.35rem 0.25rem;
   }
 
   .header__logo-img {
-    max-width: 140px;
-    height: 3.25rem;
+    max-width: 170px;
+    height: 4rem;
   }
 
   .main.cocktails-page .cocktails-page__banner {

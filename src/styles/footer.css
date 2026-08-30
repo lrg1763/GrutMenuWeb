@@ -9,7 +9,7 @@
   text-align: center;
   background: var(--color-bg);
   border: 1px solid var(--color-border);
-  border-radius: 0;
+  border-radius: var(--radius-ui);
   box-sizing: border-box;
 }
 
@@ -163,8 +163,9 @@
   color: var(--color-btn-text);
   background: var(--color-btn-bg);
   border: none;
-  border-radius: 0;
+  border-radius: var(--radius-ui);
   cursor: pointer;
+  text-decoration: none;
   transition: background 0.2s, transform 0.2s;
 }
 
@@ -237,8 +238,8 @@
 .home-page__logo {
   display: block;
   margin: 0 auto 0;
-  font-family: 'Opinion Pro Condensed', sans-serif;
-  font-weight: 500;
+  font-family: 'Default Normal', sans-serif;
+  font-weight: 400;
   font-size: clamp(7rem, 36vw, 18rem);
   letter-spacing: -0.02em;
   color: #fff;
@@ -295,10 +296,12 @@
 
 .home-page__actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
+  flex-wrap: nowrap;
+  gap: 16px;
   justify-content: center;
   align-items: stretch;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .home-page__btn {
@@ -306,17 +309,18 @@
   align-items: center;
   justify-content: center;
   padding: 0 1.5rem;
-  font-family: 'Opinion Pro Condensed', sans-serif;
+  font-family: var(--font-heading-display);
   font-size: 1.22rem;
-  font-weight: 600;
-  border-radius: 0;
+  font-weight: 400;
+  border-radius: 8px;
   border: none;
   transition: background 0.2s, color 0.2s, transform 0.2s;
   text-decoration: none;
-  width: 301px;
-  min-width: 301px;
-  min-height: 79px;
+  width: 260px;
+  min-width: 260px;
+  min-height: 72px;
   text-align: center;
+  white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: #0a0a0a;

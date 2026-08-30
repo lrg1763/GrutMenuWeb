@@ -1,20 +1,8 @@
-function parseComposition(composition) {
-  if (!composition) return { ingredients: [], garnish: '', totalMl: 0 }
-  const garnishMatch = composition.match(/(?:Украшение|Garnish):\s*([^.]+)/i)
-  const beforeGarnish = garnishMatch ? composition.split(/(?:Украшение|Garnish):/i)[0] : composition
-  const garnish = garnishMatch ? garnishMatch[1].trim().replace(/\.$/, '') : ''
-  const ingredientParts = beforeGarnish.split(/,\s*/).map((s) => s.trim().replace(/\.$/, '')).filter(Boolean)
-  const ingredients = ingredientParts.map((s) => {
-    const cleaned = s.replace(/^\s*[•\-]\s*/, '').trim()
-    return cleaned ? cleaned.charAt(0).toUpperCase() + cleaned.slice(1) : ''
-  }).filter(Boolean)
-  const mlMatches = composition.matchAll(/(\d+)\s*(?:мл|ml)/gi)
-  const totalMl = [...mlMatches].reduce((sum, m) => sum + parseInt(m[1], 10), 0)
-  return { ingredients, garnish, totalMl }
-}
+import { formatCocktailVolume, parseComposition } from '../utils/cocktailComposition'
 
-export default function CocktailsCompositionModal({ cocktailName, composition, onClose, t }) {
+export default function CocktailsCompositionModal({ cocktailName, composition, volumeMl, onClose, t, lang = 'ru' }) {
   const { ingredients, garnish, totalMl } = parseComposition(composition)
+  const displayMl = volumeMl ?? totalMl
 
   return (
     <div
@@ -57,9 +45,9 @@ export default function CocktailsCompositionModal({ cocktailName, composition, o
         ) : (
           <p className="cocktails-composition-modal__text">{composition}</p>
         )}
-        {totalMl > 0 && (
+        {displayMl > 0 && (
           <p className="cocktails-composition-modal__volume">
-            {t.volumeLabel}: {totalMl} мл
+            {t.volumeLabel}: {formatCocktailVolume(displayMl, lang)}
           </p>
         )}
       </div>

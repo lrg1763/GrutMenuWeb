@@ -4,3 +4,6 @@ dist
 *.local
 .env
 public/reservation-config.php
+
+# Артефакт деплоя (сборка уже в dist/)
+dist.zip

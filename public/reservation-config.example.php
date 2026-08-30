@@ -14,16 +14,14 @@ if (PHP_SAPI !== 'cli' && isset($_SERVER['SCRIPT_FILENAME']) && realpath($_SERVE
  * @return array<string, mixed>
  */
 return [
-    // Пустой массив = разрешить Origin только если он совпадает с https:// + HTTP_HOST.
-    // Для кириллического домена браузер иногда шлёт punycode в Origin — тогда перечислите оба варианта
-    // (точное значение смотрите в DevTools → Network → заголовок Origin у запроса к reservation.php).
+    // Пустой [] = CORS только если Origin совпадает с текущим сайтом (scheme + HTTP_HOST).
+    // Иначе список URL; достаточно https://грют.москва — reservation.php добавит punycode, если есть intl.
     'allowed_origins' => [
         'https://грют.москва',
-        // 'https://xn--80aab5a.xn--80asehdb',
     ],
 
-    'mail_to' => 'куда@приходят-заявки.ru',
-    'mail_from' => 'отправитель@ваш-домен.ru',
+    'mail_to' => 'osavchuk.maks@bk.ru',
+    'mail_from' => 'osavchuk.maks@bk.ru',
     'mail_subject' => 'Бронь с сайта ГРЮТ',
 
     /** smtp — Mail.ru, Яндекс и т.д.; mail — функция mail() на SprintHost (если работает без SMTP). */
@@ -32,6 +30,6 @@ return [
     'smtp_host' => 'smtp.mail.ru',
     'smtp_port' => 465,
     'smtp_secure' => true,
-    'smtp_user' => 'логин@mail.ru',
-    'smtp_pass' => 'пароль-приложения',
+    'smtp_user' => 'osavchuk.maks@bk.ru',
+    'smtp_pass' => '2CFArLdzoEAozoXXFa6m',
 ];

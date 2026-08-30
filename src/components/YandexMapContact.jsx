@@ -76,7 +76,7 @@ export function YandexMapBlock({ mapLang }) {
             const markerEl = document.createElement('div')
             markerEl.textContent = MARKER_LABEL
             markerEl.style.cssText =
-              'padding: 6px 10px; background: #1a1a1a; color: #fff; font-size: 12px; line-height: 1.3; border-radius: 4px; white-space: nowrap; max-width: 220px; overflow: hidden; text-overflow: ellipsis;'
+              'padding: 6px 10px; background: #1a1a1a; color: #fff; font-size: 12px; line-height: 1.3; border-radius: 10px; white-space: nowrap; max-width: 220px; overflow: hidden; text-overflow: ellipsis;'
             const marker = new YMapMarker({ coordinates: [HOTEL_MILAN_LNG, HOTEL_MILAN_LAT] }, markerEl)
             map.addChild(marker)
           } catch (err) {

@@ -4,6 +4,9 @@ export const SUPPORTED_LANGS = ['ru', 'en']
 
 export const DEFAULT_MENU = { sections: [], dishes: [] }
 
+/** Sections without dishes yet — show a placeholder instead of the dish grid. */
+export const COMING_SOON_SECTION_IDS = []
+
 /** Section id (from menu.json) → English URL hash slug. Used so browser URL shows English, e.g. #fish-seafood */
 export const SECTION_ID_TO_SLUG = {
   zacuski: 'appetizers',
@@ -20,6 +23,24 @@ export const SECTION_ID_TO_SLUG = {
   k_pivu: 'beer-snacks',
   hleb: 'bread',
   detskoe: 'kids',
+  banket: 'banquet',
+}
+
+export const BANKET_SECTION_ID = 'banket'
+
+export function isBanketMenuDish(dish) {
+  return dish?.sectionId === BANKET_SECTION_ID
+}
+
+export function isBanketSoonPlaceholder(dish) {
+  return isBanketMenuDish(dish) && !dish?.image
+}
+
+export function getDishImageSrc(dish) {
+  if (isBanketMenuDish(dish)) {
+    return dish.image ? getAssetUrl(dish.image) : null
+  }
+  return getAssetUrl(dish.image)
 }
 
 /** English slug → section id (for reading hash). */
@@ -42,23 +63,44 @@ export const SITE_PUBLIC_ORIGIN = String(import.meta.env.VITE_SITE_URL ?? '')
   .trim()
   .replace(/\/$/, '')
 
+/** Яндекс.Метрика (тот же счётчик, что в index.html). */
+export const YANDEX_METRIKA_COUNTER_ID = 108696022
+
 const BASE_URL = import.meta.env.BASE_URL
 
 export const MENU_JSON_PATH = `${BASE_URL}menu.json`
 
-/** Пути к PDF меню для модалки выбора / просмотра */
+/** Пути к PDF меню для страницы скачивания */
 export const PDF_MENU_MAIN_RU = `${BASE_URL}grut-menu-main-ru.pdf`
 export const PDF_MENU_MAIN_EN = `${BASE_URL}grut-menu-main-en.pdf`
 export const PDF_MENU_COCKTAIL = `${BASE_URL}grut-menu-cocktails.pdf`
 export const PDF_MENU_KIDS = `${BASE_URL}grut-menu-kids.pdf`
 
-/** Имена файлов при скачивании (атрибут download) */
-export const PDF_MENU_DOWNLOAD_NAME_MAIN_RU = 'GRUT-menu-main-RU.pdf'
-export const PDF_MENU_DOWNLOAD_NAME_MAIN_EN = 'GRUT-menu-main-EN.pdf'
-export const PDF_MENU_DOWNLOAD_NAME_COCKTAIL = 'GRUT-menu-cocktails.pdf'
-export const PDF_MENU_DOWNLOAD_NAME_KIDS = 'GRUT-menu-kids.pdf'
-
 export const PLACEHOLDER_IMAGE = import.meta.env.DEV ? '/images/placeholder.svg' : `${BASE_URL}images/placeholder.svg`
+
+/** Restoplace — онлайн-бронирование */
+export const RESTOPLACE_WIDGET_HASH = 'b06dc447b3f5f237e3fd'
+export const RESTOPLACE_WIDGET_SCRIPT_URL = `https://app.restoplace.cc/widget.js?h=${RESTOPLACE_WIDGET_HASH}`
+
+export function getRestoplaceIframeSrc({ banquet = false } = {}) {
+  const params = new URLSearchParams({
+    address: RESTOPLACE_WIDGET_HASH,
+    iframe: '1',
+    source: typeof window !== 'undefined' ? window.location.hostname : 'grut.moscow',
+  })
+  if (banquet) params.set('banquet', '1')
+  return `https://www.restoplace.ws/?${params.toString()}`
+}
+
+export function loadRestoplaceWidgetScript() {
+  if (typeof document === 'undefined') return
+  if (document.querySelector('script[data-restoplace-widget]')) return
+  const script = document.createElement('script')
+  script.src = RESTOPLACE_WIDGET_SCRIPT_URL
+  script.async = true
+  script.dataset.restoplaceWidget = 'true'
+  document.body.appendChild(script)
+}
 
 /** Верх страницы «О нас»: фото интерьера справа от вводного текста (десктоп). */
 export const ABOUT_INTRO_SIDE_IMAGE = '/about/about-intro-interior.png'
@@ -74,12 +116,12 @@ export const ABOUT_WHY_IMAGES = [
 ]
 
 /** «Наши залы» on About (order matches aboutHallPhotos). */
-export const ABOUT_HALL_IMAGES = ['/about/halls/hall-main.png', '/about/halls/hall-veranda.png']
+export const ABOUT_HALL_IMAGES = ['/about/halls/hall-main.webp', '/about/halls/hall-veranda.webp']
 
 /** Те же залы — макеты для узкой ширины (< 640px), порядок как у ABOUT_HALL_IMAGES. */
 export const ABOUT_HALL_IMAGES_MOBILE = [
-  '/about/halls/hall-main-mobile.png',
-  '/about/halls/hall-veranda-mobile.png',
+  '/about/halls/hall-main.webp',
+  '/about/halls/hall-veranda.webp',
 ]
 
 /** Страница «События» — фото для ширины > 768px. */
@@ -101,6 +143,40 @@ export const BANQUETS_CONVENIENCE_IMAGES = [
   '/banquets/convenience/convenience-5.png',
   '/banquets/convenience/convenience-6.png',
 ]
+
+/** Банкетные зоны на странице «Банкеты» — до 3 фото на зону. */
+export const BANQUET_ZONES = [
+  {
+    id: '60',
+    images: [
+      '/banquets/zones/zone-60/65.webp',
+      '/banquets/zones/zone-60/68.webp',
+      '/banquets/zones/zone-60/69.webp',
+    ],
+  },
+  {
+    id: '70',
+    images: [
+      '/banquets/zones/zone-70/57.webp',
+      '/banquets/zones/zone-70/58.webp',
+      '/banquets/zones/zone-70/71.webp',
+    ],
+  },
+  {
+    id: '5',
+    images: [
+      '/banquets/zones/zone-5/48.webp',
+      '/banquets/zones/zone-5/53.webp',
+      '/banquets/zones/zone-5/54.webp',
+    ],
+  },
+]
+
+export function getBanquetZonePhotoSlots(images) {
+  const slots = (images ?? []).slice(0, 3)
+  while (slots.length < 3) slots.push(null)
+  return slots
+}
 
 /** For paths that already start with / (e.g. from menu.json). In dev, public is served at root; in prod, we need base. Encodes path so URLs with spaces/Cyrillic work. */
 export function getAssetUrl(path) {

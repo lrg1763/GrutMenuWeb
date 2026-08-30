@@ -5,11 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:all": "concurrently -n vite,booking -c blue,green \"vite\" \"npm run server\"",
     "build": "vite build",
-    "preview": "vite preview",
-    "server": "npm --prefix server run start",
-    "test:booking-api": "node scripts/test-reservation-api.mjs"
+    "preview": "vite preview"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
@@ -20,7 +17,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
-    "concurrently": "^9.1.2",
     "vite": "^6.0.3"
   }
 }

@@ -41,8 +41,17 @@
 
 /* Страница меню: кнопка скачать PDF */
 @font-face {
-  font-family: 'GT Pressura Pro Trial';
-  src: url('/fonts/GT-Pressura-Pro-Trial-Regular.otf') format('opentype');
+  font-family: 'Qwertu';
+  src: url('/fonts/qwertu.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Главная: надпись ГРЮТ */
+@font-face {
+  font-family: 'Default Normal';
+  src: url('/fonts/Default-Normal.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -116,7 +125,7 @@
   background: var(--color-bg, #fff);
   color: var(--color-text);
   font-weight: 600;
-  border-radius: 4px;
+  border-radius: var(--radius-ui);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   transition: top 0.2s;
 }
@@ -126,7 +135,7 @@
   outline-offset: 2px;
 }
 
-/* Страница меню: базовый шрифт — в menu.css (.menu-page) */
+/* Страница меню: базовый шрифт Qwertu — в menu.css (.menu-page) */
 
 .menu-page--loading,
 .menu-page--error {
@@ -150,7 +159,7 @@
   color: var(--color-text);
   background: var(--color-bg);
   border: 1px solid var(--color-border);
-  border-radius: 6px;
+  border-radius: var(--radius-ui);
   cursor: pointer;
 }
 .menu-page__retry:hover {
@@ -178,7 +187,7 @@
   color: var(--color-text);
   background: var(--color-bg);
   border: 1px solid var(--color-border);
-  border-radius: 6px;
+  border-radius: var(--radius-ui);
   cursor: pointer;
 }
 .error-boundary__retry:hover {

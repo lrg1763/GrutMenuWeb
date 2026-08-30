@@ -1,16 +1,19 @@
 import { useLangContext } from '../context/LangContext'
-import { getAssetUrl, PLACEHOLDER_IMAGE } from '../constants'
-import { getDishName, formatDishWeight } from '../i18n'
+import { isBanketMenuDish } from '../constants'
+import { translations, getDishName, formatDishWeight } from '../i18n'
 import PriceWithRuble from './PriceWithRuble'
+import DishPhoto from './DishPhoto'
 
 export default function DishGrid({ dishes, onSelectDish }) {
   const { lang } = useLangContext()
+  const t = translations[lang]
 
   return (
     <div className="dish-grid">
       {dishes.map((dish) => {
         const name = getDishName(dish, lang)
         const weightLine = formatDishWeight(dish, lang)
+        const isBanket = isBanketMenuDish(dish)
         return (
           <button
             key={`${dish.sectionId}-${dish.name}`}
@@ -18,24 +21,34 @@ export default function DishGrid({ dishes, onSelectDish }) {
             className="dish-card"
             onClick={() => onSelectDish(dish)}
           >
-            <div className="dish-card__image-wrap">
-              <img
-                src={getAssetUrl(dish.image)}
-                alt={name}
-                className="dish-card__image"
-                loading="lazy"
-                onError={(e) => { e.target.onerror = null; e.target.src = PLACEHOLDER_IMAGE }}
-              />
-            </div>
+            <DishPhoto
+              dish={dish}
+              name={name}
+              soonLabel={t.comingSoon}
+              imageWrapClassName="dish-card__image-wrap"
+            />
             <span className="dish-card__name">{name}</span>
-            {(weightLine || dish.price) && (
-              <span className="dish-card__meta-row">
-                {weightLine && <span className="dish-card__weight-part">{weightLine}</span>}
-                {weightLine && dish.price && (
-                  <span className="dish-card__meta-sep" aria-hidden="true">·</span>
-                )}
-                {dish.price && (
-                  <PriceWithRuble className="dish-card__price" value={dish.price} />
+            {(isBanket || weightLine || dish.price) && (
+              <span
+                className={`dish-card__meta-row${isBanket ? ' dish-card__meta-row--invisible' : ''}`}
+                aria-hidden={isBanket || undefined}
+              >
+                {isBanket ? (
+                  <>
+                    <span className="dish-card__weight-part">000 г</span>
+                    <span className="dish-card__meta-sep" aria-hidden="true">·</span>
+                    <PriceWithRuble className="dish-card__price" value="0000 ₽" />
+                  </>
+                ) : (
+                  <>
+                    {weightLine && <span className="dish-card__weight-part">{weightLine}</span>}
+                    {weightLine && dish.price && (
+                      <span className="dish-card__meta-sep" aria-hidden="true">·</span>
+                    )}
+                    {dish.price && (
+                      <PriceWithRuble className="dish-card__price" value={dish.price} />
+                    )}
+                  </>
                 )}
               </span>
             )}

@@ -1,12 +1,15 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLangContext } from '../context/LangContext'
 import { translations } from '../i18n'
 import PageSection from '../components/PageSection'
-import { BANQUETS_CONVENIENCE_IMAGES, getAssetUrl } from '../constants'
+import BanquetZoneModal from '../components/BanquetZoneModal'
+import { BANQUETS_CONVENIENCE_IMAGES, BANQUET_ZONES, getAssetUrl } from '../constants'
 
 export default function BanquetsPage() {
   const { lang } = useLangContext()
   const t = translations[lang]
+  const [selectedZone, setSelectedZone] = useState(null)
 
   return (
     <main className="main banquets-page">
@@ -50,12 +53,30 @@ export default function BanquetsPage() {
           </div>
         </PageSection>
 
+        <PageSection className="banquets-page__zones" title={t.banquetsZonesTitle} ariaLabel={t.banquetsZonesAria}>
+          <ul className="banquets-page__zones-grid">
+            {BANQUET_ZONES.map((zone) => (
+              <li key={zone.id}>
+                <button
+                  type="button"
+                  className="banquets-page__zone-card"
+                  onClick={() => setSelectedZone(zone)}
+                  aria-label={t.banquetsZoneTitle.replace('{n}', zone.id)}
+                >
+                  <span className="banquets-page__zone-number">{zone.id}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </PageSection>
+
         <PageSection title={t.banquetsOrderTitle} intro={t.banquetsOrderIntro}>
           <Link to="/booking?type=banquet" className="banquets-page__cta-btn">
             {t.banquetsOrderCta}
           </Link>
         </PageSection>
       </div>
+      <BanquetZoneModal zone={selectedZone} onClose={() => setSelectedZone(null)} />
     </main>
   )
 }

@@ -1,4 +1,4 @@
-/* Страница брони: Open Sans; заголовки героя/формы — GT Pressura Pro Trial; «Забронировать» — Opinion Pro Condensed */
+/* Страница брони: Open Sans; заголовки героя/формы — Qwertu; «Забронировать» — Opinion Pro Condensed */
 .booking-page {
   font-family: var(--font-open-sans);
   font-weight: 400;
@@ -22,8 +22,116 @@
   color: #fff;
 }
 
+.booking-page__content > .page-section {
+  border-color: #111;
+}
+
 .booking-page__form {
   margin-top: 0.5rem;
+}
+
+.booking-page__section--form {
+  overflow: hidden;
+}
+
+.booking-page__section--form .page-section__header {
+  margin-bottom: 0;
+}
+
+.booking-page__widget {
+  margin-top: clamp(0.85rem, 2vw, 1.15rem);
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  background: #000;
+  position: relative;
+  z-index: 1;
+}
+
+.booking-page__widget-frame {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 620px;
+  height: clamp(620px, 78dvh, 820px);
+  border: 0;
+  background: #000;
+  color-scheme: dark;
+  pointer-events: auto;
+  touch-action: auto;
+}
+
+.booking-page__widget-mobile-link {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .booking-page__section--form {
+    background: #000;
+    border-color: #111;
+  }
+
+  .booking-page__section--form .booking-page__widget {
+    margin-inline: calc(-1 * clamp(1rem, 2vw, 1.5rem));
+    margin-bottom: calc(-1 * clamp(1rem, 2vw, 1.5rem));
+  }
+
+  .booking-page__widget-frame {
+    max-width: 100%;
+    min-height: 680px;
+    height: clamp(680px, 80dvh, 860px);
+  }
+}
+
+@media (max-width: 768px) {
+  .booking-page__section--form {
+    overflow: visible;
+  }
+
+  .booking-page__widget {
+    margin-inline: calc(-1 * clamp(1rem, 2vw, 1.5rem));
+    margin-bottom: calc(-1 * clamp(1rem, 2vw, 1.5rem));
+    padding: 0 0 clamp(1rem, 5vw, 1.5rem);
+    overflow: visible;
+  }
+
+  .booking-page__widget-frame {
+    display: block;
+    min-height: 760px;
+    height: 86dvh;
+    pointer-events: auto;
+    touch-action: manipulation;
+  }
+
+  .booking-page__widget-mobile-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 64px;
+    width: calc(100% - 2 * clamp(1rem, 5vw, 1.5rem));
+    margin: clamp(0.85rem, 4vw, 1.25rem) auto 0;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-ui);
+    background: var(--color-btn-bg);
+    color: var(--color-btn-text);
+    font-family: 'Opinion Pro Condensed', sans-serif;
+    font-size: 1.08rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
+
+body:has(.booking-page) #restoplace-wrapper-btn {
+  display: none !important;
+}
+
+body:has(.booking-page) #restoplace-bg,
+body:has(.booking-page) #restoplace-modal {
+  display: none !important;
+  pointer-events: none !important;
 }
 
 .booking-page__fields {
@@ -54,6 +162,7 @@
   font-size: 0.9375rem;
   padding: 0.55rem 0.65rem;
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
   background: var(--color-bg);
   color: var(--color-text);
   min-height: var(--touch-min);
@@ -166,6 +275,7 @@
   min-height: var(--touch-min);
   padding: 0.55rem 1.25rem;
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
   background: var(--color-btn-bg);
   color: var(--color-btn-text);
   font-weight: 600;

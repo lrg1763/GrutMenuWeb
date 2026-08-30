@@ -55,13 +55,17 @@
     {
       "id": "detskoe",
       "title": "Детское меню"
+    },
+    {
+      "id": "banket",
+      "title": "Банкетное меню"
     }
   ],
   "dishes": [
     {
       "sectionId": "grill",
       "name": "Short loin",
-      "image": "/menu-assets/grill/short-loin.png",
+      "image": "/menu-assets/grill/short-loin.webp",
       "description": "",
       "price": "1300 ₽",
       "weight": "100"
@@ -69,7 +73,7 @@
     {
       "sectionId": "grill",
       "name": "T-Bone",
-      "image": "/menu-assets/grill/t-bone.png",
+      "image": "/menu-assets/grill/t-bone.webp",
       "description": "",
       "price": "1450 ₽",
       "weight": "100"
@@ -112,7 +116,7 @@
       "image": "/menu-assets/grill/beef-medallions.webp",
       "description": "",
       "price": "1999 ₽",
-      "weight": "260"
+      "weight": "240"
     },
     {
       "sectionId": "grill",
@@ -120,7 +124,7 @@
       "image": "/menu-assets/grill/chicken-shashlik.webp",
       "description": "",
       "price": "650 ₽",
-      "weight": "230/54"
+      "weight": "270"
     },
     {
       "sectionId": "grill",
@@ -128,7 +132,7 @@
       "image": "/menu-assets/grill/lulya-beef.webp",
       "description": "",
       "price": "1200 ₽",
-      "weight": "230/34"
+      "weight": "270"
     },
     {
       "sectionId": "grill",
@@ -136,7 +140,7 @@
       "image": "/menu-assets/grill/lulya-lamb.webp",
       "description": "",
       "price": "1500 ₽",
-      "weight": "170/34"
+      "weight": "210"
     },
     {
       "sectionId": "grill",
@@ -144,15 +148,15 @@
       "image": "/menu-assets/grill/tapaka.webp",
       "description": "",
       "price": "1350 ₽",
-      "weight": "630/5"
+      "weight": "630"
     },
     {
       "sectionId": "grill",
       "name": "Grilled meat platter",
-      "image": "/menu-assets/grill/meat-platter.png",
-      "description": "Chicken breast shashlik, lamb shashlik, beef and lamb lyulya-kebab, matchet steak, lamb rack",
+      "image": "/menu-assets/grill/meat-platter.webp",
+      "description": "",
       "price": "12000 ₽",
-      "weight": "690/80/60/50/50/68"
+      "weight": "1510"
     },
     {
       "sectionId": "grill",
@@ -160,7 +164,7 @@
       "image": "/menu-assets/grill/langoustines.webp",
       "description": "",
       "price": "1300 ₽",
-      "weight": "216/32"
+      "weight": "250"
     },
     {
       "sectionId": "grill",
@@ -176,7 +180,7 @@
       "image": "/menu-assets/grill/tuna-steak.webp",
       "description": "",
       "price": "1250 ₽",
-      "weight": "200"
+      "weight": "250"
     },
     {
       "sectionId": "grill",
@@ -184,7 +188,7 @@
       "image": "/menu-assets/grill/dorado.webp",
       "description": "",
       "price": "1999 ₽",
-      "weight": "420"
+      "weight": "450"
     },
     {
       "sectionId": "grill",
@@ -192,7 +196,7 @@
       "image": "/menu-assets/grill/seafood-assortment.webp",
       "description": "Trout, tuna, langoustines, mussels, squid",
       "price": "3500 ₽",
-      "weight": "663/54"
+      "weight": "800"
     },
     {
       "sectionId": "garniry",
@@ -200,7 +204,7 @@
       "image": "/menu-assets/garniry/seasonal-vegetables-grill.webp",
       "description": "",
       "price": "590 ₽",
-      "weight": "250"
+      "weight": "200"
     },
     {
       "sectionId": "garniry",
@@ -223,7 +227,8 @@
       "name": "Cauliflower",
       "image": "/menu-assets/garniry/cauliflower.webp",
       "description": "",
-      "price": "290 ₽"
+      "price": "290 ₽",
+      "weight": "160"
     },
     {
       "sectionId": "garniry",
@@ -231,7 +236,7 @@
       "image": "/menu-assets/garniry/potato-mushrooms.webp",
       "description": "",
       "price": "450 ₽",
-      "weight": "220"
+      "weight": "270"
     },
     {
       "sectionId": "garniry",
@@ -247,7 +252,7 @@
       "image": "/menu-assets/garniry/mashed-potato-spinach.webp",
       "description": "",
       "price": "300 ₽",
-      "weight": "150"
+      "weight": "160"
     },
     {
       "sectionId": "garniry",
@@ -287,7 +292,7 @@
       "image": "/menu-assets/grill/farmer-burger.webp",
       "description": "",
       "price": "1111 ₽",
-      "weight": "366"
+      "weight": "370"
     },
     {
       "sectionId": "pasta",
@@ -295,7 +300,7 @@
       "image": "/menu-assets/pasta/fettuccine-seafood.webp",
       "description": "",
       "price": "999 ₽",
-      "weight": "300"
+      "weight": "350"
     },
     {
       "sectionId": "pasta",
@@ -303,7 +308,7 @@
       "image": "/menu-assets/pasta/carbonara.webp",
       "description": "",
       "price": "870 ₽",
-      "weight": "300"
+      "weight": "270"
     },
     {
       "sectionId": "myaso_ptica",
@@ -311,7 +316,7 @@
       "image": "/menu-assets/myaso_ptica/pozhersky-cutlet.webp",
       "description": "",
       "price": "880 ₽",
-      "weight": "170/156/10"
+      "weight": "300"
     },
     {
       "sectionId": "myaso_ptica",
@@ -319,7 +324,7 @@
       "image": "/menu-assets/myaso_ptica/chicken-kiev.webp",
       "description": "",
       "price": "990 ₽",
-      "weight": "210/74"
+      "weight": "270"
     },
     {
       "sectionId": "myaso_ptica",
@@ -327,7 +332,7 @@
       "image": "/menu-assets/myaso_ptica/beef-stroganoff.webp",
       "description": "",
       "price": "1300 ₽",
-      "weight": "260"
+      "weight": "350"
     },
     {
       "sectionId": "myaso_ptica",
@@ -335,7 +340,7 @@
       "image": "/menu-assets/myaso_ptica/veal-cheeks.webp",
       "description": "Mashed potatoes / baby potatoes / potato wedges",
       "price": "1650 ₽",
-      "weight": "329"
+      "weight": "350"
     },
     {
       "sectionId": "myaso_ptica",
@@ -343,7 +348,7 @@
       "image": "/menu-assets/myaso_ptica/lamb-schnitzel.webp",
       "description": "",
       "price": "1200 ₽",
-      "weight": "305/16"
+      "weight": "350"
     },
     {
       "sectionId": "ryba_moreprodukty",
@@ -351,15 +356,15 @@
       "image": "/menu-assets/ryba_moreprodukty/pike-perch-cutlets.webp",
       "description": "",
       "price": "1200 ₽",
-      "weight": "360"
+      "weight": "330"
     },
     {
       "sectionId": "ryba_moreprodukty",
       "name": "Mussels in Bavarian sauce",
-      "image": "/menu-assets/ryba_moreprodukty/mussels-bavarian.png",
+      "image": "/menu-assets/ryba_moreprodukty/mussels-bavarian.webp",
       "description": "",
       "price": "1555 ₽",
-      "weight": "430/58/29"
+      "weight": "520"
     },
     {
       "sectionId": "sousy",
@@ -479,7 +484,7 @@
       "image": "/menu-assets/deserty/berry-millefeuille.webp",
       "description": "",
       "price": "720 ₽",
-      "weight": "185"
+      "weight": "200"
     },
     {
       "sectionId": "deserty",
@@ -487,7 +492,7 @@
       "image": "/menu-assets/deserty/fondant.webp",
       "description": "",
       "price": "690 ₽",
-      "weight": "130"
+      "weight": "150"
     },
     {
       "sectionId": "deserty",
@@ -495,7 +500,7 @@
       "image": "/menu-assets/deserty/medovik.webp",
       "description": "",
       "price": "550 ₽",
-      "weight": "102"
+      "weight": "130"
     },
     {
       "sectionId": "deserty",
@@ -503,7 +508,7 @@
       "image": "/menu-assets/deserty/cheesecake.webp",
       "description": "",
       "price": "550 ₽",
-      "weight": "100/40"
+      "weight": "130"
     },
     {
       "sectionId": "deserty",
@@ -511,12 +516,12 @@
       "image": "/menu-assets/deserty/carrot-cake.webp",
       "description": "",
       "price": "400 ₽",
-      "weight": "120"
+      "weight": "130"
     },
     {
       "sectionId": "deserty",
       "name": "Ice cream (Vanilla dream / Belgian chocolate / Strawberry / Pistachio)",
-      "image": "/menu-assets/deserty/ice-cream.png",
+      "image": "/menu-assets/deserty/ice-cream.webp",
       "description": "",
       "price": "270 ₽",
       "weight": "50"
@@ -535,7 +540,7 @@
       "image": "/menu-assets/deserty/fruit-platter.png",
       "description": "",
       "price": "1890 ₽",
-      "weight": "1250"
+      "weight": "1540"
     },
     {
       "sectionId": "k_pivu",
@@ -543,7 +548,7 @@
       "image": "/menu-assets/k_pivu/two-comrades.webp",
       "description": "Chicken wings in Jack Daniel's sauce, chicken sausages, garlic croutons, mini lamb chebureki, spring rolls, onion rings, duo of sauces",
       "price": "2222 ₽",
-      "weight": "1100"
+      "weight": "960"
     },
     {
       "sectionId": "k_pivu",
@@ -551,7 +556,7 @@
       "image": "/menu-assets/k_pivu/chicken-wings.webp",
       "description": "",
       "price": "760 ₽",
-      "weight": "381"
+      "weight": "350"
     },
     {
       "sectionId": "k_pivu",
@@ -591,7 +596,7 @@
       "image": "/menu-assets/zacuski/bruschetta-avocado.webp",
       "description": "",
       "price": "260 ₽",
-      "weight": "62"
+      "weight": "60"
     },
     {
       "sectionId": "zacuski",
@@ -607,7 +612,7 @@
       "image": "/menu-assets/zacuski/bruschetta-salmon.webp",
       "description": "",
       "price": "380 ₽",
-      "weight": "82"
+      "weight": "70"
     },
     {
       "sectionId": "zacuski",
@@ -615,7 +620,7 @@
       "image": "/menu-assets/zacuski/bruschetta-bresaola.webp",
       "description": "",
       "price": "330 ₽",
-      "weight": "75"
+      "weight": "80"
     },
     {
       "sectionId": "zacuski",
@@ -623,7 +628,7 @@
       "image": "/menu-assets/zacuski/bruschetta-rostbeef.webp",
       "description": "",
       "price": "430 ₽",
-      "weight": "77"
+      "weight": "70"
     },
     {
       "sectionId": "zacuski",
@@ -639,7 +644,7 @@
       "image": "/menu-assets/zacuski/chicken-pate.webp",
       "description": "",
       "price": "550 ₽",
-      "weight": "130/55/20"
+      "weight": "210"
     },
     {
       "sectionId": "zacuski",
@@ -647,7 +652,7 @@
       "image": "/menu-assets/zacuski/stracciatella-tomatoes.webp",
       "description": "",
       "price": "520 ₽",
-      "weight": "195/1"
+      "weight": "200"
     },
     {
       "sectionId": "zacuski",
@@ -655,7 +660,7 @@
       "image": "/menu-assets/zacuski/eggplant-oyster.webp",
       "description": "",
       "price": "700 ₽",
-      "weight": "294"
+      "weight": "340"
     },
     {
       "sectionId": "zacuski",
@@ -663,7 +668,7 @@
       "image": "/menu-assets/zacuski/suluguni.webp",
       "description": "",
       "price": "660 ₽",
-      "weight": "196"
+      "weight": "200"
     },
     {
       "sectionId": "zacuski",
@@ -671,7 +676,7 @@
       "image": "/menu-assets/zacuski/spring-rolls.webp",
       "description": "",
       "price": "850 ₽",
-      "weight": "148/25/11"
+      "weight": "190"
     },
     {
       "sectionId": "zacuski",
@@ -679,23 +684,23 @@
       "image": "/menu-assets/zacuski/herring-baby-potatoes.webp",
       "description": "",
       "price": "590 ₽",
-      "weight": "281"
+      "weight": "240"
     },
     {
       "sectionId": "zacuski",
       "name": "Tuna tartare",
-      "image": "/menu-assets/zacuski/tartar-tuna.png",
+      "image": "/menu-assets/zacuski/tartar-tuna.webp",
       "description": "",
       "price": "880 ₽",
-      "weight": "200/20/4"
+      "weight": "180"
     },
     {
       "sectionId": "zacuski",
       "name": "Wagyu beef tartare",
-      "image": "/menu-assets/zacuski/tartar-beef.png",
+      "image": "/menu-assets/zacuski/tartar-beef.webp",
       "description": "",
       "price": "999 ₽",
-      "weight": "134"
+      "weight": "120"
     },
     {
       "sectionId": "zacuski",
@@ -703,7 +708,7 @@
       "image": "/menu-assets/zacuski/shrimp-wasabi.webp",
       "description": "",
       "price": "770 ₽",
-      "weight": "182"
+      "weight": "190"
     },
     {
       "sectionId": "zacuski_kompaniya",
@@ -711,7 +716,7 @@
       "image": "/menu-assets/zacuski_kompaniya/bruschetta-assortment.webp",
       "description": "",
       "price": "1500 ₽",
-      "weight": "82/77/62/80/75"
+      "weight": "360"
     },
     {
       "sectionId": "zacuski_kompaniya",
@@ -719,7 +724,7 @@
       "image": "/menu-assets/zacuski_kompaniya/pickles-assortment.webp",
       "description": "",
       "price": "800 ₽",
-      "weight": "430"
+      "weight": "360"
     },
     {
       "sectionId": "zacuski_kompaniya",
@@ -727,7 +732,7 @@
       "image": "/menu-assets/zacuski_kompaniya/cheese-assortment.webp",
       "description": "Chechil, Maasdam, Parmesan, Caciotta, Mont d'Or, Camembert, Tête de Moine",
       "price": "1650 ₽",
-      "weight": "180/80"
+      "weight": "260"
     },
     {
       "sectionId": "zacuski_kompaniya",
@@ -735,7 +740,7 @@
       "image": "/menu-assets/zacuski_kompaniya/fish-assortment.webp",
       "description": "Salmon, butterfish",
       "price": "1750 ₽",
-      "weight": "120"
+      "weight": "200"
     },
     {
       "sectionId": "zacuski_kompaniya",
@@ -743,7 +748,7 @@
       "image": "/menu-assets/zacuski_kompaniya/meat-assortment.webp",
       "description": "Bresaola, roast beef, beef brisket, tongue, chicken roll",
       "price": "1900 ₽",
-      "weight": "335"
+      "weight": "290"
     },
     {
       "sectionId": "salaty",
@@ -751,7 +756,7 @@
       "image": "/menu-assets/salaty/achichuk.webp",
       "description": "Recommended with steaks",
       "price": "550 ₽",
-      "weight": "228"
+      "weight": "230"
     },
     {
       "sectionId": "salaty",
@@ -767,7 +772,7 @@
       "image": "/menu-assets/salaty/greek-salad.webp",
       "description": "",
       "price": "750 ₽",
-      "weight": "352"
+      "weight": "280"
     },
     {
       "sectionId": "salaty",
@@ -775,7 +780,7 @@
       "image": "/menu-assets/salaty/quinoa-salad.webp",
       "description": "",
       "price": "600 ₽",
-      "weight": "235"
+      "weight": "280"
     },
     {
       "sectionId": "salaty",
@@ -783,7 +788,7 @@
       "image": "/menu-assets/salaty/green-salad-stracciatella.webp",
       "description": "",
       "price": "550 ₽",
-      "weight": "125/155/7/10"
+      "weight": "130"
     },
     {
       "sectionId": "salaty",
@@ -791,7 +796,7 @@
       "image": "/menu-assets/salaty/salmon-mozzarella-salad.webp",
       "description": "",
       "price": "990 ₽",
-      "weight": "134"
+      "weight": "140"
     },
     {
       "sectionId": "salaty",
@@ -799,7 +804,7 @@
       "image": "/menu-assets/salaty/olivier.webp",
       "description": "",
       "price": "1100 ₽",
-      "weight": "231/14/10/5"
+      "weight": "260"
     },
     {
       "sectionId": "salaty",
@@ -807,7 +812,7 @@
       "image": "/menu-assets/salaty/nicoise.webp",
       "description": "",
       "price": "870 ₽",
-      "weight": "172/55/25"
+      "weight": "260"
     },
     {
       "sectionId": "salaty",
@@ -815,7 +820,7 @@
       "image": "/menu-assets/salaty/caesar-shrimp.webp",
       "description": "",
       "price": "870 ₽",
-      "weight": "246"
+      "weight": "190"
     },
     {
       "sectionId": "salaty",
@@ -823,7 +828,7 @@
       "image": "/menu-assets/salaty/caesar-chicken.webp",
       "description": "",
       "price": "770 ₽",
-      "weight": "246"
+      "weight": "200"
     },
     {
       "sectionId": "salaty",
@@ -831,7 +836,7 @@
       "image": "/menu-assets/salaty/chicken-liver-salad.webp",
       "description": "",
       "price": "670 ₽",
-      "weight": "203"
+      "weight": "220"
     },
     {
       "sectionId": "salaty",
@@ -839,7 +844,7 @@
       "image": "/menu-assets/salaty/tongue-salad.webp",
       "description": "",
       "price": "950 ₽",
-      "weight": "267"
+      "weight": "220"
     },
     {
       "sectionId": "supy",
@@ -855,7 +860,7 @@
       "image": "/menu-assets/supy/tom-yam.webp",
       "description": "",
       "price": "880 ₽",
-      "weight": "571"
+      "weight": "550"
     },
     {
       "sectionId": "supy",
@@ -863,7 +868,7 @@
       "image": "/menu-assets/supy/chicken-soup.webp",
       "description": "",
       "price": "450 ₽",
-      "weight": "332"
+      "weight": "350"
     },
     {
       "sectionId": "supy",
@@ -871,7 +876,7 @@
       "image": "/menu-assets/supy/borscht.webp",
       "description": "",
       "price": "650 ₽",
-      "weight": "401"
+      "weight": "440"
     },
     {
       "sectionId": "hleb",
@@ -900,7 +905,7 @@
     {
       "sectionId": "hleb",
       "name": "Borodinsky bread",
-      "image": "/menu-assets/hleb/borodinsky.png",
+      "image": "/menu-assets/hleb/borodinsky.webp",
       "description": "",
       "price": "70 ₽",
       "weight": "50"
@@ -908,10 +913,10 @@
     {
       "sectionId": "hleb",
       "name": "Bread basket",
-      "image": "/menu-assets/hleb/bread-basket.png",
+      "image": "/menu-assets/hleb/bread-basket.webp",
       "description": "",
       "price": "250 ₽",
-      "weight": "158"
+      "weight": "160"
     },
     {
       "sectionId": "detskoe",
@@ -983,7 +988,7 @@
       "image": "/menu-assets/detskoe/fruit-mix.webp",
       "description": "",
       "price": "350 ₽",
-      "weight": "215"
+      "weight": "220"
     },
     {
       "sectionId": "detskoe",
@@ -992,6 +997,48 @@
       "description": "",
       "price": "350 ₽",
       "weight": "150"
+    },
+    {
+      "sectionId": "banket",
+      "name": "Grilled meat platter",
+      "image": "/menu-assets/banket/meat-platter.webp",
+      "description": ""
+    },
+    {
+      "sectionId": "banket",
+      "name": "Fried suluguni cheese",
+      "image": "/menu-assets/banket/suluguni.webp",
+      "description": ""
+    },
+    {
+      "sectionId": "banket",
+      "name": "Bruschetta assortment, 5 pcs",
+      "image": "/menu-assets/banket/bruschetta-assortment.webp",
+      "description": ""
+    },
+    {
+      "sectionId": "banket",
+      "name": "Vegetable platter",
+      "image": "/menu-assets/banket/vegetable-platter.webp",
+      "description": ""
+    },
+    {
+      "sectionId": "banket",
+      "name": "Herring with baby potatoes and Borodinsky bread",
+      "image": "/menu-assets/banket/herring-baby-potatoes.webp",
+      "description": ""
+    },
+    {
+      "sectionId": "banket",
+      "name": "Fruit platter",
+      "image": "/menu-assets/banket/fruit-platter.webp",
+      "description": ""
+    },
+    {
+      "sectionId": "banket",
+      "name": "Bread basket",
+      "image": "/menu-assets/banket/bread-basket.webp",
+      "description": ""
     }
   ]
 }

@@ -7,8 +7,9 @@
 @import './styles/contacts.css';
 @import './styles/booking.css';
 @import './styles/booking-picker.css';
+@import './styles/booking-datetime-modal.css';
 @import './styles/header.css';
-@import './styles/download-modal.css';
+@import './styles/download-menu.css';
 @import './styles/menu.css';
 @import './styles/modal.css';
 @import './styles/footer.css';

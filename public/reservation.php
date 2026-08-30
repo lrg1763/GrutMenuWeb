@@ -18,6 +18,58 @@ function json_response(int $code, array $body): void
     exit;
 }
 
+function safe_substr(string $value, int $start, int $length): string
+{
+    if (function_exists('mb_substr')) {
+        return mb_substr($value, $start, $length);
+    }
+    if (function_exists('iconv_substr')) {
+        $res = iconv_substr($value, $start, $length, 'UTF-8');
+        if ($res !== false) {
+            return $res;
+        }
+    }
+    return substr($value, $start, $length);
+}
+
+/**
+ * Кириллический домен в конфиге + punycode в заголовке Origin (расширение intl на хостинге).
+ *
+ * @param list<string> $list
+ * @return list<string>
+ */
+function expand_allowed_origins(array $list): array
+{
+    $out = [];
+    foreach ($list as $entry) {
+        if (!is_string($entry)) {
+            continue;
+        }
+        $entry = trim($entry);
+        if ($entry === '') {
+            continue;
+        }
+        $out[] = $entry;
+        $parts = parse_url($entry);
+        if ($parts === false || !isset($parts['scheme'], $parts['host'])) {
+            continue;
+        }
+        if (function_exists('idn_to_ascii')) {
+            $flags = defined('IDNA_DEFAULT') ? IDNA_DEFAULT : 0;
+            if (defined('INTL_IDNA_VARIANT_UTS46')) {
+                $ascii = @idn_to_ascii($parts['host'], $flags, INTL_IDNA_VARIANT_UTS46);
+            } else {
+                $ascii = @idn_to_ascii($parts['host'], $flags);
+            }
+            if ($ascii !== false && $ascii !== $parts['host']) {
+                $out[] = $parts['scheme'] . '://' . $ascii;
+            }
+        }
+    }
+
+    return array_values(array_unique($out));
+}
+
 function apply_cors(array $cfg): void
 {
     header('Access-Control-Allow-Methods: POST, OPTIONS');
@@ -42,6 +94,7 @@ function apply_cors(array $cfg): void
         return;
     }
 
+    $allowed = expand_allowed_origins($allowed);
     if (in_array($origin, $allowed, true)) {
         header('Access-Control-Allow-Origin: ' . $origin);
         header('Vary: Origin');
@@ -79,7 +132,7 @@ function validate_payload(?array $body): array
         $guests = 0;
     }
     $comment = isset($body['comment']) && is_string($body['comment'])
-        ? mb_substr(trim($body['comment']), 0, COMMENT_MAX)
+        ? safe_substr(trim($body['comment']), 0, COMMENT_MAX)
         : '';
 
     $missing =
@@ -159,7 +212,7 @@ function send_via_mail(array $cfg, string $subject, string $textBody): bool
     return @mail($to, encode_subject($subject), $textBody, implode("\r\n", $headers));
 }
 
-function smtp_read_line($fp): string|false
+function smtp_read_line($fp)
 {
     return fgets($fp, 4096);
 }

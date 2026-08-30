@@ -6,7 +6,7 @@ import { translations } from '../i18n'
 import SectionTabs from '../components/SectionTabs'
 import DishGrid from '../components/DishGrid'
 import DishModal from '../components/DishModal'
-import DownloadButton from '../components/DownloadButton'
+import { COMING_SOON_SECTION_IDS } from '../constants'
 
 export default function MenuPage() {
   const { lang } = useLangContext()
@@ -16,6 +16,7 @@ export default function MenuPage() {
   const [selectedDish, setSelectedDish] = useState(null)
 
   const filteredDishes = dishes.filter((d) => d.sectionId === activeSectionId)
+  const isComingSoonSection = COMING_SOON_SECTION_IDS.includes(activeSectionId)
 
   if (loading && sections.length === 0) {
     return (
@@ -52,14 +53,20 @@ export default function MenuPage() {
         />
         <main className="main">
           <section className="menu-page__grid-section">
-            <DishGrid
-              dishes={filteredDishes}
-              onSelectDish={setSelectedDish}
-            />
+            {isComingSoonSection ? (
+              <div className="menu-page__coming-soon" aria-live="polite">
+                <p className="menu-page__coming-soon-title">{t.comingSoon}</p>
+                <p className="menu-page__coming-soon-text">{t.menuSectionComingSoon}</p>
+              </div>
+            ) : (
+              <DishGrid
+                dishes={filteredDishes}
+                onSelectDish={setSelectedDish}
+              />
+            )}
           </section>
         </main>
       </div>
-      <DownloadButton />
       {selectedDish && (
         <DishModal
           dish={selectedDish}
